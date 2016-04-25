@@ -1,0 +1,31 @@
+package message;
+enum HeroErrorCode
+{
+	no_error = 0;	
+}
+
+message MsgHeroData
+{
+	required uint64 account = 1;
+	required uint32 level = 2;
+	required string name = 3;	
+	required int32 action_point = 4;
+	required int32 diamand = 5;
+	required int32 gold = 6;
+	
+}
+
+message MsgEquipData
+{
+	required uint64 id = 1;
+	required int32 equip_id = 2;
+	required int32 level = 3;
+	required bool equipped = 4;
+	required int32 client_save_flag = 5;	
+	required int32 count = 6;
+}
+message MsgIntPair
+{
+	required int32 number_1 = 1;
+	required int32 number_2 = 2;
+}

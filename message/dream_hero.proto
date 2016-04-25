@@ -1,0 +1,25 @@
+package message;
+import "common.proto";
+message S2CMsgHeroInit
+{
+	required MsgHeroData hero = 1;
+}
+
+
+
+message S2CMsgHeroEquip
+{
+	repeated MsgEquipData equips = 1;
+	required bool end = 2;
+	required bool begin = 3;
+	
+}
+
+message S2CMsgEquipInit
+{
+	required S2CMsgHeroEquip equip = 1;
+}
+
+
+
+

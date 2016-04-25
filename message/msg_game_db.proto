@@ -1,0 +1,30 @@
+package message;
+import "common.proto";
+import "dream_hero.proto";
+message MsgReqHeroDataGS2DB
+{
+	required uint64 account = 1;
+}
+
+message MsgHeroDataDB2GS
+{
+	required uint64 account = 1;
+	required MsgHeroData Data = 2; 
+	repeated MsgEquipData equips = 3;
+}
+
+message MsgNeedCreateHeroDB2GS
+{
+
+}
+
+message MsgSaveHeroDataGS2DB
+{
+	required uint64 account = 1;
+	required MsgHeroData Data = 2; 
+}
+
+message MsgSaveDataGS2DB
+{
+	required string sql = 1;
+}
