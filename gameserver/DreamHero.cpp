@@ -240,7 +240,7 @@ void DreamHero::SaveHero()
 
 	
 	char temp[1024];
-	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`) values(%llu, %d, '%s', %d, %d, %d);",
+	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`) values(%lu, %d, '%s', %d, %d, %d);",
 		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold());
 	sql_temp += temp;
 	message::MsgSaveDataGS2DB msg_db;
@@ -273,7 +273,7 @@ void DreamHero::SaveHero()
 				sql_temp += ",";
 			}
 			message::MsgEquipData entry = it->second; 
-			sprintf(temp, "(%llu, %llu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
+			sprintf(temp, "(%lu, %lu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
 			sql_temp += temp;
 		}
 

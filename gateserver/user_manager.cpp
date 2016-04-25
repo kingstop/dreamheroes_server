@@ -65,15 +65,27 @@ void UserManager::removeUsers(u16 gs)
    for (it; it!= itend; )
    {
        UserSession* p = it->second;
-       if (p && p->getGSid() == gs)
-       {
-           p->setState(UserSession::_wait_close_);
-          it = sonlinemap.erase(it);
-       }
+#ifdef WIN32
+	   if (p && p->getGSid() == gs)
+	   {
+		   p->setState(UserSession::_wait_close_);
+		   it = sonlinemap.erase(it);
+	   }
 	   else
 	   {
 		   ++it;
 	   }
+#else
+	   if (p && p->getGSid() == gs)
+	   {
+		   p->setState(UserSession::_wait_close_);
+		   sonlinemap.erase(it);
+	   }
+	   ++it;
+
+#endif // DEBUG
+
+
 
    }
 

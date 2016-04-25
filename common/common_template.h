@@ -141,15 +141,29 @@ public:
         
         for(it; it != itend;)
         {
-            T& a = it->second;
-            if (a == v)
-            {
+#ifdef WIN32
+			T& a = it->second;
+			if (a == v)
+			{
 				it = m_DataMap.erase(it);
-            }
+			}
 			else
 			{
 				++it;
-			}                         
+			}
+#else
+
+			T& a = it->second;
+			if (a == v)
+			{
+				m_DataMap.erase(it);
+			}
+
+			++it;
+
+#endif // WIN32
+
+                         
         }
        
     }
