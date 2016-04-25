@@ -10,6 +10,7 @@ ELSE()
  MESSAGE("not found")
 ENDIF()
 
+
 INCLUDE_DIRECTORIES( 
     ${PROJECT_SOURCE_DIR}/include 
     ${PROJECT_SOURCE_DIR}/include/linklist
@@ -27,11 +28,13 @@ INCLUDE_DIRECTORIES(
    /usr/local/include/
 ) 
 
+
 LINK_DIRECTORIES( 
     ${PROJECT_SOURCE_DIR}/lib 
     /usr/local/lib 
     /usr/lib 
 ) 
+
  
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin/server/${PROJECT_NAME}/ ) 
 set(CMAKE_EXE_LINKER_FLAGS "-lpthread -lrt")
