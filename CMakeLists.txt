@@ -21,7 +21,7 @@ INCLUDE_DIRECTORIES(
     ./../../../external/log4cplus/log4cplus-1.2.0/include/
     ./../../../external/mysql-5.7.10/build/include/
     ./../../../external/mysql-5.7.10/include/
-    ./server/common/
+    ./common/
     /usr/local/mysql/include/
     /usr/include/mysql/
    /usr/include/ 
