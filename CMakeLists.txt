@@ -1,4 +1,4 @@
-PROJECT(project_mole)
+PROJECT(project_dreamheroes)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8) 
 INCLUDE(FindBoost)
