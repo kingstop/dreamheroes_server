@@ -95,7 +95,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_DEBUG;_LIB;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>../../../../../../external/boost/boost_1_60_0/;../../../../../../external/mysql++/mysql++-3.2.2/lib/;../../../../../../external/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/protobuf/protobuf-3.0.0/src</AdditionalIncludeDirectories>
     </ClCompile>
