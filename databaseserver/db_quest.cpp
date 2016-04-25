@@ -159,7 +159,7 @@ void DBQuestManager::dbDoQueryHeroInfo(const SDBResult* r, const void* d, bool s
 			pkParm->info.set_account(acc);
 			message::MsgHeroData* data = pkParm->info.mutable_data();
 			data->set_level(row["level"]);
-			std::string name_temp = row["name"];
+			std::string name_temp = row["name"].c_str();
 			data->set_name(name_temp.c_str());
 			data->set_action_point(row["action_point"]);
 			need_create = false;
