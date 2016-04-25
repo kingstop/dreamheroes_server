@@ -46,8 +46,8 @@ struct Account : PUBLIC_BASE_OBJECT(Account)
 	}
 
     u16 nGateId;
-	tran_id_type nId;
-	account_type nTranId;
+	account_type nId;
+	tran_id_type nTranId;
 };
 
 

@@ -240,8 +240,16 @@ void DreamHero::SaveHero()
 
 	
 	char temp[1024];
+#ifdef WIN32
+	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`) values(%llu, %d, '%s', %d, %d, %d);",
+		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold());
+
+#else
 	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`) values(%lu, %d, '%s', %d, %d, %d);",
 		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold());
+
+#endif // WIN32
+
 	sql_temp += temp;
 	message::MsgSaveDataGS2DB msg_db;
 	msg_db.set_sql(sql_temp.c_str());
@@ -273,7 +281,12 @@ void DreamHero::SaveHero()
 				sql_temp += ",";
 			}
 			message::MsgEquipData entry = it->second; 
+#ifdef WIN32
+			sprintf(temp, "(%llu, %llu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
+#else
 			sprintf(temp, "(%lu, %lu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
+#endif // DEBUG
+			//sprintf(temp, "(%llu, %llu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
 			sql_temp += temp;
 		}
 
