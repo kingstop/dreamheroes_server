@@ -12,7 +12,7 @@ DreamHeroManager::~DreamHeroManager()
 }
 
 
-DreamHero* DreamHeroManager::GetHero(u64 account)
+DreamHero* DreamHeroManager::GetHero(account_type account)
 {
 	DreamHero* hero = NULL;
 	MAPHEROS::iterator it = _heros.find(account);

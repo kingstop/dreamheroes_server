@@ -4,11 +4,11 @@ class DreamHero;
 class DreamHeroManager
 {
 public:
-	typedef std::map<u64, DreamHero*> MAPHEROS;
+	typedef std::map<account_type, DreamHero*> MAPHEROS;
 public:
 	DreamHeroManager();
 	virtual ~DreamHeroManager();
-	DreamHero* GetHero(u64 account);
+	DreamHero* GetHero(account_type account);
 	DreamHero* CreateHero(message::MsgHeroDataDB2GS* HeroDataMsg, account_type acc, Session* session);
 	DreamHero* CreateHero(account_type acc, Session* session);
 protected:
