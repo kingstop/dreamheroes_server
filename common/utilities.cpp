@@ -29,9 +29,9 @@ void save_pid()
 
 		fseek(fp, 0, SEEK_SET);
 #ifdef WIN32
-		sprintf(sz, "%d", _getpid());
+		sprintf(sz, "%d\n", _getpid());
 #else
-		sprintf(sz, "%d", getpid());		
+		sprintf(sz, "%d\n", getpid());		
 #endif
 		fwrite(sz, sizeof(char), strlen(sz), fp);
 
