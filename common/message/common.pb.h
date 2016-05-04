@@ -37,16 +37,18 @@ void protobuf_AddDesc_common_2eproto();
 void protobuf_AssignDesc_common_2eproto();
 void protobuf_ShutdownFile_common_2eproto();
 
+class MsgSuitData;
 class MsgHeroData;
 class MsgEquipData;
 class MsgIntPair;
 
 enum HeroErrorCode {
-  no_error = 0
+  no_error = 0,
+  server_error_no_suit_id = 1
 };
 bool HeroErrorCode_IsValid(int value);
 const HeroErrorCode HeroErrorCode_MIN = no_error;
-const HeroErrorCode HeroErrorCode_MAX = no_error;
+const HeroErrorCode HeroErrorCode_MAX = server_error_no_suit_id;
 const int HeroErrorCode_ARRAYSIZE = HeroErrorCode_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* HeroErrorCode_descriptor();
@@ -60,6 +62,113 @@ inline bool HeroErrorCode_Parse(
     HeroErrorCode_descriptor(), name, value);
 }
 // ===================================================================
+
+class MsgSuitData : public ::google::protobuf::Message {
+ public:
+  MsgSuitData();
+  virtual ~MsgSuitData();
+
+  MsgSuitData(const MsgSuitData& from);
+
+  inline MsgSuitData& operator=(const MsgSuitData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSuitData& default_instance();
+
+  void Swap(MsgSuitData* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSuitData* New() const { return New(NULL); }
+
+  MsgSuitData* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgSuitData& from);
+  void MergeFrom(const MsgSuitData& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgSuitData* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 suit_id = 1;
+  bool has_suit_id() const;
+  void clear_suit_id();
+  static const int kSuitIdFieldNumber = 1;
+  ::google::protobuf::int32 suit_id() const;
+  void set_suit_id(::google::protobuf::int32 value);
+
+  // required string suit_name = 2;
+  bool has_suit_name() const;
+  void clear_suit_name();
+  static const int kSuitNameFieldNumber = 2;
+  const ::std::string& suit_name() const;
+  void set_suit_name(const ::std::string& value);
+  void set_suit_name(const char* value);
+  void set_suit_name(const char* value, size_t size);
+  ::std::string* mutable_suit_name();
+  ::std::string* release_suit_name();
+  void set_allocated_suit_name(::std::string* suit_name);
+
+  // @@protoc_insertion_point(class_scope:message.MsgSuitData)
+ private:
+  inline void set_has_suit_id();
+  inline void clear_has_suit_id();
+  inline void set_has_suit_name();
+  inline void clear_has_suit_name();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr suit_name_;
+  ::google::protobuf::int32 suit_id_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgSuitData* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class MsgHeroData : public ::google::protobuf::Message {
  public:
@@ -172,6 +281,18 @@ class MsgHeroData : public ::google::protobuf::Message {
   ::google::protobuf::int32 gold() const;
   void set_gold(::google::protobuf::int32 value);
 
+  // repeated .message.MsgSuitData suits = 7;
+  int suits_size() const;
+  void clear_suits();
+  static const int kSuitsFieldNumber = 7;
+  const ::message::MsgSuitData& suits(int index) const;
+  ::message::MsgSuitData* mutable_suits(int index);
+  ::message::MsgSuitData* add_suits();
+  const ::google::protobuf::RepeatedPtrField< ::message::MsgSuitData >&
+      suits() const;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgSuitData >*
+      mutable_suits();
+
   // @@protoc_insertion_point(class_scope:message.MsgHeroData)
  private:
   inline void set_has_account();
@@ -199,6 +320,7 @@ class MsgHeroData : public ::google::protobuf::Message {
   ::google::protobuf::int32 action_point_;
   ::google::protobuf::int32 diamand_;
   ::google::protobuf::int32 gold_;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgSuitData > suits_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -456,6 +578,87 @@ class MsgIntPair : public ::google::protobuf::Message {
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgSuitData
+
+// required int32 suit_id = 1;
+inline bool MsgSuitData::has_suit_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgSuitData::set_has_suit_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgSuitData::clear_has_suit_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgSuitData::clear_suit_id() {
+  suit_id_ = 0;
+  clear_has_suit_id();
+}
+inline ::google::protobuf::int32 MsgSuitData::suit_id() const {
+  // @@protoc_insertion_point(field_get:message.MsgSuitData.suit_id)
+  return suit_id_;
+}
+inline void MsgSuitData::set_suit_id(::google::protobuf::int32 value) {
+  set_has_suit_id();
+  suit_id_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgSuitData.suit_id)
+}
+
+// required string suit_name = 2;
+inline bool MsgSuitData::has_suit_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgSuitData::set_has_suit_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgSuitData::clear_has_suit_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgSuitData::clear_suit_name() {
+  suit_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_suit_name();
+}
+inline const ::std::string& MsgSuitData::suit_name() const {
+  // @@protoc_insertion_point(field_get:message.MsgSuitData.suit_name)
+  return suit_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgSuitData::set_suit_name(const ::std::string& value) {
+  set_has_suit_name();
+  suit_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.MsgSuitData.suit_name)
+}
+inline void MsgSuitData::set_suit_name(const char* value) {
+  set_has_suit_name();
+  suit_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.MsgSuitData.suit_name)
+}
+inline void MsgSuitData::set_suit_name(const char* value, size_t size) {
+  set_has_suit_name();
+  suit_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.MsgSuitData.suit_name)
+}
+inline ::std::string* MsgSuitData::mutable_suit_name() {
+  set_has_suit_name();
+  // @@protoc_insertion_point(field_mutable:message.MsgSuitData.suit_name)
+  return suit_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgSuitData::release_suit_name() {
+  clear_has_suit_name();
+  return suit_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgSuitData::set_allocated_suit_name(::std::string* suit_name) {
+  if (suit_name != NULL) {
+    set_has_suit_name();
+  } else {
+    clear_has_suit_name();
+  }
+  suit_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), suit_name);
+  // @@protoc_insertion_point(field_set_allocated:message.MsgSuitData.suit_name)
+}
+
+// -------------------------------------------------------------------
+
 // MsgHeroData
 
 // required uint64 account = 1;
@@ -629,6 +832,36 @@ inline void MsgHeroData::set_gold(::google::protobuf::int32 value) {
   set_has_gold();
   gold_ = value;
   // @@protoc_insertion_point(field_set:message.MsgHeroData.gold)
+}
+
+// repeated .message.MsgSuitData suits = 7;
+inline int MsgHeroData::suits_size() const {
+  return suits_.size();
+}
+inline void MsgHeroData::clear_suits() {
+  suits_.Clear();
+}
+inline const ::message::MsgSuitData& MsgHeroData::suits(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgHeroData.suits)
+  return suits_.Get(index);
+}
+inline ::message::MsgSuitData* MsgHeroData::mutable_suits(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgHeroData.suits)
+  return suits_.Mutable(index);
+}
+inline ::message::MsgSuitData* MsgHeroData::add_suits() {
+  // @@protoc_insertion_point(field_add:message.MsgHeroData.suits)
+  return suits_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::MsgSuitData >&
+MsgHeroData::suits() const {
+  // @@protoc_insertion_point(field_list:message.MsgHeroData.suits)
+  return suits_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::MsgSuitData >*
+MsgHeroData::mutable_suits() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgHeroData.suits)
+  return &suits_;
 }
 
 // -------------------------------------------------------------------

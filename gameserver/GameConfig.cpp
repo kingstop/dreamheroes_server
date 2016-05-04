@@ -60,9 +60,18 @@ void GameConfig::Load(DBQuery* p)
 			entry.equip_level = row["equip_level"];
 			_hero_config.equips.push_back(entry);
 		}
+
 		sResult.clear();
 		query.reset();
-
+		query << "select * from `suit_name_config`";
+		sResult = query.store();
+		for (int i = 0; i < sResult.num_rows(); i++)
+		{
+			DBRow& row = sResult[i];
+			_hero_config.suits_name[row["suit_id"]] = row["suit_name"].c_str();
+		}
+		sResult.clear();
+		query.reset();
 	}	
 
 }

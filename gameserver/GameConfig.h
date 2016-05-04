@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <map>
 
 struct HeroEquipConfig
 {
@@ -14,6 +15,8 @@ struct HeroConfig
 	int diamond;
 	int level;
 	std::vector<HeroEquipConfig> equips;
+	std::map<int, std::string> suits_name;
+
 };
 
 class GameConfig

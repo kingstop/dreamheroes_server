@@ -10,6 +10,8 @@ public:
 	u64 get_account();
 	void set_account(u64 account);
 	void set_info(const message::MsgHeroData* info);
+	void modify_suit(int suit_config, const char* szname);
+
 	void set_session(Session* session);
 	void set_level(int level);
 	void set_name(const char* name);
@@ -20,10 +22,7 @@ public:
 	void StartSave();
 	void StopSave();
 	void LoadFromConfig();
-
 	void SendClientInit();
-
-
 protected:
 	void sendPBMessage(google::protobuf::Message* p);
 

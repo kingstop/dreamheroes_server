@@ -29,7 +29,20 @@ void Session::registerPBCall()
 {
 	//registerCBFun(PROTOCO_NAME(message::SignRequest), &Session::parseSignRequest);
 
+	registerCBFun(PROTOCO_NAME(message::S2CModifySuitNameReq), &Session::parseModifySuitName);
+
+
 }
+
+void Session::parseModifySuitName(google::protobuf::Message* p)
+{
+	message::S2CModifySuitNameReq* msg = (message::S2CModifySuitNameReq*) p;
+	if (_dream_hero)
+	{
+		_dream_hero->modify_suit(msg->suit_id(), msg->suit_name().c_str());
+	}
+}
+
 
 void Session::parsePBMessage(google::protobuf::Message* p)
 {
@@ -96,6 +109,8 @@ void Session::sendPBMessage(google::protobuf::Message* p)
 
     }
 }
+
+
 
 void Session::parseDBQueryNeedCreateHero()
 {

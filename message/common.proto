@@ -2,6 +2,15 @@ package message;
 enum HeroErrorCode
 {
 	no_error = 0;	
+	server_error_no_suit_id = 1;
+}
+
+
+message MsgSuitData
+{
+	required int32 suit_id = 1;
+	required string suit_name = 2;
+
 }
 
 message MsgHeroData
@@ -12,7 +21,7 @@ message MsgHeroData
 	required int32 action_point = 4;
 	required int32 diamand = 5;
 	required int32 gold = 6;
-	
+	repeated MsgSuitData suits = 7;
 }
 
 message MsgEquipData

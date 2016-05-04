@@ -14,19 +14,12 @@ void signal_handle(int)
 
 void save_pid()
 {
-
 	remove("pid_temp.pid");
-
 	FILE * fp = fopen("pid_temp.pid", "wt+");
-
 	if (fp != NULL)
-
 	{
-
 		char sz[256];
-
 		memset(sz, 0, sizeof(sz));
-
 		fseek(fp, 0, SEEK_SET);
 #ifdef WIN32
 		sprintf(sz, "%d\n", _getpid());
@@ -34,33 +27,21 @@ void save_pid()
 		sprintf(sz, "%d\n", getpid());		
 #endif
 		fwrite(sz, sizeof(char), strlen(sz), fp);
-
 		fclose(fp);
-
 	}
-
 }
 
 
 
 bool is_in_current_mon(const time_t * t)
-
 {
-
 	if (t != NULL)
-
 	{
-
 		time_t timep;
-
 		struct tm *p;
-
 		time(&timep);
-
 		p = localtime(&timep); //取得当地时间
-
 		int last_year = p->tm_year;
-
 		int last_mon = p->tm_mon;
 		time_t last_day_time = * t;
 		if (last_day_time == 0)
@@ -69,45 +50,25 @@ bool is_in_current_mon(const time_t * t)
 		}
 		struct tm *last_time = localtime(&last_day_time);
 		if (last_time->tm_year == last_year && last_time->tm_mon == last_mon)
-
 		{
-
 			return true;
-
 		}		
-
 	}
-
 	return false;
-
-
-
 }
 
 
 
 bool is_in_today(const time_t * t)
-
 {
-
 	if (t != NULL)
-
 	{
-
-
-
 		time_t timep;
-
 		struct tm *p;
-
 		time(&timep);
-
 		p = localtime(&timep); //取得当地时间
-
 		int last_year = p->tm_year;
-
-		int last_day = p->tm_yday;
-		
+		int last_day = p->tm_yday;		
 		time_t last_day_time = * t;
 		if (last_day_time == 0)
 		{
@@ -115,19 +76,11 @@ bool is_in_today(const time_t * t)
 		}
 		struct tm *last_time = localtime(&last_day_time);
 		if (last_time->tm_year == last_year && last_time->tm_yday == last_day)
-
 		{
-
 			return true;
-
 		}		
-
 	}
-
 	return false;
-
-
-
 }
 
 

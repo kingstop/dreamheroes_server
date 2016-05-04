@@ -41,6 +41,34 @@ void DreamHero::set_info(const message::MsgHeroData* info)
 }
 
 
+void DreamHero::modify_suit(int suit_config, const char* szname)
+{
+	bool have_suit_id = false;
+	int suit_size_temp = _info.suits_size();
+	for (int i = 0; i < suit_size_temp; i ++)
+	{
+		message::MsgSuitData* suitData = _info.mutable_suits(i);
+		if (suitData->suit_id() == suit_config)
+		{
+			have_suit_id = true;
+			suitData->set_suit_name(szname);
+			message::C2SModifySuitNameACK msg;
+			msg.set_suit_id(suit_config);
+			msg.set_suit_name(szname);
+			sendPBMessage(&msg);
+			break;
+		}		
+	}
+
+	if (have_suit_id == false)
+	{
+		message::C2SModifySuitErrorACK msg;
+		msg.set_suit_id(suit_config);
+		msg.set_error(message::server_error_no_suit_id);
+		sendPBMessage(&msg);
+	}
+}
+
 void DreamHero::set_session(Session* session)
 {
 	_session = session;
@@ -232,6 +260,13 @@ void DreamHero::LoadFromConfig()
 			_hero_equips[entry.id()] = entry;
 		}
 	}
+	std::map<int, std::string>::iterator it_temp = gGameConfig.getHeroConfig().suits_name.begin();
+	for (; it_temp != gGameConfig.getHeroConfig().suits_name.end(); ++ it_temp)
+	{
+		message::MsgSuitData* data = _info.add_suits();
+		data->set_suit_id(it_temp->first);
+		data->set_suit_name(it_temp->second.c_str());
+	}	
 }
 
 void DreamHero::SaveHero()
@@ -241,16 +276,30 @@ void DreamHero::SaveHero()
 	
 	char temp[1024];
 #ifdef WIN32
-	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`) values(%llu, %d, '%s', %d, %d, %d);",
+	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`, `suit_id_1`, `suit_name_1`, `suit_id_2`, `suit_name_2` \
+	`suit_id_3`, `suit_name_3`, `suit_id_4`, `suit_name_4`, `suit_id_5`, `suit_name_5`) values(%llu, %d, '%s', %d, %d, %d",
 		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold());
 
 #else
-	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`) values(%lu, %d, '%s', %d, %d, %d);",
+	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`, `suit_id_1`, `suit_name_1`, `suit_id_2`, `suit_name_2` \
+	`suit_id_3`, `suit_name_3`, `suit_id_4`, `suit_name_4`, `suit_id_5`, `suit_name_5`) values(%lu, %d, '%s', %d, %d, %d",
 		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold());
 
 #endif // WIN32
-
+	
 	sql_temp += temp;
+	char sz_temp[128];
+	for (int i = 0; i < 5; i++)
+	{
+		if (_info.suits_size() < i)
+		{
+			const message::MsgSuitData suit_data = _info.suits(i);
+			sprintf(sz_temp, "%d, '%s'", suit_data.suit_id(), suit_data.suit_name().c_str());
+		}
+		sql_temp += sz_temp;
+	}
+	sql_temp += ");";
+
 	message::MsgSaveDataGS2DB msg_db;
 	msg_db.set_sql(sql_temp.c_str());
 	sql_temp.clear();
