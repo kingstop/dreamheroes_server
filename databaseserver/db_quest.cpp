@@ -166,7 +166,7 @@ void DBQuestManager::dbDoQueryHeroInfo(const SDBResult* r, const void* d, bool s
 			data->set_gold(row["gold"]);
 			data->set_diamand(row["diamand"]);
 			data->set_account(acc);
-			std::string sql_suits_name = row["suits_name"];
+			std::string sql_suits_name = row["suits_name"].c_str();
 			std::vector<std::string> vc_str;
 			std::vector<std::string> vc_suit_info;
 			
