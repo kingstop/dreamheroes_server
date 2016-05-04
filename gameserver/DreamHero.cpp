@@ -221,17 +221,7 @@ void DreamHero::LoadFromConfig()
 		++it_temp;
 	}
 
-	int suits_size_temp = _info.suits_size();
-	int c = 0;
 
-	//for (; it_temp != it_end; )
-	//{
-	//	message::MsgSuitData* data = _info.add_suits();
-	//	int temp = it_temp->first;
-	//	data->set_suit_id(temp);
-	//	data->set_suit_name(it_temp->second.c_str());
-	//	++it_temp;
-	//}	
 }
 
 void DreamHero::SaveHero()
@@ -298,8 +288,7 @@ void DreamHero::SaveHero()
 			sprintf(temp, "(%llu, %llu, %d, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag(), entry.count());
 #else
 			sprintf(temp, "(%lu, %lu, %d, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag(), entry.count());
-#endif // DEBUG
-			//sprintf(temp, "(%llu, %llu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
+#endif // 
 			sql_temp += temp;
 
 		}

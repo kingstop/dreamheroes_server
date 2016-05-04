@@ -51,3 +51,17 @@ DreamHero* DreamHeroManager::CreateHero(account_type acc, Session* session)
 	hero->set_account(acc);
 	return hero;
 }
+
+void DreamHeroManager::SaveDreamHeroes()
+{
+	MAPHEROS::iterator it = _heros.begin();
+	for (; it != _heros.end(); ++ it)
+	{
+		DreamHero* hero = it->second;
+		hero->SaveHero();
+	}
+}
+
+
+
+
