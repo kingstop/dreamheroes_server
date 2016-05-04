@@ -178,7 +178,7 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
     "MsgEquipData\"\030\n\026MsgNeedCreateHeroDB2GS\"K"
     "\n\024MsgSaveHeroDataGS2DB\022\017\n\007account\030\001 \002(\004\022"
     "\"\n\004Data\030\002 \002(\0132\024.message.MsgHeroData\"\037\n\020M"
-    "sgSaveDataGS2DB\022\013\n\003sql\030\001 \002(\t", 348);
+    "sgSaveDataGS2DB\022\013\n\003sql\030\001 \002(\014", 348);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_game_db.proto", &protobuf_RegisterTypes);
   MsgReqHeroDataGS2DB::default_instance_ = new MsgReqHeroDataGS2DB();
@@ -1557,15 +1557,11 @@ bool MsgSaveDataGS2DB::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string sql = 1;
+      // required bytes sql = 1;
       case 1: {
         if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_sql()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->sql().data(), this->sql().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "message.MsgSaveDataGS2DB.sql");
         } else {
           goto handle_unusual;
         }
@@ -1598,13 +1594,9 @@ failure:
 void MsgSaveDataGS2DB::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:message.MsgSaveDataGS2DB)
-  // required string sql = 1;
+  // required bytes sql = 1;
   if (has_sql()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->sql().data(), this->sql().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgSaveDataGS2DB.sql");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
       1, this->sql(), output);
   }
 
@@ -1618,14 +1610,10 @@ void MsgSaveDataGS2DB::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgSaveDataGS2DB::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:message.MsgSaveDataGS2DB)
-  // required string sql = 1;
+  // required bytes sql = 1;
   if (has_sql()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->sql().data(), this->sql().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgSaveDataGS2DB.sql");
     target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         1, this->sql(), target);
   }
 
@@ -1640,10 +1628,10 @@ void MsgSaveDataGS2DB::SerializeWithCachedSizes(
 int MsgSaveDataGS2DB::ByteSize() const {
   int total_size = 0;
 
-  // required string sql = 1;
+  // required bytes sql = 1;
   if (has_sql()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->sql());
   }
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1722,7 +1710,7 @@ void MsgSaveDataGS2DB::InternalSwap(MsgSaveDataGS2DB* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgSaveDataGS2DB
 
-// required string sql = 1;
+// required bytes sql = 1;
  bool MsgSaveDataGS2DB::has_sql() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1750,7 +1738,7 @@ void MsgSaveDataGS2DB::InternalSwap(MsgSaveDataGS2DB* other) {
   sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:message.MsgSaveDataGS2DB.sql)
 }
- void MsgSaveDataGS2DB::set_sql(const char* value, size_t size) {
+ void MsgSaveDataGS2DB::set_sql(const void* value, size_t size) {
   set_has_sql();
   sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));

@@ -26,5 +26,5 @@ message MsgSaveHeroDataGS2DB
 
 message MsgSaveDataGS2DB
 {
-	required string sql = 1;
+	required bytes sql = 1;
 }

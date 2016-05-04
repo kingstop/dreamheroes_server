@@ -132,6 +132,7 @@ void DBQuestManager::dbDoQueryHeroEquips(const SDBResult* r, const void* d, bool
 			eqiup->set_equipped((bool)row["equipped"]);
 			eqiup->set_level(row["level"]);
 			eqiup->set_client_save_flag(row["client_save_flag"]);
+			eqiup->set_count(row["equip_count"]);
 		}
 		gDBGameManager.sendMessage(&pkParm->info, pkParm->tranid, pkParm->gsid);
 	}
@@ -162,6 +163,36 @@ void DBQuestManager::dbDoQueryHeroInfo(const SDBResult* r, const void* d, bool s
 			std::string name_temp = row["name"].c_str();
 			data->set_name(name_temp.c_str());
 			data->set_action_point(row["action_point"]);
+			data->set_gold(row["gold"]);
+			data->set_diamand(row["diamand"]);
+			data->set_account(acc);
+			std::string sql_suits_name = row["suits_name"];
+			std::vector<std::string> vc_str;
+			std::vector<std::string> vc_suit_info;
+			
+			SplitStringA(sql_suits_name, ":", vc_str);
+			std::vector<std::string>::iterator it_vc_str = vc_str.begin();
+			for (; it_vc_str != vc_str.end(); ++ it_vc_str)
+			{
+				std::string str_temp = (*it_vc_str);
+				SplitStringA(str_temp, ",", vc_suit_info);
+				if (vc_suit_info.size() == 2)
+				{
+					int id_suits = 0;
+					std::string id_suits_name;
+					
+					if (isIntger(vc_suit_info[0].c_str()) == true)
+					{
+						id_suits = atoi(vc_suit_info[0].c_str());
+						id_suits_name = vc_suit_info[1].c_str();
+						message::MsgSuitData* suit_data = data->add_suits();
+						suit_data->set_suit_id(id_suits);
+						suit_data->set_suit_name(id_suits_name.c_str());												
+					}
+				}
+
+			}
+
 			need_create = false;
 			//const char* sql = "select * from `character_equip` where `account`=%llu;";
 			char sztemp[256];

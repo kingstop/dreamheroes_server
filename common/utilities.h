@@ -351,6 +351,9 @@ bool is_dayofweek( unsigned int t, unsigned char dow );
 
 bool in_duration( unsigned int t, unsigned char hstart, unsigned char hend );
 
+int SplitStringA(const std::string& strIn, const std::string& strDelimiter, std::vector<std::string>& ret);
+
+bool isIntger(std::string str);
 
 
 bool is_valid_string( const std::string& str );

@@ -789,7 +789,77 @@ bool in_duration( unsigned int t, unsigned char hstart, unsigned char hend )
 
 }
 
+int SplitStringA(const std::string& strIn, const std::string& strDelimiter, std::vector<std::string>& ret)
+{
+	ret.clear();
 
+	int iPos = 0;
+	int newPos = -1;
+	int delimiterLength = strDelimiter.size();
+	int strInLength = strIn.size();
+
+	if (delimiterLength == 0 || strInLength == 0)
+		return 0;
+
+	std::vector<int> positions;
+
+	newPos = strIn.find(strDelimiter, 0);
+
+	if (newPos < 0)
+	{
+		ret.push_back(strIn);
+		return 1;
+	}
+
+	int numFound = 0;
+
+	while (newPos >= iPos)
+	{
+		numFound++;
+		positions.push_back(newPos);
+		iPos = newPos;
+		newPos = strIn.find(strDelimiter, iPos + delimiterLength);
+	}
+
+	for (size_t i = 0; i <= positions.size(); ++i)
+	{
+		std::string s("");
+		if (i == 0)
+		{
+			s = strIn.substr(i, positions[i]);
+		}
+		else
+		{
+			int offset = positions[i - 1] + delimiterLength;
+			if (offset < strInLength)
+			{
+				if (i == positions.size())
+				{
+					s = strIn.substr(offset);
+				}
+				else
+				{
+					s = strIn.substr(offset, positions[i] - positions[i - 1] - delimiterLength);
+				}
+			}
+		}
+
+		if (s.size() > 0)
+		{
+			ret.push_back(s);
+		}
+	}
+	return numFound;
+}
+
+bool isIntger(std::string str)
+{
+	std::stringstream sin(str);
+	int number;
+	if (!(sin >> number))
+		return false;
+	return true;
+}
 
 bool is_valid_string( const std::string& str )
 

@@ -79,76 +79,6 @@ Session* DreamHero::get_session()
 	return _session;
 }
 
-int SplitStringA(const std::string& strIn, const std::string& strDelimiter, std::vector<std::string>& ret)
-{
-	ret.clear();
-
-	int iPos = 0;
-	int newPos = -1;
-	int delimiterLength = strDelimiter.size();
-	int strInLength = strIn.size();
-
-	if (delimiterLength == 0 || strInLength == 0)
-		return 0;
-
-	std::vector<int> positions;
-
-	newPos = strIn.find(strDelimiter, 0);
-
-	if (newPos < 0)
-	{
-		ret.push_back(strIn);
-		return 1;
-	}
-
-	int numFound = 0;
-
-	while (newPos >= iPos)
-	{
-		numFound++;
-		positions.push_back(newPos);
-		iPos = newPos;
-		newPos = strIn.find(strDelimiter, iPos + delimiterLength);
-	}
-
-	for (size_t i = 0; i <= positions.size(); ++i)
-	{
-		std::string s("");
-		if (i == 0)
-		{
-			s = strIn.substr(i, positions[i]);
-		}
-		else
-		{
-			int offset = positions[i - 1] + delimiterLength;
-			if (offset < strInLength)
-			{
-				if (i == positions.size())
-				{
-					s = strIn.substr(offset);
-				}
-				else
-				{
-					s = strIn.substr(offset, positions[i] - positions[i - 1] - delimiterLength);
-				}
-			}
-		}
-
-		if (s.size() > 0)
-		{
-			ret.push_back(s);
-		}
-	}
-	return numFound;
-}
-bool isIntger(std::string str)
-{
-	std::stringstream sin(str);
-	int number;
-	if (!(sin >> number))
-		return false;
-	return true;
-}
 
 std::vector<int> MapVersionFormat(std::string cur_version)
 {
@@ -213,7 +143,7 @@ void DreamHero::SendClientInit()
 			equip_temp = equip_msg.mutable_equip();			
 		}
 		message::MsgEquipData* equip_data = equip_temp->add_equips();
-		equip_temp->CopyFrom(it_temp->second);
+		equip_data->CopyFrom(it_temp->second);
 		if (current_equip_count == 1)
 		{
 			equip_temp->set_begin(true);
@@ -247,26 +177,61 @@ void DreamHero::LoadFromConfig()
 	_info.set_gold(gGameConfig.getHeroConfig().gold);
 	if (gGameConfig.getHeroConfig().equips.empty() == false)
 	{
-		std::vector<HeroEquipConfig>::iterator it = gGameConfig.getHeroConfig().equips.begin();
-		for (; it != gGameConfig.getHeroConfig().equips.end(); ++it)
+		int size_temp = gGameConfig.getHeroConfig().equips.size();
+		for (int i = 0; i < size_temp; i ++)
 		{
-			HeroEquipConfig entry_equip_config = (*it);
+			HeroEquipConfig entry_equip_config = gGameConfig.getHeroConfig().equips[i];
 			message::MsgEquipData entry;
 			entry.set_id(gGameConfig.generateEquipID());
 			entry.set_equipped(true);
 			entry.set_client_save_flag(0);
 			entry.set_level(entry_equip_config.equip_level);
 			entry.set_equip_id(entry_equip_config.equip_config_id);
+			entry.set_count(entry_equip_config.equip_conut);
 			_hero_equips[entry.id()] = entry;
+
 		}
+		//std::vector<HeroEquipConfig>::iterator it_end = gGameConfig.getHeroConfig().equips.end();
+		//for (; it != it_end; )
+		//{
+		//	HeroEquipConfig entry_equip_config = (*it);
+		//	message::MsgEquipData entry;
+		//	entry.set_id(gGameConfig.generateEquipID());
+		//	entry.set_equipped(true);
+		//	entry.set_client_save_flag(0);
+		//	entry.set_level(entry_equip_config.equip_level);
+		//	entry.set_equip_id(entry_equip_config.equip_config_id);
+		//	_hero_equips[entry.id()] = entry;
+		//	++it;
+		//}
 	}
-	std::map<int, std::string>::iterator it_temp = gGameConfig.getHeroConfig().suits_name.begin();
-	for (; it_temp != gGameConfig.getHeroConfig().suits_name.end(); ++ it_temp)
+
+	HeroConfig entry_config = gGameConfig.getHeroConfig();
+	
+
+	std::map<int, std::string>::iterator it_temp = entry_config.suits_name.begin();
+	std::map<int, std::string>::iterator it_end = entry_config.suits_name.end();
+	while (it_temp != it_end)
 	{
+
 		message::MsgSuitData* data = _info.add_suits();
-		data->set_suit_id(it_temp->first);
+		int temp = it_temp->first;
+		data->set_suit_id(temp);
 		data->set_suit_name(it_temp->second.c_str());
-	}	
+		++it_temp;
+	}
+
+	int suits_size_temp = _info.suits_size();
+	int c = 0;
+
+	//for (; it_temp != it_end; )
+	//{
+	//	message::MsgSuitData* data = _info.add_suits();
+	//	int temp = it_temp->first;
+	//	data->set_suit_id(temp);
+	//	data->set_suit_name(it_temp->second.c_str());
+	//	++it_temp;
+	//}	
 }
 
 void DreamHero::SaveHero()
@@ -274,32 +239,31 @@ void DreamHero::SaveHero()
 	std::string sql_temp;
 
 	
-	char temp[1024];
+	char temp[2048];
+	int suits_size_temp = _info.suits_size();
+	char suit_temp[256];
+	std::string suits_sql;
+	for (int i = 0; i < suits_size_temp; i ++)
+	{
+		if (i != 0)
+		{
+			suits_sql += ":";
+		}
+		const message::MsgSuitData temp_data = _info.suits(i);
+		sprintf(suit_temp, "%d,%s", temp_data.suit_id(), temp_data.suit_name().c_str());
+		suits_sql += suit_temp;
+	}
+
 #ifdef WIN32
-	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`, `suit_id_1`, `suit_name_1`, `suit_id_2`, `suit_name_2` \
-	`suit_id_3`, `suit_name_3`, `suit_id_4`, `suit_name_4`, `suit_id_5`, `suit_name_5`) values(%llu, %d, '%s', %d, %d, %d",
-		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold());
+	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`, `suits_name`) values(%llu, %d, '%s', %d, %d, %d, '%s')",
+		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold(), suits_sql.c_str());
 
 #else
-	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`, `suit_id_1`, `suit_name_1`, `suit_id_2`, `suit_name_2` \
-	`suit_id_3`, `suit_name_3`, `suit_id_4`, `suit_name_4`, `suit_id_5`, `suit_name_5`) values(%lu, %d, '%s', %d, %d, %d",
-		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold());
+	sprintf(temp, "replace into `character`(`account_id`, `level`, `name`,`action_point`, `diamand`, `gold`, `suits_name`) values(%lu, %d, '%s', %d, %d, %d, '%s')",
+		_info.account(), _info.level(), _info.name().c_str(), _info.action_point(), _info.diamand(), _info.gold(), suits_sql.c_str());
 
 #endif // WIN32
-	
-	sql_temp += temp;
-	char sz_temp[128];
-	for (int i = 0; i < 5; i++)
-	{
-		if (_info.suits_size() < i)
-		{
-			const message::MsgSuitData suit_data = _info.suits(i);
-			sprintf(sz_temp, "%d, '%s'", suit_data.suit_id(), suit_data.suit_name().c_str());
-		}
-		sql_temp += sz_temp;
-	}
-	sql_temp += ");";
-
+	sql_temp = temp;
 	message::MsgSaveDataGS2DB msg_db;
 	msg_db.set_sql(sql_temp.c_str());
 	sql_temp.clear();
@@ -308,10 +272,10 @@ void DreamHero::SaveHero()
 	//gGSDBClient.parseQueryChar()
 	if (_hero_equips.size() != 0)
 	{
-		std::string sql_item = "replace into `character_equip`(`equip_id`, `account_id`, `equip_config_id`, `level`, `equipped`, `client_save_fiag`) values";
+		std::string sql_item = "replace into `character_equip`(`equip_id`, `account_id`, `equip_config_id`, `level`, `equipped`, `client_save_flag`,`equip_count`) values";
 		HEROEQUIPS::iterator it = _hero_equips.begin();
 		int item_count = 0;
-		for (; it != _hero_equips.end(); ++ it)
+		for (; it != _hero_equips.end(); ++ it, item_count ++)
 		{
 			if (item_count >= 20)
 			{
@@ -331,12 +295,13 @@ void DreamHero::SaveHero()
 			}
 			message::MsgEquipData entry = it->second; 
 #ifdef WIN32
-			sprintf(temp, "(%llu, %llu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
+			sprintf(temp, "(%llu, %llu, %d, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag(), entry.count());
 #else
-			sprintf(temp, "(%lu, %lu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
+			sprintf(temp, "(%lu, %lu, %d, %d, %d, %d, %)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag(), entry.count());
 #endif // DEBUG
 			//sprintf(temp, "(%llu, %llu, %d, %d, %d, %d)", entry.id(), _info.account(), entry.equip_id(), entry.level(), (int)entry.equipped(), entry.client_save_flag());
 			sql_temp += temp;
+
 		}
 
 		if (sql_temp.empty() == false)
