@@ -20,19 +20,19 @@ message S2CMsgEquipInit
 	required S2CMsgHeroEquip equip = 1;
 }
 
-message S2CModifySuitNameReq
+message C2SModifySuitNameReq
 {
 	required int32 suit_id = 1;
 	required string suit_name = 2;
 }
 
-message C2SModifySuitNameACK
+message S2CModifySuitNameACK
 {
 	required int32 suit_id = 1;
 	required string suit_name = 2;
 }
 
-message C2SModifySuitErrorACK
+message S2CModifySuitErrorACK
 {
 	required int32 suit_id = 1;
 	required HeroErrorCode error = 2 [default = no_error];

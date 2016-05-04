@@ -29,14 +29,14 @@ void Session::registerPBCall()
 {
 	//registerCBFun(PROTOCO_NAME(message::SignRequest), &Session::parseSignRequest);
 
-	registerCBFun(PROTOCO_NAME(message::S2CModifySuitNameReq), &Session::parseModifySuitName);
+	registerCBFun(PROTOCO_NAME(message::C2SModifySuitNameReq), &Session::parseModifySuitName);
 
 
 }
 
 void Session::parseModifySuitName(google::protobuf::Message* p)
 {
-	message::S2CModifySuitNameReq* msg = (message::S2CModifySuitNameReq*) p;
+	message::C2SModifySuitNameReq* msg = (message::C2SModifySuitNameReq*) p;
 	if (_dream_hero)
 	{
 		_dream_hero->modify_suit(msg->suit_id(), msg->suit_name().c_str());

@@ -52,7 +52,7 @@ void DreamHero::modify_suit(int suit_config, const char* szname)
 		{
 			have_suit_id = true;
 			suitData->set_suit_name(szname);
-			message::C2SModifySuitNameACK msg;
+			message::S2CModifySuitNameACK msg;
 			msg.set_suit_id(suit_config);
 			msg.set_suit_name(szname);
 			sendPBMessage(&msg);
@@ -62,7 +62,7 @@ void DreamHero::modify_suit(int suit_config, const char* szname)
 
 	if (have_suit_id == false)
 	{
-		message::C2SModifySuitErrorACK msg;
+		message::S2CModifySuitErrorACK msg;
 		msg.set_suit_id(suit_config);
 		msg.set_error(message::server_error_no_suit_id);
 		sendPBMessage(&msg);
