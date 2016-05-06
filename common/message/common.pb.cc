@@ -44,9 +44,10 @@ void protobuf_AssignDesc_common_2eproto() {
       "common.proto");
   GOOGLE_CHECK(file != NULL);
   MsgSuitData_descriptor_ = file->message_type(0);
-  static const int MsgSuitData_offsets_[2] = {
+  static const int MsgSuitData_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSuitData, suit_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSuitData, suit_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSuitData, equip_ids_),
   };
   MsgSuitData_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -159,18 +160,18 @@ void protobuf_AddDesc_common_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\014common.proto\022\007message\"1\n\013MsgSuitData\022\017"
-    "\n\007suit_id\030\001 \002(\005\022\021\n\tsuit_name\030\002 \002(\t\"\225\001\n\013M"
-    "sgHeroData\022\017\n\007account\030\001 \002(\004\022\r\n\005level\030\002 \002"
-    "(\r\022\014\n\004name\030\003 \002(\t\022\024\n\014action_point\030\004 \002(\005\022\017"
-    "\n\007diamand\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022#\n\005suits\030\007"
-    " \003(\0132\024.message.MsgSuitData\"v\n\014MsgEquipDa"
-    "ta\022\n\n\002id\030\001 \002(\004\022\020\n\010equip_id\030\002 \002(\005\022\r\n\005leve"
-    "l\030\003 \002(\005\022\020\n\010equipped\030\004 \002(\010\022\030\n\020client_save"
-    "_flag\030\005 \002(\005\022\r\n\005count\030\006 \002(\005\"0\n\nMsgIntPair"
-    "\022\020\n\010number_1\030\001 \002(\005\022\020\n\010number_2\030\002 \002(\005*:\n\r"
-    "HeroErrorCode\022\014\n\010no_error\020\000\022\033\n\027server_er"
-    "ror_no_suit_id\020\001", 456);
+    "\n\014common.proto\022\007message\"D\n\013MsgSuitData\022\017"
+    "\n\007suit_id\030\001 \002(\005\022\021\n\tsuit_name\030\002 \002(\t\022\021\n\teq"
+    "uip_ids\030\003 \003(\004\"\225\001\n\013MsgHeroData\022\017\n\007account"
+    "\030\001 \002(\004\022\r\n\005level\030\002 \002(\r\022\014\n\004name\030\003 \002(\t\022\024\n\014a"
+    "ction_point\030\004 \002(\005\022\017\n\007diamand\030\005 \002(\005\022\014\n\004go"
+    "ld\030\006 \002(\005\022#\n\005suits\030\007 \003(\0132\024.message.MsgSui"
+    "tData\"v\n\014MsgEquipData\022\n\n\002id\030\001 \002(\004\022\020\n\010equ"
+    "ip_id\030\002 \002(\005\022\r\n\005level\030\003 \002(\005\022\020\n\010equipped\030\004"
+    " \002(\010\022\030\n\020client_save_flag\030\005 \002(\005\022\r\n\005count\030"
+    "\006 \002(\005\"0\n\nMsgIntPair\022\020\n\010number_1\030\001 \002(\005\022\020\n"
+    "\010number_2\030\002 \002(\005*:\n\rHeroErrorCode\022\014\n\010no_e"
+    "rror\020\000\022\033\n\027server_error_no_suit_id\020\001", 475);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   MsgSuitData::default_instance_ = new MsgSuitData();
@@ -220,6 +221,7 @@ static void MergeFromFail(int line) {
 #ifndef _MSC_VER
 const int MsgSuitData::kSuitIdFieldNumber;
 const int MsgSuitData::kSuitNameFieldNumber;
+const int MsgSuitData::kEquipIdsFieldNumber;
 #endif  // !_MSC_VER
 
 MsgSuitData::MsgSuitData()
@@ -290,6 +292,7 @@ void MsgSuitData::Clear() {
       suit_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
   }
+  equip_ids_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
@@ -333,6 +336,25 @@ bool MsgSuitData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(24)) goto parse_equip_ids;
+        break;
+      }
+
+      // repeated uint64 equip_ids = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_equip_ids:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 1, 24, input, this->mutable_equip_ids())));
+        } else if (tag == 26) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, this->mutable_equip_ids())));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_equip_ids;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -377,6 +399,12 @@ void MsgSuitData::SerializeWithCachedSizes(
       2, this->suit_name(), output);
   }
 
+  // repeated uint64 equip_ids = 3;
+  for (int i = 0; i < this->equip_ids_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+      3, this->equip_ids(i), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -401,6 +429,12 @@ void MsgSuitData::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->suit_name(), target);
+  }
+
+  // repeated uint64 equip_ids = 3;
+  for (int i = 0; i < this->equip_ids_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt64ToArray(3, this->equip_ids(i), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -447,6 +481,16 @@ int MsgSuitData::ByteSize() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
+  // repeated uint64 equip_ids = 3;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->equip_ids_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt64Size(this->equip_ids(i));
+    }
+    total_size += 1 * this->equip_ids_size() + data_size;
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -472,6 +516,7 @@ void MsgSuitData::MergeFrom(const ::google::protobuf::Message& from) {
 
 void MsgSuitData::MergeFrom(const MsgSuitData& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  equip_ids_.MergeFrom(from.equip_ids_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_suit_id()) {
       set_suit_id(from.suit_id());
@@ -511,6 +556,7 @@ void MsgSuitData::Swap(MsgSuitData* other) {
 void MsgSuitData::InternalSwap(MsgSuitData* other) {
   std::swap(suit_id_, other->suit_id_);
   suit_name_.Swap(&other->suit_name_);
+  equip_ids_.UnsafeArenaSwap(&other->equip_ids_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -602,6 +648,36 @@ void MsgSuitData::InternalSwap(MsgSuitData* other) {
   }
   suit_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), suit_name);
   // @@protoc_insertion_point(field_set_allocated:message.MsgSuitData.suit_name)
+}
+
+// repeated uint64 equip_ids = 3;
+ int MsgSuitData::equip_ids_size() const {
+  return equip_ids_.size();
+}
+ void MsgSuitData::clear_equip_ids() {
+  equip_ids_.Clear();
+}
+ ::google::protobuf::uint64 MsgSuitData::equip_ids(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgSuitData.equip_ids)
+  return equip_ids_.Get(index);
+}
+ void MsgSuitData::set_equip_ids(int index, ::google::protobuf::uint64 value) {
+  equip_ids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.MsgSuitData.equip_ids)
+}
+ void MsgSuitData::add_equip_ids(::google::protobuf::uint64 value) {
+  equip_ids_.Add(value);
+  // @@protoc_insertion_point(field_add:message.MsgSuitData.equip_ids)
+}
+ const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+MsgSuitData::equip_ids() const {
+  // @@protoc_insertion_point(field_list:message.MsgSuitData.equip_ids)
+  return equip_ids_;
+}
+ ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+MsgSuitData::mutable_equip_ids() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgSuitData.equip_ids)
+  return &equip_ids_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

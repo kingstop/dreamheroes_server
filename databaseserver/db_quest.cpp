@@ -176,7 +176,7 @@ void DBQuestManager::dbDoQueryHeroInfo(const SDBResult* r, const void* d, bool s
 			{
 				std::string str_temp = (*it_vc_str);
 				SplitStringA(str_temp, ",", vc_suit_info);
-				if (vc_suit_info.size() == 2)
+				if (vc_suit_info.size() >= 2)
 				{
 					int id_suits = 0;
 					std::string id_suits_name;
@@ -188,6 +188,12 @@ void DBQuestManager::dbDoQueryHeroInfo(const SDBResult* r, const void* d, bool s
 						message::MsgSuitData* suit_data = data->add_suits();
 						suit_data->set_suit_id(id_suits);
 						suit_data->set_suit_name(id_suits_name.c_str());												
+						int siez_temp = vc_suit_info.size();
+						for (int i = 2; i < siez_temp; i ++)
+						{
+							u64 equip_id_temp = _atoi64(vc_suit_info[0].c_str());							
+							suit_data->add_equip_ids(equip_id_temp);
+						}
 					}
 				}
 

@@ -28,10 +28,9 @@ void Session::prasePBDefault(google::protobuf::Message* p)
 void Session::registerPBCall()
 {
 	//registerCBFun(PROTOCO_NAME(message::SignRequest), &Session::parseSignRequest);
-
 	registerCBFun(PROTOCO_NAME(message::C2SModifySuitNameReq), &Session::parseModifySuitName);
-
-
+	registerCBFun(PROTOCO_NAME(message::C2SModifySuitReq), &Session::parseModifySuit);
+	registerCBFun(PROTOCO_NAME(message::C2SDelSuitReq), &Session::parseDelSuit);
 }
 
 void Session::parseModifySuitName(google::protobuf::Message* p)
@@ -41,6 +40,27 @@ void Session::parseModifySuitName(google::protobuf::Message* p)
 	{
 		_dream_hero->modify_suit(msg->suit_id(), msg->suit_name().c_str());
 	}
+}
+
+
+
+void Session::parseModifySuit(google::protobuf::Message* p)
+{
+	message::C2SModifySuitReq* msg = (message::C2SModifySuitReq*)p;
+	if (_dream_hero)
+	{
+		_dream_hero->ModifySuit(msg);
+	}
+}
+
+void Session::parseDelSuit(google::protobuf::Message* p)
+{
+	message::C2SDelSuitReq* msg = (message::C2SDelSuitReq*)p;
+	if (_dream_hero)
+	{
+		_dream_hero->DelSuit(msg);
+	}
+
 }
 
 

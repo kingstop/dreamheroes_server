@@ -146,6 +146,18 @@ class MsgSuitData : public ::google::protobuf::Message {
   ::std::string* release_suit_name();
   void set_allocated_suit_name(::std::string* suit_name);
 
+  // repeated uint64 equip_ids = 3;
+  int equip_ids_size() const;
+  void clear_equip_ids();
+  static const int kEquipIdsFieldNumber = 3;
+  ::google::protobuf::uint64 equip_ids(int index) const;
+  void set_equip_ids(int index, ::google::protobuf::uint64 value);
+  void add_equip_ids(::google::protobuf::uint64 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      equip_ids() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_equip_ids();
+
   // @@protoc_insertion_point(class_scope:message.MsgSuitData)
  private:
   inline void set_has_suit_id();
@@ -160,6 +172,7 @@ class MsgSuitData : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr suit_name_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > equip_ids_;
   ::google::protobuf::int32 suit_id_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
@@ -655,6 +668,36 @@ inline void MsgSuitData::set_allocated_suit_name(::std::string* suit_name) {
   }
   suit_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), suit_name);
   // @@protoc_insertion_point(field_set_allocated:message.MsgSuitData.suit_name)
+}
+
+// repeated uint64 equip_ids = 3;
+inline int MsgSuitData::equip_ids_size() const {
+  return equip_ids_.size();
+}
+inline void MsgSuitData::clear_equip_ids() {
+  equip_ids_.Clear();
+}
+inline ::google::protobuf::uint64 MsgSuitData::equip_ids(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgSuitData.equip_ids)
+  return equip_ids_.Get(index);
+}
+inline void MsgSuitData::set_equip_ids(int index, ::google::protobuf::uint64 value) {
+  equip_ids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.MsgSuitData.equip_ids)
+}
+inline void MsgSuitData::add_equip_ids(::google::protobuf::uint64 value) {
+  equip_ids_.Add(value);
+  // @@protoc_insertion_point(field_add:message.MsgSuitData.equip_ids)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+MsgSuitData::equip_ids() const {
+  // @@protoc_insertion_point(field_list:message.MsgSuitData.equip_ids)
+  return equip_ids_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+MsgSuitData::mutable_equip_ids() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgSuitData.equip_ids)
+  return &equip_ids_;
 }
 
 // -------------------------------------------------------------------

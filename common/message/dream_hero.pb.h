@@ -43,6 +43,10 @@ class S2CMsgEquipInit;
 class C2SModifySuitNameReq;
 class S2CModifySuitNameACK;
 class S2CModifySuitErrorACK;
+class C2SModifySuitReq;
+class S2CModifySuitACK;
+class C2SDelSuitReq;
+class S2CDelSuitACK;
 
 // ===================================================================
 
@@ -657,6 +661,390 @@ class S2CModifySuitErrorACK : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static S2CModifySuitErrorACK* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class C2SModifySuitReq : public ::google::protobuf::Message {
+ public:
+  C2SModifySuitReq();
+  virtual ~C2SModifySuitReq();
+
+  C2SModifySuitReq(const C2SModifySuitReq& from);
+
+  inline C2SModifySuitReq& operator=(const C2SModifySuitReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const C2SModifySuitReq& default_instance();
+
+  void Swap(C2SModifySuitReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline C2SModifySuitReq* New() const { return New(NULL); }
+
+  C2SModifySuitReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const C2SModifySuitReq& from);
+  void MergeFrom(const C2SModifySuitReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(C2SModifySuitReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.MsgSuitData data = 1;
+  bool has_data() const;
+  void clear_data();
+  static const int kDataFieldNumber = 1;
+  const ::message::MsgSuitData& data() const;
+  ::message::MsgSuitData* mutable_data();
+  ::message::MsgSuitData* release_data();
+  void set_allocated_data(::message::MsgSuitData* data);
+
+  // @@protoc_insertion_point(class_scope:message.C2SModifySuitReq)
+ private:
+  inline void set_has_data();
+  inline void clear_has_data();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::MsgSuitData* data_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static C2SModifySuitReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class S2CModifySuitACK : public ::google::protobuf::Message {
+ public:
+  S2CModifySuitACK();
+  virtual ~S2CModifySuitACK();
+
+  S2CModifySuitACK(const S2CModifySuitACK& from);
+
+  inline S2CModifySuitACK& operator=(const S2CModifySuitACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CModifySuitACK& default_instance();
+
+  void Swap(S2CModifySuitACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CModifySuitACK* New() const { return New(NULL); }
+
+  S2CModifySuitACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CModifySuitACK& from);
+  void MergeFrom(const S2CModifySuitACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CModifySuitACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 suit_id = 1;
+  bool has_suit_id() const;
+  void clear_suit_id();
+  static const int kSuitIdFieldNumber = 1;
+  ::google::protobuf::int32 suit_id() const;
+  void set_suit_id(::google::protobuf::int32 value);
+
+  // required .message.HeroErrorCode error = 2 [default = no_error];
+  bool has_error() const;
+  void clear_error();
+  static const int kErrorFieldNumber = 2;
+  ::message::HeroErrorCode error() const;
+  void set_error(::message::HeroErrorCode value);
+
+  // @@protoc_insertion_point(class_scope:message.S2CModifySuitACK)
+ private:
+  inline void set_has_suit_id();
+  inline void clear_has_suit_id();
+  inline void set_has_error();
+  inline void clear_has_error();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 suit_id_;
+  int error_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CModifySuitACK* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class C2SDelSuitReq : public ::google::protobuf::Message {
+ public:
+  C2SDelSuitReq();
+  virtual ~C2SDelSuitReq();
+
+  C2SDelSuitReq(const C2SDelSuitReq& from);
+
+  inline C2SDelSuitReq& operator=(const C2SDelSuitReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const C2SDelSuitReq& default_instance();
+
+  void Swap(C2SDelSuitReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline C2SDelSuitReq* New() const { return New(NULL); }
+
+  C2SDelSuitReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const C2SDelSuitReq& from);
+  void MergeFrom(const C2SDelSuitReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(C2SDelSuitReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 suit_id = 1;
+  bool has_suit_id() const;
+  void clear_suit_id();
+  static const int kSuitIdFieldNumber = 1;
+  ::google::protobuf::int32 suit_id() const;
+  void set_suit_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.C2SDelSuitReq)
+ private:
+  inline void set_has_suit_id();
+  inline void clear_has_suit_id();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 suit_id_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static C2SDelSuitReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class S2CDelSuitACK : public ::google::protobuf::Message {
+ public:
+  S2CDelSuitACK();
+  virtual ~S2CDelSuitACK();
+
+  S2CDelSuitACK(const S2CDelSuitACK& from);
+
+  inline S2CDelSuitACK& operator=(const S2CDelSuitACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CDelSuitACK& default_instance();
+
+  void Swap(S2CDelSuitACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CDelSuitACK* New() const { return New(NULL); }
+
+  S2CDelSuitACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CDelSuitACK& from);
+  void MergeFrom(const S2CDelSuitACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CDelSuitACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 suit_id = 1;
+  bool has_suit_id() const;
+  void clear_suit_id();
+  static const int kSuitIdFieldNumber = 1;
+  ::google::protobuf::int32 suit_id() const;
+  void set_suit_id(::google::protobuf::int32 value);
+
+  // required .message.HeroErrorCode error = 2 [default = no_error];
+  bool has_error() const;
+  void clear_error();
+  static const int kErrorFieldNumber = 2;
+  ::message::HeroErrorCode error() const;
+  void set_error(::message::HeroErrorCode value);
+
+  // @@protoc_insertion_point(class_scope:message.S2CDelSuitACK)
+ private:
+  inline void set_has_suit_id();
+  inline void clear_has_suit_id();
+  inline void set_has_error();
+  inline void clear_has_error();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 suit_id_;
+  int error_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CDelSuitACK* default_instance_;
+};
 // ===================================================================
 
 
@@ -1050,6 +1438,187 @@ inline void S2CModifySuitErrorACK::set_error(::message::HeroErrorCode value) {
   set_has_error();
   error_ = value;
   // @@protoc_insertion_point(field_set:message.S2CModifySuitErrorACK.error)
+}
+
+// -------------------------------------------------------------------
+
+// C2SModifySuitReq
+
+// required .message.MsgSuitData data = 1;
+inline bool C2SModifySuitReq::has_data() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void C2SModifySuitReq::set_has_data() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void C2SModifySuitReq::clear_has_data() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void C2SModifySuitReq::clear_data() {
+  if (data_ != NULL) data_->::message::MsgSuitData::Clear();
+  clear_has_data();
+}
+inline const ::message::MsgSuitData& C2SModifySuitReq::data() const {
+  // @@protoc_insertion_point(field_get:message.C2SModifySuitReq.data)
+  return data_ != NULL ? *data_ : *default_instance_->data_;
+}
+inline ::message::MsgSuitData* C2SModifySuitReq::mutable_data() {
+  set_has_data();
+  if (data_ == NULL) {
+    data_ = new ::message::MsgSuitData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.C2SModifySuitReq.data)
+  return data_;
+}
+inline ::message::MsgSuitData* C2SModifySuitReq::release_data() {
+  clear_has_data();
+  ::message::MsgSuitData* temp = data_;
+  data_ = NULL;
+  return temp;
+}
+inline void C2SModifySuitReq::set_allocated_data(::message::MsgSuitData* data) {
+  delete data_;
+  data_ = data;
+  if (data) {
+    set_has_data();
+  } else {
+    clear_has_data();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.C2SModifySuitReq.data)
+}
+
+// -------------------------------------------------------------------
+
+// S2CModifySuitACK
+
+// required int32 suit_id = 1;
+inline bool S2CModifySuitACK::has_suit_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void S2CModifySuitACK::set_has_suit_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void S2CModifySuitACK::clear_has_suit_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void S2CModifySuitACK::clear_suit_id() {
+  suit_id_ = 0;
+  clear_has_suit_id();
+}
+inline ::google::protobuf::int32 S2CModifySuitACK::suit_id() const {
+  // @@protoc_insertion_point(field_get:message.S2CModifySuitACK.suit_id)
+  return suit_id_;
+}
+inline void S2CModifySuitACK::set_suit_id(::google::protobuf::int32 value) {
+  set_has_suit_id();
+  suit_id_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CModifySuitACK.suit_id)
+}
+
+// required .message.HeroErrorCode error = 2 [default = no_error];
+inline bool S2CModifySuitACK::has_error() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void S2CModifySuitACK::set_has_error() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void S2CModifySuitACK::clear_has_error() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void S2CModifySuitACK::clear_error() {
+  error_ = 0;
+  clear_has_error();
+}
+inline ::message::HeroErrorCode S2CModifySuitACK::error() const {
+  // @@protoc_insertion_point(field_get:message.S2CModifySuitACK.error)
+  return static_cast< ::message::HeroErrorCode >(error_);
+}
+inline void S2CModifySuitACK::set_error(::message::HeroErrorCode value) {
+  assert(::message::HeroErrorCode_IsValid(value));
+  set_has_error();
+  error_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CModifySuitACK.error)
+}
+
+// -------------------------------------------------------------------
+
+// C2SDelSuitReq
+
+// required int32 suit_id = 1;
+inline bool C2SDelSuitReq::has_suit_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void C2SDelSuitReq::set_has_suit_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void C2SDelSuitReq::clear_has_suit_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void C2SDelSuitReq::clear_suit_id() {
+  suit_id_ = 0;
+  clear_has_suit_id();
+}
+inline ::google::protobuf::int32 C2SDelSuitReq::suit_id() const {
+  // @@protoc_insertion_point(field_get:message.C2SDelSuitReq.suit_id)
+  return suit_id_;
+}
+inline void C2SDelSuitReq::set_suit_id(::google::protobuf::int32 value) {
+  set_has_suit_id();
+  suit_id_ = value;
+  // @@protoc_insertion_point(field_set:message.C2SDelSuitReq.suit_id)
+}
+
+// -------------------------------------------------------------------
+
+// S2CDelSuitACK
+
+// required int32 suit_id = 1;
+inline bool S2CDelSuitACK::has_suit_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void S2CDelSuitACK::set_has_suit_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void S2CDelSuitACK::clear_has_suit_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void S2CDelSuitACK::clear_suit_id() {
+  suit_id_ = 0;
+  clear_has_suit_id();
+}
+inline ::google::protobuf::int32 S2CDelSuitACK::suit_id() const {
+  // @@protoc_insertion_point(field_get:message.S2CDelSuitACK.suit_id)
+  return suit_id_;
+}
+inline void S2CDelSuitACK::set_suit_id(::google::protobuf::int32 value) {
+  set_has_suit_id();
+  suit_id_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CDelSuitACK.suit_id)
+}
+
+// required .message.HeroErrorCode error = 2 [default = no_error];
+inline bool S2CDelSuitACK::has_error() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void S2CDelSuitACK::set_has_error() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void S2CDelSuitACK::clear_has_error() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void S2CDelSuitACK::clear_error() {
+  error_ = 0;
+  clear_has_error();
+}
+inline ::message::HeroErrorCode S2CDelSuitACK::error() const {
+  // @@protoc_insertion_point(field_get:message.S2CDelSuitACK.error)
+  return static_cast< ::message::HeroErrorCode >(error_);
+}
+inline void S2CDelSuitACK::set_error(::message::HeroErrorCode value) {
+  assert(::message::HeroErrorCode_IsValid(value));
+  set_has_error();
+  error_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CDelSuitACK.error)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

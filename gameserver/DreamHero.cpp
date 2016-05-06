@@ -40,6 +40,53 @@ void DreamHero::set_info(const message::MsgHeroData* info)
 	_info.CopyFrom(*info);	
 }
 
+void DreamHero::ModifySuit(const message::C2SModifySuitReq* msg)
+{
+	const message::MsgSuitData suitData = msg->data();
+	bool modify_temp = false;
+	int suits_size_temp = _info.suits_size();
+	for (int i = 0; i < suits_size_temp; i ++)
+	{
+		if (_info.suits(i).suit_id() == suitData.suit_id())
+		{
+			_info.mutable_suits(i)->CopyFrom(suitData);
+			modify_temp = true;
+		}		
+	}	
+	if (modify_temp == false)
+	{
+		message::MsgSuitData* suitDataTemp = _info.add_suits();
+		suitDataTemp->CopyFrom(suitData);		
+	}
+
+	message::S2CModifySuitACK msgSuitACK;
+	msgSuitACK.set_suit_id(suitData.suit_id());
+	msgSuitACK.set_error(message::no_error);
+	sendPBMessage(&msgSuitACK);	
+}
+
+void DreamHero::DelSuit(const message::C2SDelSuitReq* msg)
+{
+	int suit_id_temp =  msg->suit_id();
+	int suits_size_temp = _info.suits_size();
+	google::protobuf::RepeatedPtrField< ::message::MsgSuitData >::const_iterator it = _info.suits().begin();
+	message::HeroErrorCode error_temp = message::server_error_no_suit_id;
+	for (; it != _info.suits().end(); it++)
+	{
+		if (it->suit_id() == suit_id_temp)
+		{
+			_info.mutable_suits()->erase(it);
+			error_temp = message::no_error;
+		}
+			
+	}
+
+	message::S2CDelSuitACK msg_ACK;
+	msg_ACK.set_suit_id(suit_id_temp);
+	msg_ACK.set_error(error_temp);
+	sendPBMessage(&msg_ACK);
+	
+}
 
 void DreamHero::modify_suit(int suit_config, const char* szname)
 {
@@ -240,8 +287,20 @@ void DreamHero::SaveHero()
 			suits_sql += ":";
 		}
 		const message::MsgSuitData temp_data = _info.suits(i);
+
 		sprintf(suit_temp, "%d,%s", temp_data.suit_id(), temp_data.suit_name().c_str());
 		suits_sql += suit_temp;
+		for (int i = 0; i < temp_data.equip_ids_size(); i ++)
+		{
+			suits_sql += ",";
+			u64 equip_id = temp_data.equip_ids(i);
+#ifdef WIN32
+			sprintf(suit_temp, "%llu", equip_id);
+#else
+			sprintf(suit_temp, "%lu", equip_id);
+#endif
+			suits_sql += suit_temp;
+		}		
 	}
 
 #ifdef WIN32

@@ -9,9 +9,8 @@ public:
 	message::MsgHeroData get_info();
 	u64 get_account();
 	void set_account(u64 account);
-	void set_info(const message::MsgHeroData* info);
+	void set_info(const message::MsgHeroData* info);	
 	void modify_suit(int suit_config, const char* szname);
-
 	void set_session(Session* session);
 	void set_level(int level);
 	void set_name(const char* name);
@@ -23,6 +22,9 @@ public:
 	void StopSave();
 	void LoadFromConfig();
 	void SendClientInit();
+public:
+	void ModifySuit(const message::C2SModifySuitReq* msg);
+	void DelSuit(const message::C2SDelSuitReq* msg);
 protected:
 	void sendPBMessage(google::protobuf::Message* p);
 

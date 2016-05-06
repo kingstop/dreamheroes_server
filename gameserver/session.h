@@ -49,8 +49,9 @@ public:
 	account_type getAccount() const {return m_account ;}
 	void sendPBMessage(google::protobuf::Message* p);
 	void parsePBMessage(google::protobuf::Message* p);
-
 	void parseModifySuitName(google::protobuf::Message* p);
+	void parseModifySuit(google::protobuf::Message* p);
+	void parseDelSuit(google::protobuf::Message* p);
 
 protected:
 	tran_id_type m_tranid;

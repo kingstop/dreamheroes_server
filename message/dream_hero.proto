@@ -37,3 +37,25 @@ message S2CModifySuitErrorACK
 	required int32 suit_id = 1;
 	required HeroErrorCode error = 2 [default = no_error];
 }
+
+message C2SModifySuitReq
+{
+	required MsgSuitData data = 1;
+}
+
+message S2CModifySuitACK
+{
+	required int32 suit_id = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}
+
+message C2SDelSuitReq
+{
+	required int32 suit_id = 1;
+}
+
+message S2CDelSuitACK
+{
+	required int32 suit_id = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}
