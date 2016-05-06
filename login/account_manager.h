@@ -81,11 +81,11 @@ public:
 	void checkAccountCall(const void* data, bool sucess);
 	u32  makeTransId(std::string& str);
 	bool isBanned(u32 nAccountId);
-	void removeAccount(u32 nAccountId);
-	bool addAccount(u32 account, u32 tranid, u16 gate);
-    Account* getAccount(u32 nAccId);
+	void removeAccount(account_type nAccountId);
+	bool addAccount(account_type account, u32 tranid, u16 gate);
+    Account* getAccount(account_type nAccId);
 protected:
-	obj_ptr_map<u32, Account> m_Accts;
-	obj_ptr_map<u32, BanAndMute> m_BanAndMute;
+	obj_ptr_map<account_type, Account> m_Accts;
+	obj_ptr_map<account_type, BanAndMute> m_BanAndMute;
 };
 #endif

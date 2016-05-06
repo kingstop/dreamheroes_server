@@ -22,7 +22,7 @@ public:
 	void parseRegister(google::protobuf::Message* p, pb_flag_type flag);
 
 public:
-    void setAccount(u32 acc){m_accid = acc;}
+    void setAccount(account_type acc){m_accid = acc;}
     void setState(u8 s);
     void setClose(){/*close();*/}
 public:
@@ -34,7 +34,7 @@ public:
 	
 private:
 	u32 m_connecttime;
-	u32 m_accid;
+	account_type m_accid;
 	u8  m_state;
 };
 

@@ -41,7 +41,7 @@ bool AccountManager::isBanned(u32 nAccountId)
 // 	}
 	return false;
 }
-bool AccountManager::addAccount(u32 account, u32 tranid, u16 gate)
+bool AccountManager::addAccount(account_type account, u32 tranid, u16 gate)
 {
 	Account* pkAccount = getAccount( account);
 	if (NULL == pkAccount)
@@ -54,11 +54,11 @@ bool AccountManager::addAccount(u32 account, u32 tranid, u16 gate)
 	pkAccount->nId = account;
 	return true;
 }
-Account* AccountManager::getAccount(u32 nAccId)
+Account* AccountManager::getAccount(account_type nAccId)
 {
 	return m_Accts.getData(nAccId);
 }
-void AccountManager::removeAccount(u32 nAccountId)
+void AccountManager::removeAccount(account_type nAccountId)
 {
 	Memory::releaseObject<Account>(m_Accts.eraseData(nAccountId));
 }

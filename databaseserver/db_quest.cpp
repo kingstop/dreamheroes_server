@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "db_quest.h"
 #include "game_session.h"
+#include <stdlib.h>
 #include <stdio.h>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
