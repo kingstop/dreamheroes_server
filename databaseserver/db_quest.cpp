@@ -192,7 +192,13 @@ void DBQuestManager::dbDoQueryHeroInfo(const SDBResult* r, const void* d, bool s
 						int siez_temp = vc_suit_info.size();
 						for (int i = 2; i < siez_temp; i ++)
 						{
-							u64 equip_id_temp = _atoi64(vc_suit_info[0].c_str());							
+#ifdef WIN32
+							u64 equip_id_temp = _atoi64(vc_suit_info[0].c_str());
+#elif  WIN64
+							u64 equip_id_temp = _atoi64(vc_suit_info[0].c_str());
+#else
+							u64 equip_id_temp = strtol(vc_suit_info[0].c_str(), NULL, 10);
+#endif // WIN32							
 							suit_data->add_equip_ids(equip_id_temp);
 						}
 					}
