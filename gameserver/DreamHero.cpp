@@ -78,14 +78,12 @@ void DreamHero::DelSuit(const message::C2SDelSuitReq* msg)
 			_info.mutable_suits()->erase(it);
 			error_temp = message::no_error;
 		}
-			
 	}
 
 	message::S2CDelSuitACK msg_ACK;
 	msg_ACK.set_suit_id(suit_id_temp);
 	msg_ACK.set_error(error_temp);
-	sendPBMessage(&msg_ACK);
-	
+	sendPBMessage(&msg_ACK);	
 }
 
 void DreamHero::modify_suit(int suit_config, const char* szname)
@@ -211,8 +209,7 @@ void DreamHero::SendClientInit()
 	{
 		sendPBMessage(&equip_msg);
 	}
-	
-	//msg.mutable_info()->CopyFrom(_dream_hero->get_info());
+
 	sendPBMessage(&msg);
 }
 
@@ -236,39 +233,20 @@ void DreamHero::LoadFromConfig()
 			entry.set_equip_id(entry_equip_config.equip_config_id);
 			entry.set_count(entry_equip_config.equip_conut);
 			_hero_equips[entry.id()] = entry;
-
 		}
-		//std::vector<HeroEquipConfig>::iterator it_end = gGameConfig.getHeroConfig().equips.end();
-		//for (; it != it_end; )
-		//{
-		//	HeroEquipConfig entry_equip_config = (*it);
-		//	message::MsgEquipData entry;
-		//	entry.set_id(gGameConfig.generateEquipID());
-		//	entry.set_equipped(true);
-		//	entry.set_client_save_flag(0);
-		//	entry.set_level(entry_equip_config.equip_level);
-		//	entry.set_equip_id(entry_equip_config.equip_config_id);
-		//	_hero_equips[entry.id()] = entry;
-		//	++it;
-		//}
 	}
 
 	HeroConfig entry_config = gGameConfig.getHeroConfig();
-	
-
 	std::map<int, std::string>::iterator it_temp = entry_config.suits_name.begin();
 	std::map<int, std::string>::iterator it_end = entry_config.suits_name.end();
 	while (it_temp != it_end)
 	{
-
 		message::MsgSuitData* data = _info.add_suits();
 		int temp = it_temp->first;
 		data->set_suit_id(temp);
 		data->set_suit_name(it_temp->second.c_str());
 		++it_temp;
 	}
-
-
 }
 
 void DreamHero::SaveHero()
