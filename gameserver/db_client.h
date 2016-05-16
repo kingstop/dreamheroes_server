@@ -10,6 +10,7 @@ public:
 	void parseDBMsgDefault(google::protobuf::Message* p, pb_flag_type flag);
 	void parseQueryHeroInfo(google::protobuf::Message* p, pb_flag_type flag);
 	void parseNeedCreateHero(google::protobuf::Message* p, pb_flag_type flag);
+	void parseMsgSaveAllHeroes(google::protobuf::Message* p, pb_flag_type flag);
 	virtual void on_connect();
 	virtual void on_close( const boost::system::error_code& error );
 	virtual void on_connect_failed( boost::system::error_code error );

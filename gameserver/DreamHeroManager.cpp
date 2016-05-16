@@ -4,6 +4,7 @@
 
 DreamHeroManager::DreamHeroManager()
 {
+	_save_all_heroes_ok = false;
 }
 
 
@@ -60,8 +61,18 @@ void DreamHeroManager::SaveDreamHeroes()
 		DreamHero* hero = it->second;
 		hero->SaveHero();
 	}
+	Mylog::log_server(LOG_INFO, "game server save all heroes count[%d]!", _heros.size());
+	message::MsgSaveAllHeroesGS2DB msg;
+	gGSDBClient.sendPBMessage(&msg, 0);	
 }
 
 
+bool DreamHeroManager::is_save_all_heroes_ok()
+{
+	return _save_all_heroes_ok;
+}
 
-
+void DreamHeroManager::save_all_heroes_ok()
+{
+	_save_all_heroes_ok = true;
+}

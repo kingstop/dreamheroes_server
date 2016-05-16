@@ -272,10 +272,12 @@ class Database : public RunObject
 public:
 	Database();
 	virtual ~Database();
+public:
 	bool initDatabase(const DataBaseConfig& _conf);
 	void shutDown();
 	void run(u32 delay);
 	virtual void checkStop();
+	
 	
 	static void getString(char* in,  const mysqlpp::String& str, u32 len)
 	{
@@ -370,7 +372,8 @@ protected:
 	std::map<u32, db_thread_task_manager*> _tasks;
 	boost::mutex _mutex_done;
 	std::list<db_thread*> _dbthread_list;
-private:
+protected:
+	virtual void onStop();
 };
 template<class Class>
 bool Database::addBlockTask(const DataBaseConfig& conf, Class* obj, bool(Class::*method)(DBQuery*, const void* ), const void* data)

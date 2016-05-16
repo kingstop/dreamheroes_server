@@ -48,16 +48,18 @@ void GameDBClient::parseQueryHeroInfo(google::protobuf::Message* p, pb_flag_type
 	}
 }
 
+void GameDBClient::parseMsgSaveAllHeroes(google::protobuf::Message* p, pb_flag_type flag)
+{
+	gDreamHeroManager.save_all_heroes_ok();
+}
+
+
 void GameDBClient::initPBModule()
 {
 	ProtocMsgBase<GameDBClient>::registerSDFun(&GameDBClient::send_message, &GameDBClient::parseDBMsgDefault);
 	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgHeroDataDB2GS), &GameDBClient::parseQueryHeroInfo);
 	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgNeedCreateHeroDB2GS), &GameDBClient::parseNeedCreateHero);
-
-
-    //ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgDB2GSQueryCharResult),   &GameDBClient::parseQueryChar);
-	//ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgGT2GSAddUser), &GameDBClient::parseAddUser);
-	//ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgGT2GSRemoveUser), &GameDBClient::parseRemoveUser);
+	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgSaveAllHeroesDB2GS), &GameDBClient::parseMsgSaveAllHeroes);
 }
 
 void GameDBClient::on_close( const boost::system::error_code& error )

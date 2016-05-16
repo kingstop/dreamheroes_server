@@ -66,11 +66,11 @@ void LoginServer::memoryLog()
 }
 void LoginServer::setStop()
 {
-
+	_wait_stop = true;
 }
 void LoginServer::checkStop()
 {
-
+	_stop = true;
 }
 bool LoginServer::initDataFromDatabase(DBQuery* p, const void* data)
 {

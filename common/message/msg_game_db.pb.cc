@@ -35,6 +35,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* MsgSaveDataGS2DB_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgSaveDataGS2DB_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgSaveAllHeroesGS2DB_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgSaveAllHeroesGS2DB_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgSaveAllHeroesDB2GS_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgSaveAllHeroesDB2GS_reflection_ = NULL;
 
 }  // namespace
 
@@ -122,6 +128,34 @@ void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto() {
       sizeof(MsgSaveDataGS2DB),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveDataGS2DB, _internal_metadata_),
       -1);
+  MsgSaveAllHeroesGS2DB_descriptor_ = file->message_type(5);
+  static const int MsgSaveAllHeroesGS2DB_offsets_[1] = {
+  };
+  MsgSaveAllHeroesGS2DB_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgSaveAllHeroesGS2DB_descriptor_,
+      MsgSaveAllHeroesGS2DB::default_instance_,
+      MsgSaveAllHeroesGS2DB_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveAllHeroesGS2DB, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgSaveAllHeroesGS2DB),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveAllHeroesGS2DB, _internal_metadata_),
+      -1);
+  MsgSaveAllHeroesDB2GS_descriptor_ = file->message_type(6);
+  static const int MsgSaveAllHeroesDB2GS_offsets_[1] = {
+  };
+  MsgSaveAllHeroesDB2GS_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgSaveAllHeroesDB2GS_descriptor_,
+      MsgSaveAllHeroesDB2GS::default_instance_,
+      MsgSaveAllHeroesDB2GS_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveAllHeroesDB2GS, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgSaveAllHeroesDB2GS),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveAllHeroesDB2GS, _internal_metadata_),
+      -1);
 }
 
 namespace {
@@ -144,6 +178,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
       MsgSaveHeroDataGS2DB_descriptor_, &MsgSaveHeroDataGS2DB::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgSaveDataGS2DB_descriptor_, &MsgSaveDataGS2DB::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgSaveAllHeroesGS2DB_descriptor_, &MsgSaveAllHeroesGS2DB::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgSaveAllHeroesDB2GS_descriptor_, &MsgSaveAllHeroesDB2GS::default_instance());
 }
 
 }  // namespace
@@ -159,6 +197,10 @@ void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto() {
   delete MsgSaveHeroDataGS2DB_reflection_;
   delete MsgSaveDataGS2DB::default_instance_;
   delete MsgSaveDataGS2DB_reflection_;
+  delete MsgSaveAllHeroesGS2DB::default_instance_;
+  delete MsgSaveAllHeroesGS2DB_reflection_;
+  delete MsgSaveAllHeroesDB2GS::default_instance_;
+  delete MsgSaveAllHeroesDB2GS_reflection_;
 }
 
 void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
@@ -178,7 +220,8 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
     "MsgEquipData\"\030\n\026MsgNeedCreateHeroDB2GS\"K"
     "\n\024MsgSaveHeroDataGS2DB\022\017\n\007account\030\001 \002(\004\022"
     "\"\n\004Data\030\002 \002(\0132\024.message.MsgHeroData\"\037\n\020M"
-    "sgSaveDataGS2DB\022\013\n\003sql\030\001 \002(\014", 348);
+    "sgSaveDataGS2DB\022\013\n\003sql\030\001 \002(\014\"\027\n\025MsgSaveA"
+    "llHeroesGS2DB\"\027\n\025MsgSaveAllHeroesDB2GS", 398);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_game_db.proto", &protobuf_RegisterTypes);
   MsgReqHeroDataGS2DB::default_instance_ = new MsgReqHeroDataGS2DB();
@@ -186,11 +229,15 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
   MsgNeedCreateHeroDB2GS::default_instance_ = new MsgNeedCreateHeroDB2GS();
   MsgSaveHeroDataGS2DB::default_instance_ = new MsgSaveHeroDataGS2DB();
   MsgSaveDataGS2DB::default_instance_ = new MsgSaveDataGS2DB();
+  MsgSaveAllHeroesGS2DB::default_instance_ = new MsgSaveAllHeroesGS2DB();
+  MsgSaveAllHeroesDB2GS::default_instance_ = new MsgSaveAllHeroesDB2GS();
   MsgReqHeroDataGS2DB::default_instance_->InitAsDefaultInstance();
   MsgHeroDataDB2GS::default_instance_->InitAsDefaultInstance();
   MsgNeedCreateHeroDB2GS::default_instance_->InitAsDefaultInstance();
   MsgSaveHeroDataGS2DB::default_instance_->InitAsDefaultInstance();
   MsgSaveDataGS2DB::default_instance_->InitAsDefaultInstance();
+  MsgSaveAllHeroesGS2DB::default_instance_->InitAsDefaultInstance();
+  MsgSaveAllHeroesDB2GS::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto);
 }
 
@@ -1762,6 +1809,384 @@ void MsgSaveDataGS2DB::InternalSwap(MsgSaveDataGS2DB* other) {
   sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
   // @@protoc_insertion_point(field_set_allocated:message.MsgSaveDataGS2DB.sql)
 }
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+MsgSaveAllHeroesGS2DB::MsgSaveAllHeroesGS2DB()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgSaveAllHeroesGS2DB)
+}
+
+void MsgSaveAllHeroesGS2DB::InitAsDefaultInstance() {
+}
+
+MsgSaveAllHeroesGS2DB::MsgSaveAllHeroesGS2DB(const MsgSaveAllHeroesGS2DB& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgSaveAllHeroesGS2DB)
+}
+
+void MsgSaveAllHeroesGS2DB::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgSaveAllHeroesGS2DB::~MsgSaveAllHeroesGS2DB() {
+  // @@protoc_insertion_point(destructor:message.MsgSaveAllHeroesGS2DB)
+  SharedDtor();
+}
+
+void MsgSaveAllHeroesGS2DB::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgSaveAllHeroesGS2DB::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgSaveAllHeroesGS2DB::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgSaveAllHeroesGS2DB_descriptor_;
+}
+
+const MsgSaveAllHeroesGS2DB& MsgSaveAllHeroesGS2DB::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  return *default_instance_;
+}
+
+MsgSaveAllHeroesGS2DB* MsgSaveAllHeroesGS2DB::default_instance_ = NULL;
+
+MsgSaveAllHeroesGS2DB* MsgSaveAllHeroesGS2DB::New(::google::protobuf::Arena* arena) const {
+  MsgSaveAllHeroesGS2DB* n = new MsgSaveAllHeroesGS2DB;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgSaveAllHeroesGS2DB::Clear() {
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgSaveAllHeroesGS2DB::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgSaveAllHeroesGS2DB)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgSaveAllHeroesGS2DB)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgSaveAllHeroesGS2DB)
+  return false;
+#undef DO_
+}
+
+void MsgSaveAllHeroesGS2DB::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgSaveAllHeroesGS2DB)
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgSaveAllHeroesGS2DB)
+}
+
+::google::protobuf::uint8* MsgSaveAllHeroesGS2DB::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgSaveAllHeroesGS2DB)
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgSaveAllHeroesGS2DB)
+  return target;
+}
+
+int MsgSaveAllHeroesGS2DB::ByteSize() const {
+  int total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgSaveAllHeroesGS2DB::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgSaveAllHeroesGS2DB* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgSaveAllHeroesGS2DB*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgSaveAllHeroesGS2DB::MergeFrom(const MsgSaveAllHeroesGS2DB& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgSaveAllHeroesGS2DB::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgSaveAllHeroesGS2DB::CopyFrom(const MsgSaveAllHeroesGS2DB& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgSaveAllHeroesGS2DB::IsInitialized() const {
+
+  return true;
+}
+
+void MsgSaveAllHeroesGS2DB::Swap(MsgSaveAllHeroesGS2DB* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgSaveAllHeroesGS2DB::InternalSwap(MsgSaveAllHeroesGS2DB* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgSaveAllHeroesGS2DB::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgSaveAllHeroesGS2DB_descriptor_;
+  metadata.reflection = MsgSaveAllHeroesGS2DB_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgSaveAllHeroesGS2DB
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+MsgSaveAllHeroesDB2GS::MsgSaveAllHeroesDB2GS()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgSaveAllHeroesDB2GS)
+}
+
+void MsgSaveAllHeroesDB2GS::InitAsDefaultInstance() {
+}
+
+MsgSaveAllHeroesDB2GS::MsgSaveAllHeroesDB2GS(const MsgSaveAllHeroesDB2GS& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgSaveAllHeroesDB2GS)
+}
+
+void MsgSaveAllHeroesDB2GS::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgSaveAllHeroesDB2GS::~MsgSaveAllHeroesDB2GS() {
+  // @@protoc_insertion_point(destructor:message.MsgSaveAllHeroesDB2GS)
+  SharedDtor();
+}
+
+void MsgSaveAllHeroesDB2GS::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgSaveAllHeroesDB2GS::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgSaveAllHeroesDB2GS::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgSaveAllHeroesDB2GS_descriptor_;
+}
+
+const MsgSaveAllHeroesDB2GS& MsgSaveAllHeroesDB2GS::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  return *default_instance_;
+}
+
+MsgSaveAllHeroesDB2GS* MsgSaveAllHeroesDB2GS::default_instance_ = NULL;
+
+MsgSaveAllHeroesDB2GS* MsgSaveAllHeroesDB2GS::New(::google::protobuf::Arena* arena) const {
+  MsgSaveAllHeroesDB2GS* n = new MsgSaveAllHeroesDB2GS;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgSaveAllHeroesDB2GS::Clear() {
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgSaveAllHeroesDB2GS::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgSaveAllHeroesDB2GS)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgSaveAllHeroesDB2GS)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgSaveAllHeroesDB2GS)
+  return false;
+#undef DO_
+}
+
+void MsgSaveAllHeroesDB2GS::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgSaveAllHeroesDB2GS)
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgSaveAllHeroesDB2GS)
+}
+
+::google::protobuf::uint8* MsgSaveAllHeroesDB2GS::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgSaveAllHeroesDB2GS)
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgSaveAllHeroesDB2GS)
+  return target;
+}
+
+int MsgSaveAllHeroesDB2GS::ByteSize() const {
+  int total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgSaveAllHeroesDB2GS::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgSaveAllHeroesDB2GS* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgSaveAllHeroesDB2GS*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgSaveAllHeroesDB2GS::MergeFrom(const MsgSaveAllHeroesDB2GS& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgSaveAllHeroesDB2GS::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgSaveAllHeroesDB2GS::CopyFrom(const MsgSaveAllHeroesDB2GS& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgSaveAllHeroesDB2GS::IsInitialized() const {
+
+  return true;
+}
+
+void MsgSaveAllHeroesDB2GS::Swap(MsgSaveAllHeroesDB2GS* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgSaveAllHeroesDB2GS::InternalSwap(MsgSaveAllHeroesDB2GS* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgSaveAllHeroesDB2GS::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgSaveAllHeroesDB2GS_descriptor_;
+  metadata.reflection = MsgSaveAllHeroesDB2GS_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgSaveAllHeroesDB2GS
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 

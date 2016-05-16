@@ -43,6 +43,8 @@ class MsgHeroDataDB2GS;
 class MsgNeedCreateHeroDB2GS;
 class MsgSaveHeroDataGS2DB;
 class MsgSaveDataGS2DB;
+class MsgSaveAllHeroesGS2DB;
+class MsgSaveAllHeroesDB2GS;
 
 // ===================================================================
 
@@ -527,6 +529,164 @@ class MsgSaveDataGS2DB : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MsgSaveDataGS2DB* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MsgSaveAllHeroesGS2DB : public ::google::protobuf::Message {
+ public:
+  MsgSaveAllHeroesGS2DB();
+  virtual ~MsgSaveAllHeroesGS2DB();
+
+  MsgSaveAllHeroesGS2DB(const MsgSaveAllHeroesGS2DB& from);
+
+  inline MsgSaveAllHeroesGS2DB& operator=(const MsgSaveAllHeroesGS2DB& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSaveAllHeroesGS2DB& default_instance();
+
+  void Swap(MsgSaveAllHeroesGS2DB* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSaveAllHeroesGS2DB* New() const { return New(NULL); }
+
+  MsgSaveAllHeroesGS2DB* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgSaveAllHeroesGS2DB& from);
+  void MergeFrom(const MsgSaveAllHeroesGS2DB& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgSaveAllHeroesGS2DB* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:message.MsgSaveAllHeroesGS2DB)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgSaveAllHeroesGS2DB* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgSaveAllHeroesDB2GS : public ::google::protobuf::Message {
+ public:
+  MsgSaveAllHeroesDB2GS();
+  virtual ~MsgSaveAllHeroesDB2GS();
+
+  MsgSaveAllHeroesDB2GS(const MsgSaveAllHeroesDB2GS& from);
+
+  inline MsgSaveAllHeroesDB2GS& operator=(const MsgSaveAllHeroesDB2GS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSaveAllHeroesDB2GS& default_instance();
+
+  void Swap(MsgSaveAllHeroesDB2GS* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSaveAllHeroesDB2GS* New() const { return New(NULL); }
+
+  MsgSaveAllHeroesDB2GS* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgSaveAllHeroesDB2GS& from);
+  void MergeFrom(const MsgSaveAllHeroesDB2GS& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgSaveAllHeroesDB2GS* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:message.MsgSaveAllHeroesDB2GS)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgSaveAllHeroesDB2GS* default_instance_;
+};
 // ===================================================================
 
 
@@ -791,6 +951,14 @@ inline void MsgSaveDataGS2DB::set_allocated_sql(::std::string* sql) {
   sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
   // @@protoc_insertion_point(field_set_allocated:message.MsgSaveDataGS2DB.sql)
 }
+
+// -------------------------------------------------------------------
+
+// MsgSaveAllHeroesGS2DB
+
+// -------------------------------------------------------------------
+
+// MsgSaveAllHeroesDB2GS
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 

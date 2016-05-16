@@ -29,7 +29,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <signal.h>
-#include <unistd.h>
+
 #include <stdio.h>
 void signal_handle(int n);
 bool is_in_today(const time_t * t);

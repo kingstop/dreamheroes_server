@@ -6,7 +6,7 @@
 #endif
 
 #include <boost/date_time/posix_time/posix_time.hpp>  
-
+bool g_wait_stop = false;
 
 bool ServerFrame::loadNetConfig(net_info& _config, const char* strfile)
 {
@@ -60,7 +60,10 @@ void ServerFrame::run()
 		runOnce((u32)(time_elapse.total_milliseconds()));
 		onKey();
 		if (_wait_stop)
-		{ checkStop();}
+		{ 
+			checkStop();
+		}
+		signalStop();
 #ifdef _WIN32
 		Sleep(1);
 #else
@@ -145,4 +148,16 @@ bool ServerFrame::loadServiceConfig(service_config& _config, const char* str)
     LAZY_JSON_GET_UINT(_config.speed_,		    "max_speed",			    Root);			
     LAZY_JSON_GET_UINT(_config.msg_pool_size,	"msg_pool_size",	        Root);
     return true ;
+}
+
+void ServerFrame::signalStop()
+{
+	if (g_wait_stop == true)
+	{
+		if (g_wait_stop != _wait_stop)
+		{
+			setStop();
+			_wait_stop = true;
+		}
+	}
 }

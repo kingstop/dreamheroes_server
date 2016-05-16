@@ -24,9 +24,13 @@
 #include "game_manager.h"
 #include "game_tcp_server.h"
 #include "db_quest.h"
+#include "event_table_object.h"
+#include "CharDatabase.h"
+
+
 struct FuDBFather
 {
-	FuDBFather():sSystemTime(time(NULL))
+	FuDBFather():sSystemTime(time(0))
 	{
 	}
 	time_t          sSystemTime;
@@ -34,7 +38,7 @@ struct FuDBFather
 	DBServer        sDBServer;
 	GameManager     sGameManager;
 	GameTCPServer   sGameTcpServer;
-	Database        sCharacterDB;
+	CharDatabase    sCharacterDB;
 	DBQuestManager	sDBQuestMgr;
 };
 
@@ -46,5 +50,12 @@ extern FuDBFather* gFuDBFather;
 #define gDBGameManager		gFuDBFather->sGameManager 
 #define gDBCharDatabase		gFuDBFather->sCharacterDB
 #define gDBQuestMgr			gFuDBFather->sDBQuestMgr
+
+enum EventTypes
+{
+	EVENT_UNK = 0,
+	EVENT_SAVE_TO_CLOSE,
+};
+
 #endif
 

@@ -55,7 +55,15 @@ void DBServer::setStop()
 
 void DBServer::checkStop()
 {
+	if (gDBCharDatabase.is_can_stop())
+	{
+		_stop = true;
+	}
+}
 
+void DBServer::signalStop()
+{
+	_wait_stop = true;
 }
 
 u16  DBServer::getCityGS(u32 city)

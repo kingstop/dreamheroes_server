@@ -12,7 +12,11 @@ public:
 	DreamHero* CreateHero(message::MsgHeroDataDB2GS* HeroDataMsg, account_type acc, Session* session);
 	DreamHero* CreateHero(account_type acc, Session* session);
 	void SaveDreamHeroes();
+	bool is_save_all_heroes_ok();
+	void save_all_heroes_ok();
+
 protected:
 	MAPHEROS _heros;
+	bool _save_all_heroes_ok;
 };
 

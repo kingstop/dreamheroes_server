@@ -5,6 +5,7 @@
 #ifdef WIN32
 #include <process.h>
 #endif
+#include "server_frame.h"
 
 void signal_handle(int n)
 {
@@ -17,6 +18,11 @@ void signal_handle(int n)
 		printf("Get a signal -- SIGINT \n");
 		break;
 	case 3:
+		if (g_wait_stop == false)
+		{
+			g_wait_stop = true;
+		}
+		
 		printf("Get a signal -- SIGQUIT \n");
 		break;
 	case 9:
@@ -101,7 +107,6 @@ bool is_in_today(const time_t * t)
 
 
 boost::uint32_t interlocked_increment( volatile boost::uint32_t* target )
-
 {
 
 #if (BOOST_VERSION >= 104800)
@@ -113,13 +118,11 @@ boost::uint32_t interlocked_increment( volatile boost::uint32_t* target )
 	return boost::interprocess::detail::atomic_inc32( target );
 
 #endif
-
 }
 
 
 
 boost::uint32_t interlocked_decrement( volatile boost::uint32_t* target )
-
 {
 
 #if (BOOST_VERSION >= 104800)
@@ -137,7 +140,6 @@ boost::uint32_t interlocked_decrement( volatile boost::uint32_t* target )
 
 
 void interlocked_write( volatile boost::uint32_t* target, boost::uint32_t value )
-
 {
 
 #if (BOOST_VERSION >= 104800)
@@ -155,7 +157,6 @@ void interlocked_write( volatile boost::uint32_t* target, boost::uint32_t value 
 
 
 boost::uint32_t interlocked_read( volatile boost::uint32_t* target )
-
 {
 
 #if (BOOST_VERSION >= 104800)
@@ -173,7 +174,6 @@ boost::uint32_t interlocked_read( volatile boost::uint32_t* target )
 
 
 boost::uint32_t interlocked_compare_exchange( volatile boost::uint32_t* target, boost::uint32_t value, boost::uint32_t comp )
-
 {
 
 #if (BOOST_VERSION >= 104800)
@@ -193,7 +193,6 @@ boost::uint32_t interlocked_compare_exchange( volatile boost::uint32_t* target, 
 #ifndef _WIN32
 
 void cpu_wait()
-
 {
 
 	usleep( 1 );
@@ -203,7 +202,6 @@ void cpu_wait()
 #else
 
 void cpu_wait()
-
 {
 
 	Sleep( 1 );

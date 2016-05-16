@@ -28,3 +28,13 @@ message MsgSaveDataGS2DB
 {
 	required bytes sql = 1;
 }
+
+message MsgSaveAllHeroesGS2DB
+{
+
+}
+
+message MsgSaveAllHeroesDB2GS
+{
+
+}

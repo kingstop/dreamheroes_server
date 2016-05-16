@@ -162,6 +162,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharDatabase.h" />
     <ClInclude Include="db_quest.h" />
     <ClInclude Include="game_manager.h" />
     <ClInclude Include="game_session.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharDatabase.cpp" />
     <ClCompile Include="db_quest.cpp" />
     <ClCompile Include="game_manager.cpp" />
     <ClCompile Include="game_session.cpp" />

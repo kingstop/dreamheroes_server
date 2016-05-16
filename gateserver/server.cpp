@@ -56,11 +56,11 @@ void GateServer::memoryLog()
 }
 void GateServer::setStop()
 {
-
+	_wait_stop = true;
 }
 void GateServer::checkStop()
 {
-
+	_stop = true;
 }
 bool GateServer::initDataFromDatabase(DBQuery* p, const void* data)
 {

@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////////////
 //  server frame ...													//
 //////////////////////////////////////////////////////////////////////////
+extern bool g_wait_stop;
 class ServerFrame
 {
 public:
@@ -34,7 +35,7 @@ public:
 	virtual void memoryLog() = 0;			// memory information
 	virtual void setStop() = 0;				// set stop service..
 	virtual void checkStop() = 0;			// check service stop
-
+	virtual void signalStop();
 	static bool loadNetConfig(net_info& _conf, const char* str);
 	static bool loadDBConfig(DataBaseConfig&_config, const char* str);
     static bool loadServiceConfig(service_config& _config, const char* str);

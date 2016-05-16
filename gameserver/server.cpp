@@ -80,12 +80,19 @@ void GameServer::memoryLog()
 
 void GameServer::setStop()
 {
-
+	gDreamHeroManager.SaveDreamHeroes();
+	Mylog::log_server(LOG_INFO, "prepare to stop game server!");
+	
 }
 
 void GameServer::checkStop()
 {
-
+	if (gDreamHeroManager.is_save_all_heroes_ok())
+	{
+		gDreamHeroManager.SaveDreamHeroes();
+		Mylog::log_server(LOG_INFO, "game server is stopping!");
+		_stop = true;
+	}
 }
 
 bool GameServer::initDataFromDatabase(DBQuery* p, const void* data)

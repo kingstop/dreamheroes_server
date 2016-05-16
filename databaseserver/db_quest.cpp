@@ -6,6 +6,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#define _SAVE_TO_CLOSE_TIME_ (10 * _TIME_SECOND_MSEL_)
 const char* newGUID()  
 {  
 	static std::string stc_string;
@@ -49,7 +50,7 @@ struct tgHeroData
 
 DBQuestManager::DBQuestManager()
 {
-
+	_receive_cose_msg = false;
 }
 
 DBQuestManager::~DBQuestManager()
@@ -68,6 +69,28 @@ void DBQuestManager::queryHeroInfo(account_type a, tran_id_type t, u16 gs)
 	sprintf(sz_sql, "select * from `character` where `account_id`=%llu;",a);
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbDoQueryHeroInfo, sz_sql, 0, new tgHeroData(a, t, gs), _QUERY_HERO_INFO_);
 }
+
+
+void DBQuestManager::onSaveToClose()
+{
+	gDBCharDatabase.setObjState(RunObject::_wait_stop_);
+	Mylog::log_server(LOG_INFO, "close character mysql!");
+}
+
+void DBQuestManager::saveToClose(u16 gsid)
+{
+	if (_receive_cose_msg == false)
+	{
+		if (gEventMgr.hasEvent(this, EVENT_SAVE_TO_CLOSE) == false)
+		{
+			gDBCharDatabase.set_close_gs_id(gsid);
+			gEventMgr.addEvent(this, &DBQuestManager::onSaveToClose, EVENT_SAVE_TO_CLOSE, _SAVE_TO_CLOSE_TIME_, 1, 0);
+		}
+		_receive_cose_msg = true;
+		Mylog::log_server(LOG_INFO, "receive save all heroes msg!");
+	}
+}
+
 
 void DBQuestManager::saveSqlData(const char* sql)
 {

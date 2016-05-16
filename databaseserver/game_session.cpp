@@ -44,7 +44,7 @@ void GameSession::initPBModule()
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::MsgServerRegister),&GameSession::parseGameRegister);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::MsgReqHeroDataGS2DB), &GameSession::parseMsgReqHeroDataGS2DB);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::MsgSaveDataGS2DB), &GameSession::parseMsgSaveHeroData);
-
+	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::MsgSaveAllHeroesGS2DB), &GameSession::parseMsgSaveAllHeroesGS2DB);
 }
 
 
@@ -57,7 +57,6 @@ void GameSession::parseMsgSaveHeroData(google::protobuf::Message* p, pb_flag_typ
 void GameSession::parseMsgReqHeroDataGS2DB(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::MsgReqHeroDataGS2DB* msg = (message::MsgReqHeroDataGS2DB*)p;
-
 	gDBQuestMgr.queryHeroInfo(msg->account(), flag, m_game_id);
 }
 
@@ -73,3 +72,7 @@ void GameSession::on_close( const boost::system::error_code& error )
 	Mylog::log_server(LOG_INFO, "server game [%u] close", m_game_id);
 }
 
+void GameSession::parseMsgSaveAllHeroesGS2DB(google::protobuf::Message* p, pb_flag_type flag)
+{
+	gDBQuestMgr.saveToClose(m_game_id);
+}
