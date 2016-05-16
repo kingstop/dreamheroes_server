@@ -29,7 +29,9 @@
 #include <time.h>
 #include <stdio.h>
 #include <signal.h>
-void signal_handle(int);
+#include <unistd.h>
+#include <stdio.h>
+void signal_handle(int n);
 bool is_in_today(const time_t * t);
 bool is_in_current_mon(const time_t * t);
 void save_pid();

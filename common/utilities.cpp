@@ -6,9 +6,21 @@
 #include <process.h>
 #endif
 
-void signal_handle(int)
+void signal_handle(int n)
 {
-	printf("catch signal\n");
+	switch (n)
+	{
+	case 1:
+		printf("Get a signal -- SIGHUP ");
+		break;
+	case 2:
+		printf("Get a signal -- SIGINT ");
+		break;
+	case 3:
+		printf("Get a signal -- SIGQUIT ");
+		break;
+	}
+	printf("catch signal %d\n", n);
 	return;
 }
 

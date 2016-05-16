@@ -35,11 +35,13 @@ bool ServerFrame::init()
 	_wait_stop = false;
 	_service_stop_state = 0;
     _print = false;
+	signal(SIGINT, signal_handle);
 #ifndef WIN32
+	signal(SIGHUP, signal_handle); //* 下面设置三个信号的处理方法
+	signal(SIGQUIT, signal_handle);
 	save_pid();
 #endif
-	signal(SIGINT,signal_handle);
-
+	
 	return true ;
 }
 
