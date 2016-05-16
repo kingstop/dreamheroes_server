@@ -21,6 +21,7 @@ void signal_handle(int n)
 		break;
 	case 9:
 		printf("Get a signal -- SIGKILL \n");
+		break;
 	}
 	printf("catch signal %d\n", n);
 	return;
