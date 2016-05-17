@@ -20,9 +20,9 @@ public:
 	bool initDataFromDatabase(DBQuery* query, const void* data);
 	bool initDataFromCharDB(DBQuery* p, const void* data);
 	bool initDataFromWorldDB(DBQuery* p, const void* data);
-	u16  getCityGS(u32 city);
+	
 private:
-	obj_map<u32, u16>m_cityServers;
+	
 protected:
 	DataBaseConfig m_world_db_conf;
 private:

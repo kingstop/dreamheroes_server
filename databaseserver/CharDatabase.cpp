@@ -14,8 +14,7 @@ CharDatabase::~CharDatabase()
 
 void CharDatabase::onStop()
 {
-	message::MsgSaveAllHeroesDB2GS msg;
-	gDBGameManager.sendMessage(&msg, 0, _close_gs_id);
+
 	Mylog::log_server(LOG_INFO, "character database is stopped!");
 	_can_stop = true;
 }

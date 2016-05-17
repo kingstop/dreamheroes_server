@@ -88,6 +88,8 @@ void DBQuestManager::saveToClose(u16 gsid)
 		}
 		_receive_cose_msg = true;
 		Mylog::log_server(LOG_INFO, "receive save all heroes msg!");
+		message::MsgSaveAllHeroesDB2GS msg;
+		gDBGameManager.sendMessage(&msg, 0, gsid);
 	}
 }
 
