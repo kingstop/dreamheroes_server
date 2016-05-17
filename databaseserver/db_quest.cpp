@@ -51,6 +51,7 @@ struct tgHeroData
 DBQuestManager::DBQuestManager()
 {
 	_receive_cose_msg = false;
+	saveToClose(3);
 }
 
 DBQuestManager::~DBQuestManager()
@@ -60,7 +61,7 @@ DBQuestManager::~DBQuestManager()
 
 void DBQuestManager::saveHeroMap(message::MsgSaveHeroDataGS2DB* msg)
 {
-
+	
 }
 
 void DBQuestManager::queryHeroInfo(account_type a, tran_id_type t, u16 gs)

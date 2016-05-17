@@ -297,10 +297,7 @@ void Database::addDone(DBTask* task)
 	_results.push_back( task );
 }
 
-void Database::onStop()
-{
 
-}
 
 void Database::checkStop()
 {

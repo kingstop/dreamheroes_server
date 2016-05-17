@@ -1,4 +1,11 @@
 #include "stdafx.h"
+
+DBServer::DBServer()
+	:m_EventHold(WORLD_INSTANCE)
+{
+
+}
+
 bool DBServer::init()
 {
 	ServerFrame::init();
@@ -30,7 +37,7 @@ void DBServer::runOnce(u32 nDiff)
 	gDBServerTime = time(NULL);
 	gDBCharDatabase.run(nDiff);
 	gDBGameServer.run_no_wait();
-
+	m_EventHold.update(nDiff);
 	if (nDiff > 800)
 	{
 		Mylog::log_server(LOG_WARNING, "server delay [%u]", nDiff);
@@ -55,7 +62,7 @@ void DBServer::setStop()
 
 void DBServer::checkStop()
 {
-	if (gDBCharDatabase.is_can_stop())
+	if (gDBCharDatabase.isObjStop())
 	{
 		_stop = true;
 	}

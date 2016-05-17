@@ -372,8 +372,7 @@ protected:
 	std::map<u32, db_thread_task_manager*> _tasks;
 	boost::mutex _mutex_done;
 	std::list<db_thread*> _dbthread_list;
-protected:
-	virtual void onStop();
+
 };
 template<class Class>
 bool Database::addBlockTask(const DataBaseConfig& conf, Class* obj, bool(Class::*method)(DBQuery*, const void* ), const void* data)

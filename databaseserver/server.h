@@ -3,12 +3,14 @@
 #include "common_type.h"
 #include "server_frame.h"
 #include "common_template.h"
+#include "event_table_object.h"
 
 
 
 class DBServer : public ServerFrame
 {
 public:
+	DBServer();
 	virtual bool init() ;
 	virtual bool onKey() ;
 	virtual void runOnce(u32 nDiff) ;
@@ -25,6 +27,7 @@ private:
 	
 protected:
 	DataBaseConfig m_world_db_conf;
+	EventableObjectHolder m_EventHold;
 private:
 
 };
