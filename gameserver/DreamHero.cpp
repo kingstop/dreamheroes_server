@@ -275,7 +275,7 @@ void DreamHero::SaveHero()
 #ifdef WIN32
 			sprintf(suit_temp, "%llu", equip_id);
 #else
-			sprintf(suit_temp, "%lu", equip_id);
+			sprintf(suit_temp, "%llu", equip_id);
 #endif
 			suits_sql += suit_temp;
 		}		
