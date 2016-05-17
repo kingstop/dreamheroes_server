@@ -6,7 +6,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
-#define _SAVE_TO_CLOSE_TIME_ (10 * _TIME_SECOND_MSEL_)
+#define _SAVE_TO_CLOSE_TIME_ (15 * _TIME_SECOND_MSEL_)
 const char* newGUID()  
 {  
 	static std::string stc_string;
