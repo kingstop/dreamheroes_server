@@ -61,7 +61,7 @@ void GateServer::setStop()
 void GateServer::checkStop()
 {
 	shutDown();
-	_stop = true;
+//	_stop = true;
 }
 bool GateServer::initDataFromDatabase(DBQuery* p, const void* data)
 {
