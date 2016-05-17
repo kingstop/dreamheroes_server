@@ -51,7 +51,7 @@ struct tgHeroData
 DBQuestManager::DBQuestManager()
 {
 	_receive_cose_msg = false;
-	saveToClose(3);
+	//saveToClose(3);
 }
 
 DBQuestManager::~DBQuestManager()
