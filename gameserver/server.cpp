@@ -91,6 +91,7 @@ void GameServer::checkStop()
 	{
 		gDreamHeroManager.SaveDreamHeroes();
 		Mylog::log_server(LOG_INFO, "game server is stopping!");
+		shutDown();
 		_stop = true;
 	}
 }

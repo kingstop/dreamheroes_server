@@ -64,6 +64,7 @@ void DBServer::checkStop()
 {
 	if (gDBCharDatabase.isObjStop())
 	{
+		shutDown();
 		_stop = true;
 	}
 }
