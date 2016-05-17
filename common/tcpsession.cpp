@@ -177,15 +177,19 @@ void tcp_session::close_and_ban()
 
 void tcp_session::handle_close()
 {
-	boost::system::error_code ignored_ec;
-	m_socket->shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_ec);
+	if (m_socket != NULL)
+	{
+		boost::system::error_code ignored_ec;
+		m_socket->shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_ec);
 
-	try
-	{
-		m_socket->close();
-	}
-	catch( const boost::system::error_code& )
-	{
+		try
+		{
+			m_socket->close();
+		}
+		catch (const boost::system::error_code&)
+		{
+
+		}
 	}
 
 	//m_send_crypt_key = 0;
