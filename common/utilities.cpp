@@ -875,65 +875,35 @@ bool isIntger(std::string str)
 }
 
 bool is_valid_string( const std::string& str )
-
 {
-
 	int len = str.length();
-
 	const unsigned char* p = (const unsigned char*)str.c_str();
-
 	const unsigned char* porig = p;
-
 	while( p < porig + len )
-
 	{
-
 		if( *p > 0x80 )
-
 		{
-
 			p += 2;
-
 			continue;
-
 		}
-
 		else if( *p >= 'a' && *p <= 'z' )
-
 		{
-
 			++p;
-
 			continue;
-
 		}
-
 		else if( *p >= 'A' && *p <= 'Z' )
-
 		{
-
 			++p;
-
 			continue;
-
 		}
-
 		else if( *p >= '0' && *p <= '9' )
-
 		{
-
 			++p;
-
 			continue;
-
 		}
-
 		return false;
-
 	}
-
 	return true;
-
 }
 
 
@@ -955,80 +925,62 @@ char* get_and_create_static_buffer( std::size_t size )
 }
 
 
+std::string get_time(time_t cur_time)
+{
+	time_t timep;
+	if (cur_time == 0)
+	{
+		time(&timep); /*获取time_t类型的当前时间*/
+	}
+	else
+	{
+		timep = cur_time;
+	}
+
+
+	struct tm* cur = localtime(&timep);
+	char sz_time[256];
+	sprintf(sz_time, "%d-%d-%d %d:%d:%d", cur->tm_year + 1900, cur->tm_mon + 1, cur->tm_mday + 1, cur->tm_hour, cur->tm_min, cur->tm_sec);
+	return std::string(sz_time);
+
+}
 
 data_stream_verifier::data_stream_verifier()
-
 {
-
 	reset();
-
 }
-
-
 
 void data_stream_verifier::reset()
-
 {
-
 	send_index = 0;
-
 	recv_index = 0;
-
 }
-
-
 
 unsigned int data_stream_verifier::make_checksum( const void* data, unsigned int length )
-
 {
-
 	unsigned int checksum = ssl::sslCrc32( (const char*)data, length );
-
 	//printf( "send_index = %d\n", send_index );
-
 	//return checksum ^ get_magic_number( send_index++ );
-
 	return checksum;
-
 }
-
-
 
 bool data_stream_verifier::verify_data_stream( const void* data, unsigned int length, unsigned int checksum )
-
 {
-
 	unsigned int tmp = ssl::sslCrc32((const char*)data, length );
-
 	//printf( "recv_index = %d\n", recv_index );
-
 	//return checksum == ( tmp ^ get_magic_number( recv_index++ ) );
-
 	return checksum == tmp;
-
 }
 
-
-
 unsigned int data_stream_verifier::get_magic_number( unsigned int key )
-
 {
-
 	static const char* char_table = "2PDoG6kazepcRAVgxSFvBWNLym97KidrXnYZ851Oj3M4CUEslQtHuwqbhTIfJ0"
-
 		"jClKN4n71FTX9peHDbtfUQ82gSO5rqYwA36V0PZdzWJhLvRyaomEkGBiIMuxsc"
-
 		"n3u0aSHWAeXTtvl2YfKr7BhzwF15qUQ4GIM8PbNJsRigdjZyOD6x9EmVcLpkCo"
-
 		"zra0yAvDm4jB2x3pNKqR1f8C6VEwSktgs5LluFdMoZbhPI7GUcHWnX9TYieJOQ"
-
 		"4uM6o2XkTwqFC5ZlYe8nzmivH9OdWLDxIRfJQar0NPpcSUy3gEAV7KthsjB1bG";
 
-
-
 	static const int char_table_size = 5*(26*2+10);
-
 	return *(unsigned int*)(&char_table[key % (char_table_size - 4)]);
-
 }
 

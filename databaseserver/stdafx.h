@@ -39,6 +39,7 @@ struct FuDBFather
 	GameManager     sGameManager;
 	GameTCPServer   sGameTcpServer;
 	CharDatabase    sCharacterDB;
+	Database		sWorldDB;
 	DBQuestManager	sDBQuestMgr;
 };
 
@@ -49,6 +50,7 @@ extern FuDBFather* gFuDBFather;
 #define gDBGameServer		gFuDBFather->sGameTcpServer    
 #define gDBGameManager		gFuDBFather->sGameManager 
 #define gDBCharDatabase		gFuDBFather->sCharacterDB
+#define gDBWorldDatabase    gFuDBFather->sWorldDB
 #define gDBQuestMgr			gFuDBFather->sDBQuestMgr
 
 enum EventTypes

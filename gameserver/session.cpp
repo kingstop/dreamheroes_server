@@ -60,6 +60,15 @@ void Session::parseDelSuit(google::protobuf::Message* p)
 	{
 		_dream_hero->DelSuit(msg);
 	}
+}
+
+void Session::parseC2SVerifyToyCDKeyReq(google::protobuf::Message* p)
+{
+	message::C2SVerifyToyCDKeyReq* msg = (message::C2SVerifyToyCDKeyReq*)p;
+	if (_dream_hero)
+	{
+		_dream_hero->VerifyToyCDKey(msg);
+	}
 
 }
 

@@ -204,6 +204,12 @@ bool DBServer::initDataFromDatabase(DBQuery* p, const void* data)
 		Mylog::log_server( LOG_ERROR, "Init Server from character DataBase Error!");
 		return false;
 	}
+
+	if (gDBWorldDatabase.initDatabase(db_world_config) == false)
+	{
+
+	}
+
 	return true;
 }
 

@@ -52,6 +52,7 @@ public:
 	void parseModifySuitName(google::protobuf::Message* p);
 	void parseModifySuit(google::protobuf::Message* p);
 	void parseDelSuit(google::protobuf::Message* p);
+	void parseC2SVerifyToyCDKeyReq(google::protobuf::Message* p);
 
 protected:
 	tran_id_type m_tranid;

@@ -3,6 +3,7 @@ class DreamHero : public EventableObject
 {
 public:
 	typedef std::map<u64, message::MsgEquipData> HEROEQUIPS;
+	typedef std::map<std::string, message::MsgToyData> HEROTOYS;
 public:
 	DreamHero();
 	virtual ~DreamHero();
@@ -25,12 +26,16 @@ public:
 public:
 	void ModifySuit(const message::C2SModifySuitReq* msg);
 	void DelSuit(const message::C2SDelSuitReq* msg);
+	void VerifyToy(message::MsgVerifyToyDB2GS* msg);
+	void VerifyToy(message::MsgVerifyToyErrorDB2GS* msg);
+	void VerifyToyCDKey(message::C2SVerifyToyCDKeyReq* msg);
 protected:
 	void sendPBMessage(google::protobuf::Message* p);
 
 protected:
 	message::MsgHeroData _info;
 	HEROEQUIPS _hero_equips;
+	HEROTOYS _hero_toys;
 	u64 _account;
 	Session* _session;
 };

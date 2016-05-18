@@ -50,6 +50,15 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* S2CDelSuitACK_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   S2CDelSuitACK_reflection_ = NULL;
+const ::google::protobuf::Descriptor* C2SVerifyToyCDKeyReq_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  C2SVerifyToyCDKeyReq_reflection_ = NULL;
+const ::google::protobuf::Descriptor* S2CVerifyToyCDKeyErrorACK_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  S2CVerifyToyCDKeyErrorACK_reflection_ = NULL;
+const ::google::protobuf::Descriptor* S2CVerifyToyCDKeyACK_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  S2CVerifyToyCDKeyACK_reflection_ = NULL;
 
 }  // namespace
 
@@ -217,6 +226,52 @@ void protobuf_AssignDesc_dream_5fhero_2eproto() {
       sizeof(S2CDelSuitACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CDelSuitACK, _internal_metadata_),
       -1);
+  C2SVerifyToyCDKeyReq_descriptor_ = file->message_type(10);
+  static const int C2SVerifyToyCDKeyReq_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SVerifyToyCDKeyReq, cd_key_),
+  };
+  C2SVerifyToyCDKeyReq_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      C2SVerifyToyCDKeyReq_descriptor_,
+      C2SVerifyToyCDKeyReq::default_instance_,
+      C2SVerifyToyCDKeyReq_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SVerifyToyCDKeyReq, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(C2SVerifyToyCDKeyReq),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SVerifyToyCDKeyReq, _internal_metadata_),
+      -1);
+  S2CVerifyToyCDKeyErrorACK_descriptor_ = file->message_type(11);
+  static const int S2CVerifyToyCDKeyErrorACK_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CVerifyToyCDKeyErrorACK, cd_key_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CVerifyToyCDKeyErrorACK, error_),
+  };
+  S2CVerifyToyCDKeyErrorACK_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      S2CVerifyToyCDKeyErrorACK_descriptor_,
+      S2CVerifyToyCDKeyErrorACK::default_instance_,
+      S2CVerifyToyCDKeyErrorACK_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CVerifyToyCDKeyErrorACK, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(S2CVerifyToyCDKeyErrorACK),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CVerifyToyCDKeyErrorACK, _internal_metadata_),
+      -1);
+  S2CVerifyToyCDKeyACK_descriptor_ = file->message_type(12);
+  static const int S2CVerifyToyCDKeyACK_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CVerifyToyCDKeyACK, toydata_),
+  };
+  S2CVerifyToyCDKeyACK_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      S2CVerifyToyCDKeyACK_descriptor_,
+      S2CVerifyToyCDKeyACK::default_instance_,
+      S2CVerifyToyCDKeyACK_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CVerifyToyCDKeyACK, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(S2CVerifyToyCDKeyACK),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CVerifyToyCDKeyACK, _internal_metadata_),
+      -1);
 }
 
 namespace {
@@ -249,6 +304,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
       C2SDelSuitReq_descriptor_, &C2SDelSuitReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       S2CDelSuitACK_descriptor_, &S2CDelSuitACK::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      C2SVerifyToyCDKeyReq_descriptor_, &C2SVerifyToyCDKeyReq::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      S2CVerifyToyCDKeyErrorACK_descriptor_, &S2CVerifyToyCDKeyErrorACK::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      S2CVerifyToyCDKeyACK_descriptor_, &S2CVerifyToyCDKeyACK::default_instance());
 }
 
 }  // namespace
@@ -274,6 +335,12 @@ void protobuf_ShutdownFile_dream_5fhero_2eproto() {
   delete C2SDelSuitReq_reflection_;
   delete S2CDelSuitACK::default_instance_;
   delete S2CDelSuitACK_reflection_;
+  delete C2SVerifyToyCDKeyReq::default_instance_;
+  delete C2SVerifyToyCDKeyReq_reflection_;
+  delete S2CVerifyToyCDKeyErrorACK::default_instance_;
+  delete S2CVerifyToyCDKeyErrorACK_reflection_;
+  delete S2CVerifyToyCDKeyACK::default_instance_;
+  delete S2CVerifyToyCDKeyACK_reflection_;
 }
 
 void protobuf_AddDesc_dream_5fhero_2eproto() {
@@ -301,7 +368,12 @@ void protobuf_AddDesc_dream_5fhero_2eproto() {
     "2\026.message.HeroErrorCode:\010no_error\" \n\rC2"
     "SDelSuitReq\022\017\n\007suit_id\030\001 \002(\005\"Q\n\rS2CDelSu"
     "itACK\022\017\n\007suit_id\030\001 \002(\005\022/\n\005error\030\002 \002(\0162\026."
-    "message.HeroErrorCode:\010no_error", 711);
+    "message.HeroErrorCode:\010no_error\"&\n\024C2SVe"
+    "rifyToyCDKeyReq\022\016\n\006cd_key\030\001 \002(\t\"\\\n\031S2CVe"
+    "rifyToyCDKeyErrorACK\022\016\n\006cd_key\030\001 \002(\t\022/\n\005"
+    "error\030\002 \002(\0162\026.message.HeroErrorCode:\010no_"
+    "error\"<\n\024S2CVerifyToyCDKeyACK\022$\n\007ToyData"
+    "\030\001 \002(\0132\023.message.MsgToyData", 907);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dream_hero.proto", &protobuf_RegisterTypes);
   S2CMsgHeroInit::default_instance_ = new S2CMsgHeroInit();
@@ -314,6 +386,9 @@ void protobuf_AddDesc_dream_5fhero_2eproto() {
   S2CModifySuitACK::default_instance_ = new S2CModifySuitACK();
   C2SDelSuitReq::default_instance_ = new C2SDelSuitReq();
   S2CDelSuitACK::default_instance_ = new S2CDelSuitACK();
+  C2SVerifyToyCDKeyReq::default_instance_ = new C2SVerifyToyCDKeyReq();
+  S2CVerifyToyCDKeyErrorACK::default_instance_ = new S2CVerifyToyCDKeyErrorACK();
+  S2CVerifyToyCDKeyACK::default_instance_ = new S2CVerifyToyCDKeyACK();
   S2CMsgHeroInit::default_instance_->InitAsDefaultInstance();
   S2CMsgHeroEquip::default_instance_->InitAsDefaultInstance();
   S2CMsgEquipInit::default_instance_->InitAsDefaultInstance();
@@ -324,6 +399,9 @@ void protobuf_AddDesc_dream_5fhero_2eproto() {
   S2CModifySuitACK::default_instance_->InitAsDefaultInstance();
   C2SDelSuitReq::default_instance_->InitAsDefaultInstance();
   S2CDelSuitACK::default_instance_->InitAsDefaultInstance();
+  C2SVerifyToyCDKeyReq::default_instance_->InitAsDefaultInstance();
+  S2CVerifyToyCDKeyErrorACK::default_instance_->InitAsDefaultInstance();
+  S2CVerifyToyCDKeyACK::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_dream_5fhero_2eproto);
 }
 
@@ -3732,6 +3810,995 @@ void S2CDelSuitACK::InternalSwap(S2CDelSuitACK* other) {
   set_has_error();
   error_ = value;
   // @@protoc_insertion_point(field_set:message.S2CDelSuitACK.error)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int C2SVerifyToyCDKeyReq::kCdKeyFieldNumber;
+#endif  // !_MSC_VER
+
+C2SVerifyToyCDKeyReq::C2SVerifyToyCDKeyReq()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.C2SVerifyToyCDKeyReq)
+}
+
+void C2SVerifyToyCDKeyReq::InitAsDefaultInstance() {
+}
+
+C2SVerifyToyCDKeyReq::C2SVerifyToyCDKeyReq(const C2SVerifyToyCDKeyReq& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.C2SVerifyToyCDKeyReq)
+}
+
+void C2SVerifyToyCDKeyReq::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  cd_key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+C2SVerifyToyCDKeyReq::~C2SVerifyToyCDKeyReq() {
+  // @@protoc_insertion_point(destructor:message.C2SVerifyToyCDKeyReq)
+  SharedDtor();
+}
+
+void C2SVerifyToyCDKeyReq::SharedDtor() {
+  cd_key_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void C2SVerifyToyCDKeyReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* C2SVerifyToyCDKeyReq::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return C2SVerifyToyCDKeyReq_descriptor_;
+}
+
+const C2SVerifyToyCDKeyReq& C2SVerifyToyCDKeyReq::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_dream_5fhero_2eproto();
+  return *default_instance_;
+}
+
+C2SVerifyToyCDKeyReq* C2SVerifyToyCDKeyReq::default_instance_ = NULL;
+
+C2SVerifyToyCDKeyReq* C2SVerifyToyCDKeyReq::New(::google::protobuf::Arena* arena) const {
+  C2SVerifyToyCDKeyReq* n = new C2SVerifyToyCDKeyReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void C2SVerifyToyCDKeyReq::Clear() {
+  if (has_cd_key()) {
+    cd_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool C2SVerifyToyCDKeyReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.C2SVerifyToyCDKeyReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string cd_key = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cd_key()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->cd_key().data(), this->cd_key().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.C2SVerifyToyCDKeyReq.cd_key");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.C2SVerifyToyCDKeyReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.C2SVerifyToyCDKeyReq)
+  return false;
+#undef DO_
+}
+
+void C2SVerifyToyCDKeyReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.C2SVerifyToyCDKeyReq)
+  // required string cd_key = 1;
+  if (has_cd_key()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cd_key().data(), this->cd_key().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.C2SVerifyToyCDKeyReq.cd_key");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->cd_key(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.C2SVerifyToyCDKeyReq)
+}
+
+::google::protobuf::uint8* C2SVerifyToyCDKeyReq::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.C2SVerifyToyCDKeyReq)
+  // required string cd_key = 1;
+  if (has_cd_key()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cd_key().data(), this->cd_key().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.C2SVerifyToyCDKeyReq.cd_key");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->cd_key(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.C2SVerifyToyCDKeyReq)
+  return target;
+}
+
+int C2SVerifyToyCDKeyReq::ByteSize() const {
+  int total_size = 0;
+
+  // required string cd_key = 1;
+  if (has_cd_key()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->cd_key());
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void C2SVerifyToyCDKeyReq::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const C2SVerifyToyCDKeyReq* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const C2SVerifyToyCDKeyReq*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void C2SVerifyToyCDKeyReq::MergeFrom(const C2SVerifyToyCDKeyReq& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_cd_key()) {
+      set_has_cd_key();
+      cd_key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cd_key_);
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void C2SVerifyToyCDKeyReq::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void C2SVerifyToyCDKeyReq::CopyFrom(const C2SVerifyToyCDKeyReq& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C2SVerifyToyCDKeyReq::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void C2SVerifyToyCDKeyReq::Swap(C2SVerifyToyCDKeyReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void C2SVerifyToyCDKeyReq::InternalSwap(C2SVerifyToyCDKeyReq* other) {
+  cd_key_.Swap(&other->cd_key_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata C2SVerifyToyCDKeyReq::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = C2SVerifyToyCDKeyReq_descriptor_;
+  metadata.reflection = C2SVerifyToyCDKeyReq_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// C2SVerifyToyCDKeyReq
+
+// required string cd_key = 1;
+ bool C2SVerifyToyCDKeyReq::has_cd_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void C2SVerifyToyCDKeyReq::set_has_cd_key() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void C2SVerifyToyCDKeyReq::clear_has_cd_key() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void C2SVerifyToyCDKeyReq::clear_cd_key() {
+  cd_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_cd_key();
+}
+ const ::std::string& C2SVerifyToyCDKeyReq::cd_key() const {
+  // @@protoc_insertion_point(field_get:message.C2SVerifyToyCDKeyReq.cd_key)
+  return cd_key_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void C2SVerifyToyCDKeyReq::set_cd_key(const ::std::string& value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+ void C2SVerifyToyCDKeyReq::set_cd_key(const char* value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+ void C2SVerifyToyCDKeyReq::set_cd_key(const char* value, size_t size) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+ ::std::string* C2SVerifyToyCDKeyReq::mutable_cd_key() {
+  set_has_cd_key();
+  // @@protoc_insertion_point(field_mutable:message.C2SVerifyToyCDKeyReq.cd_key)
+  return cd_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* C2SVerifyToyCDKeyReq::release_cd_key() {
+  clear_has_cd_key();
+  return cd_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void C2SVerifyToyCDKeyReq::set_allocated_cd_key(::std::string* cd_key) {
+  if (cd_key != NULL) {
+    set_has_cd_key();
+  } else {
+    clear_has_cd_key();
+  }
+  cd_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cd_key);
+  // @@protoc_insertion_point(field_set_allocated:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int S2CVerifyToyCDKeyErrorACK::kCdKeyFieldNumber;
+const int S2CVerifyToyCDKeyErrorACK::kErrorFieldNumber;
+#endif  // !_MSC_VER
+
+S2CVerifyToyCDKeyErrorACK::S2CVerifyToyCDKeyErrorACK()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.S2CVerifyToyCDKeyErrorACK)
+}
+
+void S2CVerifyToyCDKeyErrorACK::InitAsDefaultInstance() {
+}
+
+S2CVerifyToyCDKeyErrorACK::S2CVerifyToyCDKeyErrorACK(const S2CVerifyToyCDKeyErrorACK& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.S2CVerifyToyCDKeyErrorACK)
+}
+
+void S2CVerifyToyCDKeyErrorACK::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  cd_key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  error_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+S2CVerifyToyCDKeyErrorACK::~S2CVerifyToyCDKeyErrorACK() {
+  // @@protoc_insertion_point(destructor:message.S2CVerifyToyCDKeyErrorACK)
+  SharedDtor();
+}
+
+void S2CVerifyToyCDKeyErrorACK::SharedDtor() {
+  cd_key_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void S2CVerifyToyCDKeyErrorACK::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* S2CVerifyToyCDKeyErrorACK::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return S2CVerifyToyCDKeyErrorACK_descriptor_;
+}
+
+const S2CVerifyToyCDKeyErrorACK& S2CVerifyToyCDKeyErrorACK::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_dream_5fhero_2eproto();
+  return *default_instance_;
+}
+
+S2CVerifyToyCDKeyErrorACK* S2CVerifyToyCDKeyErrorACK::default_instance_ = NULL;
+
+S2CVerifyToyCDKeyErrorACK* S2CVerifyToyCDKeyErrorACK::New(::google::protobuf::Arena* arena) const {
+  S2CVerifyToyCDKeyErrorACK* n = new S2CVerifyToyCDKeyErrorACK;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void S2CVerifyToyCDKeyErrorACK::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_cd_key()) {
+      cd_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    error_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool S2CVerifyToyCDKeyErrorACK::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.S2CVerifyToyCDKeyErrorACK)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string cd_key = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cd_key()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->cd_key().data(), this->cd_key().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.S2CVerifyToyCDKeyErrorACK.cd_key");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_error;
+        break;
+      }
+
+      // required .message.HeroErrorCode error = 2 [default = no_error];
+      case 2: {
+        if (tag == 16) {
+         parse_error:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::message::HeroErrorCode_IsValid(value)) {
+            set_error(static_cast< ::message::HeroErrorCode >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(2, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.S2CVerifyToyCDKeyErrorACK)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.S2CVerifyToyCDKeyErrorACK)
+  return false;
+#undef DO_
+}
+
+void S2CVerifyToyCDKeyErrorACK::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.S2CVerifyToyCDKeyErrorACK)
+  // required string cd_key = 1;
+  if (has_cd_key()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cd_key().data(), this->cd_key().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.S2CVerifyToyCDKeyErrorACK.cd_key");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->cd_key(), output);
+  }
+
+  // required .message.HeroErrorCode error = 2 [default = no_error];
+  if (has_error()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->error(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.S2CVerifyToyCDKeyErrorACK)
+}
+
+::google::protobuf::uint8* S2CVerifyToyCDKeyErrorACK::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.S2CVerifyToyCDKeyErrorACK)
+  // required string cd_key = 1;
+  if (has_cd_key()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->cd_key().data(), this->cd_key().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.S2CVerifyToyCDKeyErrorACK.cd_key");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->cd_key(), target);
+  }
+
+  // required .message.HeroErrorCode error = 2 [default = no_error];
+  if (has_error()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->error(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.S2CVerifyToyCDKeyErrorACK)
+  return target;
+}
+
+int S2CVerifyToyCDKeyErrorACK::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_cd_key()) {
+    // required string cd_key = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->cd_key());
+  }
+
+  if (has_error()) {
+    // required .message.HeroErrorCode error = 2 [default = no_error];
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->error());
+  }
+
+  return total_size;
+}
+int S2CVerifyToyCDKeyErrorACK::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required string cd_key = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->cd_key());
+
+    // required .message.HeroErrorCode error = 2 [default = no_error];
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->error());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void S2CVerifyToyCDKeyErrorACK::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const S2CVerifyToyCDKeyErrorACK* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const S2CVerifyToyCDKeyErrorACK*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void S2CVerifyToyCDKeyErrorACK::MergeFrom(const S2CVerifyToyCDKeyErrorACK& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_cd_key()) {
+      set_has_cd_key();
+      cd_key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cd_key_);
+    }
+    if (from.has_error()) {
+      set_error(from.error());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void S2CVerifyToyCDKeyErrorACK::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void S2CVerifyToyCDKeyErrorACK::CopyFrom(const S2CVerifyToyCDKeyErrorACK& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S2CVerifyToyCDKeyErrorACK::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void S2CVerifyToyCDKeyErrorACK::Swap(S2CVerifyToyCDKeyErrorACK* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void S2CVerifyToyCDKeyErrorACK::InternalSwap(S2CVerifyToyCDKeyErrorACK* other) {
+  cd_key_.Swap(&other->cd_key_);
+  std::swap(error_, other->error_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata S2CVerifyToyCDKeyErrorACK::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = S2CVerifyToyCDKeyErrorACK_descriptor_;
+  metadata.reflection = S2CVerifyToyCDKeyErrorACK_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// S2CVerifyToyCDKeyErrorACK
+
+// required string cd_key = 1;
+ bool S2CVerifyToyCDKeyErrorACK::has_cd_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void S2CVerifyToyCDKeyErrorACK::set_has_cd_key() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void S2CVerifyToyCDKeyErrorACK::clear_has_cd_key() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void S2CVerifyToyCDKeyErrorACK::clear_cd_key() {
+  cd_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_cd_key();
+}
+ const ::std::string& S2CVerifyToyCDKeyErrorACK::cd_key() const {
+  // @@protoc_insertion_point(field_get:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+  return cd_key_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void S2CVerifyToyCDKeyErrorACK::set_cd_key(const ::std::string& value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+ void S2CVerifyToyCDKeyErrorACK::set_cd_key(const char* value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+ void S2CVerifyToyCDKeyErrorACK::set_cd_key(const char* value, size_t size) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+ ::std::string* S2CVerifyToyCDKeyErrorACK::mutable_cd_key() {
+  set_has_cd_key();
+  // @@protoc_insertion_point(field_mutable:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+  return cd_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* S2CVerifyToyCDKeyErrorACK::release_cd_key() {
+  clear_has_cd_key();
+  return cd_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void S2CVerifyToyCDKeyErrorACK::set_allocated_cd_key(::std::string* cd_key) {
+  if (cd_key != NULL) {
+    set_has_cd_key();
+  } else {
+    clear_has_cd_key();
+  }
+  cd_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cd_key);
+  // @@protoc_insertion_point(field_set_allocated:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+
+// required .message.HeroErrorCode error = 2 [default = no_error];
+ bool S2CVerifyToyCDKeyErrorACK::has_error() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void S2CVerifyToyCDKeyErrorACK::set_has_error() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void S2CVerifyToyCDKeyErrorACK::clear_has_error() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void S2CVerifyToyCDKeyErrorACK::clear_error() {
+  error_ = 0;
+  clear_has_error();
+}
+ ::message::HeroErrorCode S2CVerifyToyCDKeyErrorACK::error() const {
+  // @@protoc_insertion_point(field_get:message.S2CVerifyToyCDKeyErrorACK.error)
+  return static_cast< ::message::HeroErrorCode >(error_);
+}
+ void S2CVerifyToyCDKeyErrorACK::set_error(::message::HeroErrorCode value) {
+  assert(::message::HeroErrorCode_IsValid(value));
+  set_has_error();
+  error_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CVerifyToyCDKeyErrorACK.error)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int S2CVerifyToyCDKeyACK::kToyDataFieldNumber;
+#endif  // !_MSC_VER
+
+S2CVerifyToyCDKeyACK::S2CVerifyToyCDKeyACK()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.S2CVerifyToyCDKeyACK)
+}
+
+void S2CVerifyToyCDKeyACK::InitAsDefaultInstance() {
+  toydata_ = const_cast< ::message::MsgToyData*>(&::message::MsgToyData::default_instance());
+}
+
+S2CVerifyToyCDKeyACK::S2CVerifyToyCDKeyACK(const S2CVerifyToyCDKeyACK& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.S2CVerifyToyCDKeyACK)
+}
+
+void S2CVerifyToyCDKeyACK::SharedCtor() {
+  _cached_size_ = 0;
+  toydata_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+S2CVerifyToyCDKeyACK::~S2CVerifyToyCDKeyACK() {
+  // @@protoc_insertion_point(destructor:message.S2CVerifyToyCDKeyACK)
+  SharedDtor();
+}
+
+void S2CVerifyToyCDKeyACK::SharedDtor() {
+  if (this != default_instance_) {
+    delete toydata_;
+  }
+}
+
+void S2CVerifyToyCDKeyACK::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* S2CVerifyToyCDKeyACK::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return S2CVerifyToyCDKeyACK_descriptor_;
+}
+
+const S2CVerifyToyCDKeyACK& S2CVerifyToyCDKeyACK::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_dream_5fhero_2eproto();
+  return *default_instance_;
+}
+
+S2CVerifyToyCDKeyACK* S2CVerifyToyCDKeyACK::default_instance_ = NULL;
+
+S2CVerifyToyCDKeyACK* S2CVerifyToyCDKeyACK::New(::google::protobuf::Arena* arena) const {
+  S2CVerifyToyCDKeyACK* n = new S2CVerifyToyCDKeyACK;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void S2CVerifyToyCDKeyACK::Clear() {
+  if (has_toydata()) {
+    if (toydata_ != NULL) toydata_->::message::MsgToyData::Clear();
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool S2CVerifyToyCDKeyACK::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.S2CVerifyToyCDKeyACK)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .message.MsgToyData ToyData = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_toydata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.S2CVerifyToyCDKeyACK)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.S2CVerifyToyCDKeyACK)
+  return false;
+#undef DO_
+}
+
+void S2CVerifyToyCDKeyACK::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.S2CVerifyToyCDKeyACK)
+  // required .message.MsgToyData ToyData = 1;
+  if (has_toydata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->toydata_, output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.S2CVerifyToyCDKeyACK)
+}
+
+::google::protobuf::uint8* S2CVerifyToyCDKeyACK::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.S2CVerifyToyCDKeyACK)
+  // required .message.MsgToyData ToyData = 1;
+  if (has_toydata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, *this->toydata_, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.S2CVerifyToyCDKeyACK)
+  return target;
+}
+
+int S2CVerifyToyCDKeyACK::ByteSize() const {
+  int total_size = 0;
+
+  // required .message.MsgToyData ToyData = 1;
+  if (has_toydata()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->toydata_);
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void S2CVerifyToyCDKeyACK::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const S2CVerifyToyCDKeyACK* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const S2CVerifyToyCDKeyACK*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void S2CVerifyToyCDKeyACK::MergeFrom(const S2CVerifyToyCDKeyACK& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_toydata()) {
+      mutable_toydata()->::message::MsgToyData::MergeFrom(from.toydata());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void S2CVerifyToyCDKeyACK::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void S2CVerifyToyCDKeyACK::CopyFrom(const S2CVerifyToyCDKeyACK& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S2CVerifyToyCDKeyACK::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_toydata()) {
+    if (!this->toydata_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void S2CVerifyToyCDKeyACK::Swap(S2CVerifyToyCDKeyACK* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void S2CVerifyToyCDKeyACK::InternalSwap(S2CVerifyToyCDKeyACK* other) {
+  std::swap(toydata_, other->toydata_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata S2CVerifyToyCDKeyACK::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = S2CVerifyToyCDKeyACK_descriptor_;
+  metadata.reflection = S2CVerifyToyCDKeyACK_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// S2CVerifyToyCDKeyACK
+
+// required .message.MsgToyData ToyData = 1;
+ bool S2CVerifyToyCDKeyACK::has_toydata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void S2CVerifyToyCDKeyACK::set_has_toydata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void S2CVerifyToyCDKeyACK::clear_has_toydata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void S2CVerifyToyCDKeyACK::clear_toydata() {
+  if (toydata_ != NULL) toydata_->::message::MsgToyData::Clear();
+  clear_has_toydata();
+}
+ const ::message::MsgToyData& S2CVerifyToyCDKeyACK::toydata() const {
+  // @@protoc_insertion_point(field_get:message.S2CVerifyToyCDKeyACK.ToyData)
+  return toydata_ != NULL ? *toydata_ : *default_instance_->toydata_;
+}
+ ::message::MsgToyData* S2CVerifyToyCDKeyACK::mutable_toydata() {
+  set_has_toydata();
+  if (toydata_ == NULL) {
+    toydata_ = new ::message::MsgToyData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.S2CVerifyToyCDKeyACK.ToyData)
+  return toydata_;
+}
+ ::message::MsgToyData* S2CVerifyToyCDKeyACK::release_toydata() {
+  clear_has_toydata();
+  ::message::MsgToyData* temp = toydata_;
+  toydata_ = NULL;
+  return temp;
+}
+ void S2CVerifyToyCDKeyACK::set_allocated_toydata(::message::MsgToyData* toydata) {
+  delete toydata_;
+  toydata_ = toydata;
+  if (toydata) {
+    set_has_toydata();
+  } else {
+    clear_has_toydata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.S2CVerifyToyCDKeyACK.ToyData)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -10,11 +10,11 @@ public:
 	void removeGame(GameSession* p);
 	void sendMessage(google::protobuf::Message* msg, pb_flag_type flag, u16 gs);
 	void sendMsgToAll(google::protobuf::Message* msg, pb_flag_type flag);
-	void offlineUser(tran_id_type tranid);
-	void removeAllUsers();
+	//void offlineUser(tran_id_type tranid);
+	//void removeAllUsers();
 	GameSession* getGameClient(u16 gs);
 protected:
-	void removeUserByGate(u16 nGateId);
+	//void removeUserByGate(u16 nGateId);
 protected:
 private:
 	GameSession* m_Games[MAX_GATE_ID];

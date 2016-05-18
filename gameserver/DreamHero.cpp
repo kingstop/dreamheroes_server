@@ -86,6 +86,56 @@ void DreamHero::DelSuit(const message::C2SDelSuitReq* msg)
 	sendPBMessage(&msg_ACK);	
 }
 
+void DreamHero::VerifyToyCDKey(message::C2SVerifyToyCDKeyReq* msg)
+{
+	std::string cd_key_temp = msg->cd_key();
+	HEROTOYS::iterator it = _hero_toys.find(cd_key_temp.c_str());
+	if (it != _hero_toys.end())
+	{
+		message::S2CVerifyToyCDKeyErrorACK msg_ACK;
+		msg_ACK.set_cd_key(cd_key_temp.c_str());
+		msg_ACK.set_error(message::HeroErrorCode::toy_cd_key_have_been_in_used);
+		sendPBMessage(&msg_ACK);
+	}
+	else
+	{
+		message::MsgVerifyToyGS2DB msg_db;
+		msg_db.set_cdkey(cd_key_temp.c_str());
+		gGSDBClient.sendPBMessage(&msg_db, _session->getTranId());
+	}
+
+
+}
+
+void DreamHero::VerifyToy(message::MsgVerifyToyDB2GS* msg)
+{
+	std::string cd_key_temp = msg->toy().toy_cd_key();
+	HEROTOYS::iterator it = _hero_toys.find(cd_key_temp.c_str());
+	if (it != _hero_toys.end())
+	{
+		Mylog::log_server(LOG_WARNING, "toy cd key[%s] is already used", cd_key_temp.c_str());
+
+	}
+	else
+	{
+		message::MsgToyData ToyData;
+		ToyData.CopyFrom(msg->toy());		
+		_hero_toys.insert(HEROTOYS::value_type(cd_key_temp, ToyData));
+		message::S2CVerifyToyCDKeyACK msg_ACK;
+		msg_ACK.mutable_toydata()->CopyFrom(ToyData);
+		sendPBMessage(&msg_ACK);
+	}
+}
+
+void DreamHero::VerifyToy(message::MsgVerifyToyErrorDB2GS* msg)
+{
+	message::S2CVerifyToyCDKeyErrorACK msg_ACK;
+	msg_ACK.set_cd_key(msg->cdkey().c_str());
+	msg_ACK.set_error(msg->error());
+	sendPBMessage(&msg_ACK);
+}
+
+
 void DreamHero::modify_suit(int suit_config, const char* szname)
 {
 	bool have_suit_id = false;

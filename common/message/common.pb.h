@@ -41,14 +41,17 @@ class MsgSuitData;
 class MsgHeroData;
 class MsgEquipData;
 class MsgIntPair;
+class MsgToyData;
 
 enum HeroErrorCode {
   no_error = 0,
-  server_error_no_suit_id = 1
+  server_error_no_suit_id = 1,
+  toy_cd_key_already_verify = 2,
+  toy_cd_key_have_been_in_used = 3
 };
 bool HeroErrorCode_IsValid(int value);
 const HeroErrorCode HeroErrorCode_MIN = no_error;
-const HeroErrorCode HeroErrorCode_MAX = server_error_no_suit_id;
+const HeroErrorCode HeroErrorCode_MAX = toy_cd_key_have_been_in_used;
 const int HeroErrorCode_ARRAYSIZE = HeroErrorCode_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* HeroErrorCode_descriptor();
@@ -585,6 +588,143 @@ class MsgIntPair : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MsgIntPair* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MsgToyData : public ::google::protobuf::Message {
+ public:
+  MsgToyData();
+  virtual ~MsgToyData();
+
+  MsgToyData(const MsgToyData& from);
+
+  inline MsgToyData& operator=(const MsgToyData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgToyData& default_instance();
+
+  void Swap(MsgToyData* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgToyData* New() const { return New(NULL); }
+
+  MsgToyData* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgToyData& from);
+  void MergeFrom(const MsgToyData& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgToyData* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string toy_cd_key = 1;
+  bool has_toy_cd_key() const;
+  void clear_toy_cd_key();
+  static const int kToyCdKeyFieldNumber = 1;
+  const ::std::string& toy_cd_key() const;
+  void set_toy_cd_key(const ::std::string& value);
+  void set_toy_cd_key(const char* value);
+  void set_toy_cd_key(const char* value, size_t size);
+  ::std::string* mutable_toy_cd_key();
+  ::std::string* release_toy_cd_key();
+  void set_allocated_toy_cd_key(::std::string* toy_cd_key);
+
+  // required int32 toy_config_id = 2;
+  bool has_toy_config_id() const;
+  void clear_toy_config_id();
+  static const int kToyConfigIdFieldNumber = 2;
+  ::google::protobuf::int32 toy_config_id() const;
+  void set_toy_config_id(::google::protobuf::int32 value);
+
+  // required int32 toy_config_type = 3;
+  bool has_toy_config_type() const;
+  void clear_toy_config_type();
+  static const int kToyConfigTypeFieldNumber = 3;
+  ::google::protobuf::int32 toy_config_type() const;
+  void set_toy_config_type(::google::protobuf::int32 value);
+
+  // required uint64 time_stamp = 4;
+  bool has_time_stamp() const;
+  void clear_time_stamp();
+  static const int kTimeStampFieldNumber = 4;
+  ::google::protobuf::uint64 time_stamp() const;
+  void set_time_stamp(::google::protobuf::uint64 value);
+
+  // required int32 toy_level = 5;
+  bool has_toy_level() const;
+  void clear_toy_level();
+  static const int kToyLevelFieldNumber = 5;
+  ::google::protobuf::int32 toy_level() const;
+  void set_toy_level(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.MsgToyData)
+ private:
+  inline void set_has_toy_cd_key();
+  inline void clear_has_toy_cd_key();
+  inline void set_has_toy_config_id();
+  inline void clear_has_toy_config_id();
+  inline void set_has_toy_config_type();
+  inline void clear_has_toy_config_type();
+  inline void set_has_time_stamp();
+  inline void clear_has_time_stamp();
+  inline void set_has_toy_level();
+  inline void clear_has_toy_level();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr toy_cd_key_;
+  ::google::protobuf::int32 toy_config_id_;
+  ::google::protobuf::int32 toy_config_type_;
+  ::google::protobuf::uint64 time_stamp_;
+  ::google::protobuf::int32 toy_level_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgToyData* default_instance_;
+};
 // ===================================================================
 
 
@@ -1105,6 +1245,159 @@ inline void MsgIntPair::set_number_2(::google::protobuf::int32 value) {
   set_has_number_2();
   number_2_ = value;
   // @@protoc_insertion_point(field_set:message.MsgIntPair.number_2)
+}
+
+// -------------------------------------------------------------------
+
+// MsgToyData
+
+// required string toy_cd_key = 1;
+inline bool MsgToyData::has_toy_cd_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgToyData::set_has_toy_cd_key() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgToyData::clear_has_toy_cd_key() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgToyData::clear_toy_cd_key() {
+  toy_cd_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_toy_cd_key();
+}
+inline const ::std::string& MsgToyData::toy_cd_key() const {
+  // @@protoc_insertion_point(field_get:message.MsgToyData.toy_cd_key)
+  return toy_cd_key_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgToyData::set_toy_cd_key(const ::std::string& value) {
+  set_has_toy_cd_key();
+  toy_cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.MsgToyData.toy_cd_key)
+}
+inline void MsgToyData::set_toy_cd_key(const char* value) {
+  set_has_toy_cd_key();
+  toy_cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.MsgToyData.toy_cd_key)
+}
+inline void MsgToyData::set_toy_cd_key(const char* value, size_t size) {
+  set_has_toy_cd_key();
+  toy_cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.MsgToyData.toy_cd_key)
+}
+inline ::std::string* MsgToyData::mutable_toy_cd_key() {
+  set_has_toy_cd_key();
+  // @@protoc_insertion_point(field_mutable:message.MsgToyData.toy_cd_key)
+  return toy_cd_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgToyData::release_toy_cd_key() {
+  clear_has_toy_cd_key();
+  return toy_cd_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgToyData::set_allocated_toy_cd_key(::std::string* toy_cd_key) {
+  if (toy_cd_key != NULL) {
+    set_has_toy_cd_key();
+  } else {
+    clear_has_toy_cd_key();
+  }
+  toy_cd_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), toy_cd_key);
+  // @@protoc_insertion_point(field_set_allocated:message.MsgToyData.toy_cd_key)
+}
+
+// required int32 toy_config_id = 2;
+inline bool MsgToyData::has_toy_config_id() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgToyData::set_has_toy_config_id() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgToyData::clear_has_toy_config_id() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgToyData::clear_toy_config_id() {
+  toy_config_id_ = 0;
+  clear_has_toy_config_id();
+}
+inline ::google::protobuf::int32 MsgToyData::toy_config_id() const {
+  // @@protoc_insertion_point(field_get:message.MsgToyData.toy_config_id)
+  return toy_config_id_;
+}
+inline void MsgToyData::set_toy_config_id(::google::protobuf::int32 value) {
+  set_has_toy_config_id();
+  toy_config_id_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgToyData.toy_config_id)
+}
+
+// required int32 toy_config_type = 3;
+inline bool MsgToyData::has_toy_config_type() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MsgToyData::set_has_toy_config_type() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MsgToyData::clear_has_toy_config_type() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MsgToyData::clear_toy_config_type() {
+  toy_config_type_ = 0;
+  clear_has_toy_config_type();
+}
+inline ::google::protobuf::int32 MsgToyData::toy_config_type() const {
+  // @@protoc_insertion_point(field_get:message.MsgToyData.toy_config_type)
+  return toy_config_type_;
+}
+inline void MsgToyData::set_toy_config_type(::google::protobuf::int32 value) {
+  set_has_toy_config_type();
+  toy_config_type_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgToyData.toy_config_type)
+}
+
+// required uint64 time_stamp = 4;
+inline bool MsgToyData::has_time_stamp() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MsgToyData::set_has_time_stamp() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MsgToyData::clear_has_time_stamp() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MsgToyData::clear_time_stamp() {
+  time_stamp_ = GOOGLE_ULONGLONG(0);
+  clear_has_time_stamp();
+}
+inline ::google::protobuf::uint64 MsgToyData::time_stamp() const {
+  // @@protoc_insertion_point(field_get:message.MsgToyData.time_stamp)
+  return time_stamp_;
+}
+inline void MsgToyData::set_time_stamp(::google::protobuf::uint64 value) {
+  set_has_time_stamp();
+  time_stamp_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgToyData.time_stamp)
+}
+
+// required int32 toy_level = 5;
+inline bool MsgToyData::has_toy_level() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void MsgToyData::set_has_toy_level() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void MsgToyData::clear_has_toy_level() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void MsgToyData::clear_toy_level() {
+  toy_level_ = 0;
+  clear_has_toy_level();
+}
+inline ::google::protobuf::int32 MsgToyData::toy_level() const {
+  // @@protoc_insertion_point(field_get:message.MsgToyData.toy_level)
+  return toy_level_;
+}
+inline void MsgToyData::set_toy_level(::google::protobuf::int32 value) {
+  set_has_toy_level();
+  toy_level_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgToyData.toy_level)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

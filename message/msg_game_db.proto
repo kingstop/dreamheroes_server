@@ -38,3 +38,20 @@ message MsgSaveAllHeroesDB2GS
 {
 
 }
+
+message MsgVerifyToyGS2DB
+{
+	required string cdkey = 1;
+	required uint64 account = 2;
+}
+
+message MsgVerifyToyErrorDB2GS
+{
+	required HeroErrorCode error = 1 [default = no_error];
+	required string cdkey = 2;
+}
+
+message MsgVerifyToyDB2GS
+{
+	required MsgToyData toy = 1;
+}

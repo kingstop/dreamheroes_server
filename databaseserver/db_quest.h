@@ -12,11 +12,13 @@ public:
 	void saveHeroMap(message::MsgSaveHeroDataGS2DB* msg);
 	void saveSqlData(const char* sql);
 	void saveToClose(u16 gsid);
+	void verifyToyCDKey(tran_id_type t, u16 gs, account_type acc, const char* cdkey);
 private:
 	void onSaveToClose();
 protected:
 	void dbDoQueryHeroInfo(const SDBResult* r, const void* d, bool s);
 	void dbDoQueryHeroEquips(const SDBResult* r, const void* d, bool s);
+	void dbDoQuerryToyVerify(const SDBResult* r, const void* d, bool s);
 protected:
 	void dbCallNothing(const SDBResult*, const void*, bool) { ; }
 public:

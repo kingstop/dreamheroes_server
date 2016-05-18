@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "message/msg_gate_login.pb.h"
 #include "session.h"
+#include "DreamHero.h"
 GameDBClient::GameDBClient():tcp_client( *net_global::get_io_service() )
 {
 	_proto_user_ptr = this;
@@ -53,6 +54,25 @@ void GameDBClient::parseMsgSaveAllHeroes(google::protobuf::Message* p, pb_flag_t
 	gDreamHeroManager.save_all_heroes_ok();
 }
 
+void GameDBClient::parseMsgVerifyToy(google::protobuf::Message* p, pb_flag_type flag)
+{
+	message::MsgVerifyToyDB2GS* msg = (message::MsgVerifyToyDB2GS*)p;
+	Session* pkSession = gGSGateManager.getUser(flag);
+	if (pkSession)
+	{
+		pkSession->get_dream_hero()->VerifyToy(msg);
+	}
+}
+
+void GameDBClient::MsgVerifyToyError(google::protobuf::Message* p, pb_flag_type flag)
+{
+	message::MsgVerifyToyErrorDB2GS* msg = (message::MsgVerifyToyErrorDB2GS*)p;
+	Session* pkSession = gGSGateManager.getUser(flag);
+	if (pkSession)
+	{
+		pkSession->get_dream_hero()->VerifyToy(msg);
+	}
+}
 
 void GameDBClient::initPBModule()
 {
@@ -60,6 +80,8 @@ void GameDBClient::initPBModule()
 	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgHeroDataDB2GS), &GameDBClient::parseQueryHeroInfo);
 	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgNeedCreateHeroDB2GS), &GameDBClient::parseNeedCreateHero);
 	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgSaveAllHeroesDB2GS), &GameDBClient::parseMsgSaveAllHeroes);
+	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgVerifyToyDB2GS), &GameDBClient::parseMsgVerifyToy);
+	ProtocMsgBase<GameDBClient>::registerCBFun(PROTOCO_NAME(message::MsgVerifyToyErrorDB2GS), &GameDBClient::MsgVerifyToyError);
 }
 
 void GameDBClient::on_close( const boost::system::error_code& error )

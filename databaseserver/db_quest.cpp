@@ -24,7 +24,8 @@ enum
 {
 	_QUERY_HERO_INFO_ = _NORMAL_THREAD + 1,
 	_QUERY_HERO_MAP_INFO_,
-	_SAVE_HERO_INFO_
+	_SAVE_HERO_INFO_,
+	_QUERRY_VERIFY_TOY_CDKEY_
 
 };
 struct tgHeroData
@@ -47,6 +48,23 @@ struct tgHeroData
 	message::MsgHeroDataDB2GS info;
 	u16 gsid;
 };
+
+struct tgVerify
+{
+	tgVerify(account_type acc, tran_id_type tran, u16 gs, const char* k)
+	{
+		account = acc;
+		tranid = tran;
+		gsid = gs;
+		cd_key = k;
+	}
+
+	account_type account;
+	tran_id_type tranid;
+	u16 gsid;
+	std::string cd_key;
+};
+
 
 DBQuestManager::DBQuestManager()
 {
@@ -78,6 +96,15 @@ void DBQuestManager::onSaveToClose()
 	Mylog::log_server(LOG_INFO, "close character mysql!");
 }
 
+void DBQuestManager::verifyToyCDKey(tran_id_type t, u16 gs, account_type acc, const char* cdkey)
+{
+	char sz_sql[256];
+	sprintf(sz_sql, "select * from `toy_cd_key` where `toy_cd_key`='%s';", cdkey);
+
+	gDBWorldDatabase.addSQueryTask(this, &DBQuestManager::dbDoQuerryToyVerify, sz_sql, 0, new tgVerify(acc, t, gs, cdkey), _QUERRY_VERIFY_TOY_CDKEY_);
+
+}
+
 void DBQuestManager::saveToClose(u16 gsid)
 {
 	if (_receive_cose_msg == false)
@@ -101,6 +128,53 @@ void DBQuestManager::saveSqlData(const char* sql)
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, str_excute.c_str(), 0, NULL, _SAVE_HERO_INFO_);
 }
 
+
+void DBQuestManager::dbDoQuerryToyVerify(const SDBResult* r, const void* d, bool s)
+{
+	if (r != NULL)
+	{
+		tgVerify* pkParm = static_cast<tgVerify*>(const_cast<void*>(d));
+		if (!pkParm)
+		{
+			return;
+		}
+		const SDBResult& result = *r;
+		if (result.num_rows() != 0) 
+		{
+			const mysqlpp::Row row = result[0];
+			message::MsgToyData entry;
+			account_type acc = row["account_verify"];
+			if (acc != 0)
+			{
+				message::MsgVerifyToyErrorDB2GS msg;
+				msg.set_cdkey(pkParm->cd_key.c_str());
+				msg.set_error(message::HeroErrorCode::toy_cd_key_already_verify);
+				gDBGameManager.sendMessage(&msg, pkParm->tranid, pkParm->gsid);			
+			}
+			else
+			{
+				time_t timep;			
+				time(&timep);
+				entry.set_toy_cd_key(row["toy_cd_key"].c_str());
+				entry.set_toy_config_id(row["toy_config_id"]);
+				entry.set_toy_config_type(row["toy_config_type"]);
+				entry.set_time_stamp(timep);
+				entry.set_toy_level(1);
+				std::string verify_time = get_time(timep);
+
+				char sz_sql[512];
+				sprintf(sz_sql, "update set `account_verify`=%llu, `verify_time`='%s' where `toy_cd_key`='%s'",
+					pkParm->account, verify_time.c_str(), pkParm->cd_key.c_str());
+				gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sz_sql, 0, NULL, _QUERRY_VERIFY_TOY_CDKEY_);
+				message::MsgVerifyToyDB2GS msg;
+				msg.mutable_toy()->CopyFrom(entry);
+				gDBGameManager.sendMessage(&msg, pkParm->tranid, pkParm->gsid);
+			}
+			
+		}
+		
+	}
+}
 
 void DBQuestManager::dbDoQueryHeroEquips(const SDBResult* r, const void* d, bool s)
 {

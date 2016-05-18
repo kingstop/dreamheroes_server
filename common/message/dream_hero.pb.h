@@ -47,6 +47,9 @@ class C2SModifySuitReq;
 class S2CModifySuitACK;
 class C2SDelSuitReq;
 class S2CDelSuitACK;
+class C2SVerifyToyCDKeyReq;
+class S2CVerifyToyCDKeyErrorACK;
+class S2CVerifyToyCDKeyACK;
 
 // ===================================================================
 
@@ -1045,6 +1048,298 @@ class S2CDelSuitACK : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static S2CDelSuitACK* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class C2SVerifyToyCDKeyReq : public ::google::protobuf::Message {
+ public:
+  C2SVerifyToyCDKeyReq();
+  virtual ~C2SVerifyToyCDKeyReq();
+
+  C2SVerifyToyCDKeyReq(const C2SVerifyToyCDKeyReq& from);
+
+  inline C2SVerifyToyCDKeyReq& operator=(const C2SVerifyToyCDKeyReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const C2SVerifyToyCDKeyReq& default_instance();
+
+  void Swap(C2SVerifyToyCDKeyReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline C2SVerifyToyCDKeyReq* New() const { return New(NULL); }
+
+  C2SVerifyToyCDKeyReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const C2SVerifyToyCDKeyReq& from);
+  void MergeFrom(const C2SVerifyToyCDKeyReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(C2SVerifyToyCDKeyReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string cd_key = 1;
+  bool has_cd_key() const;
+  void clear_cd_key();
+  static const int kCdKeyFieldNumber = 1;
+  const ::std::string& cd_key() const;
+  void set_cd_key(const ::std::string& value);
+  void set_cd_key(const char* value);
+  void set_cd_key(const char* value, size_t size);
+  ::std::string* mutable_cd_key();
+  ::std::string* release_cd_key();
+  void set_allocated_cd_key(::std::string* cd_key);
+
+  // @@protoc_insertion_point(class_scope:message.C2SVerifyToyCDKeyReq)
+ private:
+  inline void set_has_cd_key();
+  inline void clear_has_cd_key();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr cd_key_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static C2SVerifyToyCDKeyReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class S2CVerifyToyCDKeyErrorACK : public ::google::protobuf::Message {
+ public:
+  S2CVerifyToyCDKeyErrorACK();
+  virtual ~S2CVerifyToyCDKeyErrorACK();
+
+  S2CVerifyToyCDKeyErrorACK(const S2CVerifyToyCDKeyErrorACK& from);
+
+  inline S2CVerifyToyCDKeyErrorACK& operator=(const S2CVerifyToyCDKeyErrorACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CVerifyToyCDKeyErrorACK& default_instance();
+
+  void Swap(S2CVerifyToyCDKeyErrorACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CVerifyToyCDKeyErrorACK* New() const { return New(NULL); }
+
+  S2CVerifyToyCDKeyErrorACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CVerifyToyCDKeyErrorACK& from);
+  void MergeFrom(const S2CVerifyToyCDKeyErrorACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CVerifyToyCDKeyErrorACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string cd_key = 1;
+  bool has_cd_key() const;
+  void clear_cd_key();
+  static const int kCdKeyFieldNumber = 1;
+  const ::std::string& cd_key() const;
+  void set_cd_key(const ::std::string& value);
+  void set_cd_key(const char* value);
+  void set_cd_key(const char* value, size_t size);
+  ::std::string* mutable_cd_key();
+  ::std::string* release_cd_key();
+  void set_allocated_cd_key(::std::string* cd_key);
+
+  // required .message.HeroErrorCode error = 2 [default = no_error];
+  bool has_error() const;
+  void clear_error();
+  static const int kErrorFieldNumber = 2;
+  ::message::HeroErrorCode error() const;
+  void set_error(::message::HeroErrorCode value);
+
+  // @@protoc_insertion_point(class_scope:message.S2CVerifyToyCDKeyErrorACK)
+ private:
+  inline void set_has_cd_key();
+  inline void clear_has_cd_key();
+  inline void set_has_error();
+  inline void clear_has_error();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr cd_key_;
+  int error_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CVerifyToyCDKeyErrorACK* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class S2CVerifyToyCDKeyACK : public ::google::protobuf::Message {
+ public:
+  S2CVerifyToyCDKeyACK();
+  virtual ~S2CVerifyToyCDKeyACK();
+
+  S2CVerifyToyCDKeyACK(const S2CVerifyToyCDKeyACK& from);
+
+  inline S2CVerifyToyCDKeyACK& operator=(const S2CVerifyToyCDKeyACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CVerifyToyCDKeyACK& default_instance();
+
+  void Swap(S2CVerifyToyCDKeyACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CVerifyToyCDKeyACK* New() const { return New(NULL); }
+
+  S2CVerifyToyCDKeyACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CVerifyToyCDKeyACK& from);
+  void MergeFrom(const S2CVerifyToyCDKeyACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CVerifyToyCDKeyACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.MsgToyData ToyData = 1;
+  bool has_toydata() const;
+  void clear_toydata();
+  static const int kToyDataFieldNumber = 1;
+  const ::message::MsgToyData& toydata() const;
+  ::message::MsgToyData* mutable_toydata();
+  ::message::MsgToyData* release_toydata();
+  void set_allocated_toydata(::message::MsgToyData* toydata);
+
+  // @@protoc_insertion_point(class_scope:message.S2CVerifyToyCDKeyACK)
+ private:
+  inline void set_has_toydata();
+  inline void clear_has_toydata();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::MsgToyData* toydata_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CVerifyToyCDKeyACK* default_instance_;
+};
 // ===================================================================
 
 
@@ -1619,6 +1914,192 @@ inline void S2CDelSuitACK::set_error(::message::HeroErrorCode value) {
   set_has_error();
   error_ = value;
   // @@protoc_insertion_point(field_set:message.S2CDelSuitACK.error)
+}
+
+// -------------------------------------------------------------------
+
+// C2SVerifyToyCDKeyReq
+
+// required string cd_key = 1;
+inline bool C2SVerifyToyCDKeyReq::has_cd_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void C2SVerifyToyCDKeyReq::set_has_cd_key() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void C2SVerifyToyCDKeyReq::clear_has_cd_key() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void C2SVerifyToyCDKeyReq::clear_cd_key() {
+  cd_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_cd_key();
+}
+inline const ::std::string& C2SVerifyToyCDKeyReq::cd_key() const {
+  // @@protoc_insertion_point(field_get:message.C2SVerifyToyCDKeyReq.cd_key)
+  return cd_key_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void C2SVerifyToyCDKeyReq::set_cd_key(const ::std::string& value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+inline void C2SVerifyToyCDKeyReq::set_cd_key(const char* value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+inline void C2SVerifyToyCDKeyReq::set_cd_key(const char* value, size_t size) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+inline ::std::string* C2SVerifyToyCDKeyReq::mutable_cd_key() {
+  set_has_cd_key();
+  // @@protoc_insertion_point(field_mutable:message.C2SVerifyToyCDKeyReq.cd_key)
+  return cd_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* C2SVerifyToyCDKeyReq::release_cd_key() {
+  clear_has_cd_key();
+  return cd_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void C2SVerifyToyCDKeyReq::set_allocated_cd_key(::std::string* cd_key) {
+  if (cd_key != NULL) {
+    set_has_cd_key();
+  } else {
+    clear_has_cd_key();
+  }
+  cd_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cd_key);
+  // @@protoc_insertion_point(field_set_allocated:message.C2SVerifyToyCDKeyReq.cd_key)
+}
+
+// -------------------------------------------------------------------
+
+// S2CVerifyToyCDKeyErrorACK
+
+// required string cd_key = 1;
+inline bool S2CVerifyToyCDKeyErrorACK::has_cd_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void S2CVerifyToyCDKeyErrorACK::set_has_cd_key() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void S2CVerifyToyCDKeyErrorACK::clear_has_cd_key() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void S2CVerifyToyCDKeyErrorACK::clear_cd_key() {
+  cd_key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_cd_key();
+}
+inline const ::std::string& S2CVerifyToyCDKeyErrorACK::cd_key() const {
+  // @@protoc_insertion_point(field_get:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+  return cd_key_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void S2CVerifyToyCDKeyErrorACK::set_cd_key(const ::std::string& value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+inline void S2CVerifyToyCDKeyErrorACK::set_cd_key(const char* value) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+inline void S2CVerifyToyCDKeyErrorACK::set_cd_key(const char* value, size_t size) {
+  set_has_cd_key();
+  cd_key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+inline ::std::string* S2CVerifyToyCDKeyErrorACK::mutable_cd_key() {
+  set_has_cd_key();
+  // @@protoc_insertion_point(field_mutable:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+  return cd_key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* S2CVerifyToyCDKeyErrorACK::release_cd_key() {
+  clear_has_cd_key();
+  return cd_key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void S2CVerifyToyCDKeyErrorACK::set_allocated_cd_key(::std::string* cd_key) {
+  if (cd_key != NULL) {
+    set_has_cd_key();
+  } else {
+    clear_has_cd_key();
+  }
+  cd_key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cd_key);
+  // @@protoc_insertion_point(field_set_allocated:message.S2CVerifyToyCDKeyErrorACK.cd_key)
+}
+
+// required .message.HeroErrorCode error = 2 [default = no_error];
+inline bool S2CVerifyToyCDKeyErrorACK::has_error() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void S2CVerifyToyCDKeyErrorACK::set_has_error() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void S2CVerifyToyCDKeyErrorACK::clear_has_error() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void S2CVerifyToyCDKeyErrorACK::clear_error() {
+  error_ = 0;
+  clear_has_error();
+}
+inline ::message::HeroErrorCode S2CVerifyToyCDKeyErrorACK::error() const {
+  // @@protoc_insertion_point(field_get:message.S2CVerifyToyCDKeyErrorACK.error)
+  return static_cast< ::message::HeroErrorCode >(error_);
+}
+inline void S2CVerifyToyCDKeyErrorACK::set_error(::message::HeroErrorCode value) {
+  assert(::message::HeroErrorCode_IsValid(value));
+  set_has_error();
+  error_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CVerifyToyCDKeyErrorACK.error)
+}
+
+// -------------------------------------------------------------------
+
+// S2CVerifyToyCDKeyACK
+
+// required .message.MsgToyData ToyData = 1;
+inline bool S2CVerifyToyCDKeyACK::has_toydata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void S2CVerifyToyCDKeyACK::set_has_toydata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void S2CVerifyToyCDKeyACK::clear_has_toydata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void S2CVerifyToyCDKeyACK::clear_toydata() {
+  if (toydata_ != NULL) toydata_->::message::MsgToyData::Clear();
+  clear_has_toydata();
+}
+inline const ::message::MsgToyData& S2CVerifyToyCDKeyACK::toydata() const {
+  // @@protoc_insertion_point(field_get:message.S2CVerifyToyCDKeyACK.ToyData)
+  return toydata_ != NULL ? *toydata_ : *default_instance_->toydata_;
+}
+inline ::message::MsgToyData* S2CVerifyToyCDKeyACK::mutable_toydata() {
+  set_has_toydata();
+  if (toydata_ == NULL) {
+    toydata_ = new ::message::MsgToyData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.S2CVerifyToyCDKeyACK.ToyData)
+  return toydata_;
+}
+inline ::message::MsgToyData* S2CVerifyToyCDKeyACK::release_toydata() {
+  clear_has_toydata();
+  ::message::MsgToyData* temp = toydata_;
+  toydata_ = NULL;
+  return temp;
+}
+inline void S2CVerifyToyCDKeyACK::set_allocated_toydata(::message::MsgToyData* toydata) {
+  delete toydata_;
+  toydata_ = toydata;
+  if (toydata) {
+    set_has_toydata();
+  } else {
+    clear_has_toydata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.S2CVerifyToyCDKeyACK.ToyData)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

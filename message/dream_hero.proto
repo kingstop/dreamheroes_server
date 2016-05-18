@@ -59,3 +59,19 @@ message S2CDelSuitACK
 	required int32 suit_id = 1;
 	required HeroErrorCode error = 2 [default = no_error];
 }
+
+message C2SVerifyToyCDKeyReq
+{
+	required string cd_key = 1;
+}
+
+message S2CVerifyToyCDKeyErrorACK
+{
+	required string cd_key = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}
+
+message S2CVerifyToyCDKeyACK
+{
+	required MsgToyData ToyData = 1;
+}
