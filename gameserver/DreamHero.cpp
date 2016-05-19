@@ -505,13 +505,8 @@ void DreamHero::SaveHero()
 
 			char sztemp[512];
 			std::string verify_time = get_time(it_toy->second.time_stamp());
-#ifdef WIN32
 			sprintf(sztemp, "('%s', '%llu', %d, %d, %d, '%s')", it_toy->second.toy_cd_key().c_str(), _account,
 				it_toy->second.toy().toy_config_id(), it_toy->second.toy().toy_config_type(), it_toy->second.toy().toy_level(), verify_time.c_str());
-#else
-			sprintf(sztemp, "('%s', '%lu', %d, %d, %d, '%s')", it_toy->second.toy_cd_key().c_str(), _account,
-				it_toy->second.toy().toy_config_id(), it_toy->second.toy().toy_config_type(), it_toy->second.toy().toy_level(), verify_time.c_str());
-#endif
 			sql_excute += sztemp;
 		}
 
