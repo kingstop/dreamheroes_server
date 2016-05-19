@@ -110,7 +110,7 @@ void DreamHero::VerifyToyCDKey(message::C2SVerifyToyCDKeyReq* msg)
 	{
 		message::S2CVerifyToyCDKeyErrorACK msg_ACK;
 		msg_ACK.set_cd_key(cd_key_temp.c_str());
-		msg_ACK.set_error(message::HeroErrorCode::toy_cd_key_have_been_in_used);
+		msg_ACK.set_error(message::toy_cd_key_have_been_in_used);
 		sendPBMessage(&msg_ACK);
 	}
 	else
@@ -124,7 +124,7 @@ void DreamHero::VerifyToyCDKey(message::C2SVerifyToyCDKeyReq* msg)
 void DreamHero::EquipLevelUp(message::S2CEquipLevelUpReq* msg)
 {
 	u64 equip_id = msg->equip_id();
-	message::HeroErrorCode cur_error = message::HeroErrorCode::no_error;
+	message::HeroErrorCode cur_error = message::no_error;
 
 	HEROEQUIPS::iterator it_equip = _hero_equips.find(equip_id);
 	if (it_equip != _hero_equips.end())
@@ -138,19 +138,19 @@ void DreamHero::EquipLevelUp(message::S2CEquipLevelUpReq* msg)
 		{
 			if (count < equip_level_config->toy_config_count)
 			{
-				cur_error = message::HeroErrorCode::equip_level_up_not_enough_equip;
+				cur_error = message::equip_level_up_not_enough_equip;
 			}
 			else
 			{
 				if (_info.gold() <  equip_level_config->toy_config_gold)
 				{
-					cur_error = message::HeroErrorCode::equip_level_up_not_enough_gold;
+					cur_error = message::equip_level_up_not_enough_gold;
 				}
 				else
 				{
 					if (_info.diamand() < equip_level_config->toy_config_diamand)
 					{
-						cur_error = message::HeroErrorCode::equip_level_up_not_enough_diamand;
+						cur_error = message::equip_level_up_not_enough_diamand;
 					}
 					else
 					{
@@ -176,9 +176,9 @@ void DreamHero::EquipLevelUp(message::S2CEquipLevelUpReq* msg)
 	}
 	else
 	{
-		cur_error = message::HeroErrorCode::equip_level_up_not_found_equip;
+		cur_error = message::equip_level_up_not_found_equip;
 	}
-	if (cur_error != message::HeroErrorCode::no_error)
+	if (cur_error != message::no_error)
 	{
 		message::S2CEquipLevelUpErrorACK error_ACK;
 		error_ACK.set_equip_id(equip_id);

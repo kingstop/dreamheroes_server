@@ -148,7 +148,7 @@ void DBQuestManager::dbDoQuerryToyVerify(const SDBResult* r, const void* d, bool
 			{
 				message::MsgVerifyToyErrorDB2GS msg;
 				msg.set_cdkey(pkParm->cd_key.c_str());
-				msg.set_error(message::HeroErrorCode::toy_cd_key_already_verify);
+				msg.set_error(message::toy_cd_key_already_verify);
 				gDBGameManager.sendMessage(&msg, pkParm->tranid, pkParm->gsid);			
 			}
 			else
