@@ -37,7 +37,7 @@ protected:
 	message::MsgHeroData _info;
 	HEROEQUIPS _hero_equips;
 	HEROTOYS _hero_toys;
-	u64 _account;
+	account_type _account;
 	Session* _session;
 };
 
