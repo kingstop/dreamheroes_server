@@ -9,6 +9,8 @@ struct HeroEquipConfig
 	int equip_conut;
 };
 
+
+
 struct HeroConfig
 {
 	int gold;
@@ -19,6 +21,17 @@ struct HeroConfig
 
 };
 
+struct HeroEquipLevelUpConfig
+{
+	int toy_config_count;
+	int toy_config_diamand;
+	int toy_config_gold;
+};
+
+typedef std::map<int, HeroEquipLevelUpConfig> LEVELEQUIPCONFIGS;
+typedef std::map<int, LEVELEQUIPCONFIGS> EQUIPSLEVELUPCONFIGS;
+
+
 class GameConfig
 {
 public:
@@ -27,11 +40,12 @@ public:
 	void Load(DBQuery* p);
 	void set_generate_equip_id(u64 equpid);
 	u64 generateEquipID();
-
+	const HeroEquipLevelUpConfig* getEquipLevelUpConfig(int config_id, int config_level);
 public:
 	HeroConfig getHeroConfig();
 protected:
 	HeroConfig _hero_config;
+	EQUIPSLEVELUPCONFIGS _equips_level_up_configs;
 	u64 _generate_id;
 };
 

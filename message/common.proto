@@ -5,6 +5,11 @@ enum HeroErrorCode
 	server_error_no_suit_id = 1;
 	toy_cd_key_already_verify = 2;
 	toy_cd_key_have_been_in_used = 3;
+	equip_level_up_not_enough_gold = 4;
+	equip_level_up_not_enough_diamand = 5;
+	equip_level_up_not_found_equip = 6;
+	equip_level_up_not_found_config = 7;
+	equip_level_up_not_enough_equip = 8;
 }
 
 
@@ -42,11 +47,16 @@ message MsgIntPair
 	required int32 number_2 = 2;
 }
 
+message MsgToyBaseData
+{	
+	required int32 toy_config_id = 1;
+	required int32 toy_config_type = 2;
+	required int32 toy_level = 3;
+}
+
 message MsgToyData
 {
 	required string toy_cd_key = 1;
-	required int32 toy_config_id = 2;
-	required int32 toy_config_type = 3;
-	required uint64 time_stamp = 4;
-	required int32 toy_level = 5;
+	required uint64 time_stamp = 2;	
+	required MsgToyBaseData toy = 3;
 }

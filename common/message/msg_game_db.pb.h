@@ -232,6 +232,18 @@ class MsgHeroDataDB2GS : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::MsgEquipData >*
       mutable_equips();
 
+  // repeated .message.MsgToyData toys = 4;
+  int toys_size() const;
+  void clear_toys();
+  static const int kToysFieldNumber = 4;
+  const ::message::MsgToyData& toys(int index) const;
+  ::message::MsgToyData* mutable_toys(int index);
+  ::message::MsgToyData* add_toys();
+  const ::google::protobuf::RepeatedPtrField< ::message::MsgToyData >&
+      toys() const;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgToyData >*
+      mutable_toys();
+
   // @@protoc_insertion_point(class_scope:message.MsgHeroDataDB2GS)
  private:
   inline void set_has_account();
@@ -248,6 +260,7 @@ class MsgHeroDataDB2GS : public ::google::protobuf::Message {
   ::google::protobuf::uint64 account_;
   ::message::MsgHeroData* data_;
   ::google::protobuf::RepeatedPtrField< ::message::MsgEquipData > equips_;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgToyData > toys_;
   friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
@@ -1126,6 +1139,36 @@ inline ::google::protobuf::RepeatedPtrField< ::message::MsgEquipData >*
 MsgHeroDataDB2GS::mutable_equips() {
   // @@protoc_insertion_point(field_mutable_list:message.MsgHeroDataDB2GS.equips)
   return &equips_;
+}
+
+// repeated .message.MsgToyData toys = 4;
+inline int MsgHeroDataDB2GS::toys_size() const {
+  return toys_.size();
+}
+inline void MsgHeroDataDB2GS::clear_toys() {
+  toys_.Clear();
+}
+inline const ::message::MsgToyData& MsgHeroDataDB2GS::toys(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgHeroDataDB2GS.toys)
+  return toys_.Get(index);
+}
+inline ::message::MsgToyData* MsgHeroDataDB2GS::mutable_toys(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgHeroDataDB2GS.toys)
+  return toys_.Mutable(index);
+}
+inline ::message::MsgToyData* MsgHeroDataDB2GS::add_toys() {
+  // @@protoc_insertion_point(field_add:message.MsgHeroDataDB2GS.toys)
+  return toys_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::MsgToyData >&
+MsgHeroDataDB2GS::toys() const {
+  // @@protoc_insertion_point(field_list:message.MsgHeroDataDB2GS.toys)
+  return toys_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::MsgToyData >*
+MsgHeroDataDB2GS::mutable_toys() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgHeroDataDB2GS.toys)
+  return &toys_;
 }
 
 // -------------------------------------------------------------------

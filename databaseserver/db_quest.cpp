@@ -156,10 +156,12 @@ void DBQuestManager::dbDoQuerryToyVerify(const SDBResult* r, const void* d, bool
 				time_t timep;			
 				time(&timep);
 				entry.set_toy_cd_key(row["toy_cd_key"].c_str());
-				entry.set_toy_config_id(row["toy_config_id"]);
-				entry.set_toy_config_type(row["toy_config_type"]);
+				message::MsgToyBaseData* entry_toy = entry.mutable_toy();
+				entry_toy->set_toy_config_id(row["toy_config_id"]);
+				entry_toy->set_toy_config_type(row["toy_config_type"]);
+				entry_toy->set_toy_level(1);
 				entry.set_time_stamp(timep);
-				entry.set_toy_level(1);
+				
 				std::string verify_time = get_time(timep);
 
 				char sz_sql[512];
@@ -173,6 +175,33 @@ void DBQuestManager::dbDoQuerryToyVerify(const SDBResult* r, const void* d, bool
 			
 		}
 		
+	}
+}
+
+
+
+void DBQuestManager::dbDoQuerryHeroToys(const SDBResult* r, const void* d, bool s)
+{
+	if (r != NULL)
+	{
+		tgHeroData* pkParm = static_cast<tgHeroData*>(const_cast<void*>(d));
+		if (!pkParm)
+		{
+			return;
+		}
+		const SDBResult& result = *r;
+		for (int i = 0; i < result.num_rows(); i++)
+		{
+			const mysqlpp::Row row = result[i];
+			message::MsgToyData* toy_entry = pkParm->info.add_toys();
+			toy_entry->set_time_stamp(row["UNIX_TIMESTAMP(`verify_time`)"]);
+			toy_entry->set_toy_cd_key(row["toy_cd_key"].c_str());
+			message::MsgToyBaseData* base_toy = toy_entry->mutable_toy();
+			base_toy->set_toy_config_id(row["toy_config_id"]);
+			base_toy->set_toy_config_type(row["toy_config_type"]);
+			base_toy->set_toy_level(row["toy_level"]);
+		}
+		gDBGameManager.sendMessage(&pkParm->info, pkParm->tranid, pkParm->gsid);
 	}
 }
 
@@ -197,7 +226,9 @@ void DBQuestManager::dbDoQueryHeroEquips(const SDBResult* r, const void* d, bool
 			eqiup->set_client_save_flag(row["client_save_flag"]);
 			eqiup->set_count(row["equip_count"]);
 		}
-		gDBGameManager.sendMessage(&pkParm->info, pkParm->tranid, pkParm->gsid);
+		char sztemp[256];
+		sprintf(sztemp, "select * from `character_toy` where `account`=%llu;", pkParm->account);
+		gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbDoQuerryHeroToys, sztemp, 0, new tgHeroData(pkParm), _QUERY_HERO_INFO_);
 	}
 
 }

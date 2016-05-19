@@ -31,7 +31,7 @@ DreamHero* DreamHeroManager::CreateHero(message::MsgHeroDataDB2GS* HeroDataMsg, 
 	{
 		hero = new DreamHero();
 		const message::MsgHeroData* entry_msg = HeroDataMsg->mutable_data();
-		hero->set_info(HeroDataMsg->mutable_data());
+		hero->set_info(HeroDataMsg);
 		hero->set_account(acc);
 		_heros.insert(MAPHEROS::value_type(hero->get_account(), hero));
 	}	

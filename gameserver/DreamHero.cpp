@@ -35,9 +35,25 @@ void DreamHero::set_account(u64 account)
 	_info.set_account(_account);
 }
 
-void DreamHero::set_info(const message::MsgHeroData* info)
+void DreamHero::set_info(const message::MsgHeroDataDB2GS* info)
 {
-	_info.CopyFrom(*info);	
+	_info.CopyFrom(info->data());
+	for (int i = 0; i < info->toys_size(); i ++)
+	{
+		message::MsgToyData entry;
+		const message::MsgToyData temp = info->toys(i);
+		entry.CopyFrom(temp);
+		_hero_toys.insert(HEROTOYS::value_type(temp.toy_cd_key(), entry));
+	}
+
+	for (int i = 0; i < info->equips_size(); i ++)
+	{
+		message::MsgEquipData entry;
+		const message::MsgEquipData temp = info->equips(i);
+		entry.CopyFrom(temp);
+		_hero_equips.insert(HEROEQUIPS::value_type(entry.id(), entry));
+	}
+	
 }
 
 void DreamHero::ModifySuit(const message::C2SModifySuitReq* msg)
@@ -103,8 +119,72 @@ void DreamHero::VerifyToyCDKey(message::C2SVerifyToyCDKeyReq* msg)
 		msg_db.set_cdkey(cd_key_temp.c_str());
 		gGSDBClient.sendPBMessage(&msg_db, _session->getTranId());
 	}
+}
 
+void DreamHero::EquipLevelUp(message::S2CEquipLevelUpReq* msg)
+{
+	u64 equip_id = msg->equip_id();
+	message::HeroErrorCode cur_error = message::HeroErrorCode::no_error;
 
+	HEROEQUIPS::iterator it_equip = _hero_equips.find(equip_id);
+	if (it_equip != _hero_equips.end())
+	{
+		int level = it_equip->second.level();
+		int config_id = it_equip->second.equip_id();
+		int count = it_equip->second.count();
+		level += 1;
+		const HeroEquipLevelUpConfig* equip_level_config = gGameConfig.getEquipLevelUpConfig(config_id, level);
+		if (equip_level_config != NULL)
+		{
+			if (count < equip_level_config->toy_config_count)
+			{
+				cur_error = message::HeroErrorCode::equip_level_up_not_enough_equip;
+			}
+			else
+			{
+				if (_info.gold() <  equip_level_config->toy_config_gold)
+				{
+					cur_error = message::HeroErrorCode::equip_level_up_not_enough_gold;
+				}
+				else
+				{
+					if (_info.diamand() < equip_level_config->toy_config_diamand)
+					{
+						cur_error = message::HeroErrorCode::equip_level_up_not_enough_diamand;
+					}
+					else
+					{
+						int gold_temp = _info.gold() - equip_level_config->toy_config_gold;
+						int diamand_temp = _info.diamand() - equip_level_config->toy_config_diamand;
+						int count_temp = count - equip_level_config->toy_config_count;
+						_info.set_gold(gold_temp);
+						_info.set_diamand(diamand_temp);
+						it_equip->second.set_count(count_temp);
+						it_equip->second.set_level(level);
+						message::S2CEquipLevelUpACK msg_send;
+						msg_send.set_count(count_temp);
+						msg_send.set_gold(gold_temp);
+						msg_send.set_level(level);
+						msg_send.set_gold(gold_temp);
+						msg_send.set_diamand(diamand_temp);
+						sendPBMessage(&msg_send);
+					}
+				}
+			}
+		}
+
+	}
+	else
+	{
+		cur_error = message::HeroErrorCode::equip_level_up_not_found_equip;
+	}
+	if (cur_error != message::HeroErrorCode::no_error)
+	{
+		message::S2CEquipLevelUpErrorACK error_ACK;
+		error_ACK.set_equip_id(equip_id);
+		error_ACK.set_error(cur_error);
+		sendPBMessage(&error_ACK);
+	}
 }
 
 void DreamHero::VerifyToy(message::MsgVerifyToyDB2GS* msg)
@@ -260,6 +340,15 @@ void DreamHero::SendClientInit()
 		sendPBMessage(&equip_msg);
 	}
 
+	message::S2CMsgToyInit msg_toy_init;
+	HEROTOYS::iterator it_toy = _hero_toys.begin();
+	for (; it_toy != _hero_toys.end(); ++ it_toy)
+	{
+		message::MsgToyBaseData* data = msg_toy_init.add_toys();
+		data->CopyFrom(it_toy->second.toy());				
+	}
+	sendPBMessage(&msg_toy_init);
+
 	sendPBMessage(&msg);
 }
 
@@ -384,6 +473,52 @@ void DreamHero::SaveHero()
 		{
 			msg_db.clear_sql();
 			msg_db.set_sql(sql_temp.c_str());
+			gGSDBClient.sendPBMessage(&msg_db, _session->getTranId());
+		}
+	}
+
+	if (_hero_toys.size() != 0)
+	{
+		std::string sql_head = "replace into `character_toy`(`toy_cd_key`, `account`, `toy_config_id`, `toy_config_type`, `toy_level`, `verify_time`) values";
+		std::string sql_excute = "";
+		HEROTOYS::iterator it_toy = _hero_toys.begin();
+		int toy_save_count = 0;
+		for (; it_toy != _hero_toys.end(); ++it_toy, toy_save_count++)
+		{
+			if (toy_save_count > 20)
+			{
+				toy_save_count = 0;
+				msg_db.clear_sql();
+				msg_db.set_sql(sql_excute.c_str());
+				gGSDBClient.sendPBMessage(&msg_db, _session->getTranId());
+				sql_excute.clear();
+			}
+
+			if (toy_save_count == 0)
+			{
+				sql_excute += sql_head;
+			}
+			else
+			{
+				sql_excute += ",";
+			}
+
+			char sztemp[512];
+			std::string verify_time = get_time(it_toy->second.time_stamp());
+#ifdef WIN32
+			sprintf(sztemp, "('%s', '%llu', %d, %d, %d, '%s')", it_toy->second.toy_cd_key().c_str(), _account,
+				it_toy->second.toy().toy_config_id(), it_toy->second.toy().toy_config_type(), it_toy->second.toy().toy_level(), verify_time.c_str());
+#else
+			sprintf(sztemp, "('%s', '%lu', %d, %d, %d, '%s')", it_toy->second.toy_cd_key().c_str(), _account,
+				it_toy->second.toy().toy_config_id(), it_toy->second.toy().toy_config_type(), it_toy->second.toy().toy_level(), verify_time.c_str());
+#endif
+			sql_excute += sztemp;
+		}
+
+		if (sql_excute.empty() == false)
+		{
+			msg_db.clear_sql();
+			msg_db.set_sql(sql_excute.c_str());
 			gGSDBClient.sendPBMessage(&msg_db, _session->getTranId());
 		}
 	}

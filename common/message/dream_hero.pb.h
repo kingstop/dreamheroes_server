@@ -39,6 +39,7 @@ void protobuf_ShutdownFile_dream_5fhero_2eproto();
 
 class S2CMsgHeroInit;
 class S2CMsgHeroEquip;
+class S2CMsgToyInit;
 class S2CMsgEquipInit;
 class C2SModifySuitNameReq;
 class S2CModifySuitNameACK;
@@ -50,6 +51,9 @@ class S2CDelSuitACK;
 class C2SVerifyToyCDKeyReq;
 class S2CVerifyToyCDKeyErrorACK;
 class S2CVerifyToyCDKeyACK;
+class S2CEquipLevelUpReq;
+class S2CEquipLevelUpACK;
+class S2CEquipLevelUpErrorACK;
 
 // ===================================================================
 
@@ -256,6 +260,98 @@ class S2CMsgHeroEquip : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static S2CMsgHeroEquip* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class S2CMsgToyInit : public ::google::protobuf::Message {
+ public:
+  S2CMsgToyInit();
+  virtual ~S2CMsgToyInit();
+
+  S2CMsgToyInit(const S2CMsgToyInit& from);
+
+  inline S2CMsgToyInit& operator=(const S2CMsgToyInit& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CMsgToyInit& default_instance();
+
+  void Swap(S2CMsgToyInit* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CMsgToyInit* New() const { return New(NULL); }
+
+  S2CMsgToyInit* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CMsgToyInit& from);
+  void MergeFrom(const S2CMsgToyInit& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CMsgToyInit* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .message.MsgToyBaseData toys = 1;
+  int toys_size() const;
+  void clear_toys();
+  static const int kToysFieldNumber = 1;
+  const ::message::MsgToyBaseData& toys(int index) const;
+  ::message::MsgToyBaseData* mutable_toys(int index);
+  ::message::MsgToyBaseData* add_toys();
+  const ::google::protobuf::RepeatedPtrField< ::message::MsgToyBaseData >&
+      toys() const;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgToyBaseData >*
+      mutable_toys();
+
+  // @@protoc_insertion_point(class_scope:message.S2CMsgToyInit)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgToyBaseData > toys_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CMsgToyInit* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1340,6 +1436,329 @@ class S2CVerifyToyCDKeyACK : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static S2CVerifyToyCDKeyACK* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class S2CEquipLevelUpReq : public ::google::protobuf::Message {
+ public:
+  S2CEquipLevelUpReq();
+  virtual ~S2CEquipLevelUpReq();
+
+  S2CEquipLevelUpReq(const S2CEquipLevelUpReq& from);
+
+  inline S2CEquipLevelUpReq& operator=(const S2CEquipLevelUpReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CEquipLevelUpReq& default_instance();
+
+  void Swap(S2CEquipLevelUpReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CEquipLevelUpReq* New() const { return New(NULL); }
+
+  S2CEquipLevelUpReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CEquipLevelUpReq& from);
+  void MergeFrom(const S2CEquipLevelUpReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CEquipLevelUpReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint64 equip_id = 1;
+  bool has_equip_id() const;
+  void clear_equip_id();
+  static const int kEquipIdFieldNumber = 1;
+  ::google::protobuf::uint64 equip_id() const;
+  void set_equip_id(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:message.S2CEquipLevelUpReq)
+ private:
+  inline void set_has_equip_id();
+  inline void clear_has_equip_id();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::uint64 equip_id_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CEquipLevelUpReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class S2CEquipLevelUpACK : public ::google::protobuf::Message {
+ public:
+  S2CEquipLevelUpACK();
+  virtual ~S2CEquipLevelUpACK();
+
+  S2CEquipLevelUpACK(const S2CEquipLevelUpACK& from);
+
+  inline S2CEquipLevelUpACK& operator=(const S2CEquipLevelUpACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CEquipLevelUpACK& default_instance();
+
+  void Swap(S2CEquipLevelUpACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CEquipLevelUpACK* New() const { return New(NULL); }
+
+  S2CEquipLevelUpACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CEquipLevelUpACK& from);
+  void MergeFrom(const S2CEquipLevelUpACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CEquipLevelUpACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint64 equip_id = 1;
+  bool has_equip_id() const;
+  void clear_equip_id();
+  static const int kEquipIdFieldNumber = 1;
+  ::google::protobuf::uint64 equip_id() const;
+  void set_equip_id(::google::protobuf::uint64 value);
+
+  // required int32 level = 2;
+  bool has_level() const;
+  void clear_level();
+  static const int kLevelFieldNumber = 2;
+  ::google::protobuf::int32 level() const;
+  void set_level(::google::protobuf::int32 value);
+
+  // required int32 gold = 3;
+  bool has_gold() const;
+  void clear_gold();
+  static const int kGoldFieldNumber = 3;
+  ::google::protobuf::int32 gold() const;
+  void set_gold(::google::protobuf::int32 value);
+
+  // required int32 count = 4;
+  bool has_count() const;
+  void clear_count();
+  static const int kCountFieldNumber = 4;
+  ::google::protobuf::int32 count() const;
+  void set_count(::google::protobuf::int32 value);
+
+  // required int32 diamand = 5;
+  bool has_diamand() const;
+  void clear_diamand();
+  static const int kDiamandFieldNumber = 5;
+  ::google::protobuf::int32 diamand() const;
+  void set_diamand(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.S2CEquipLevelUpACK)
+ private:
+  inline void set_has_equip_id();
+  inline void clear_has_equip_id();
+  inline void set_has_level();
+  inline void clear_has_level();
+  inline void set_has_gold();
+  inline void clear_has_gold();
+  inline void set_has_count();
+  inline void clear_has_count();
+  inline void set_has_diamand();
+  inline void clear_has_diamand();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::uint64 equip_id_;
+  ::google::protobuf::int32 level_;
+  ::google::protobuf::int32 gold_;
+  ::google::protobuf::int32 count_;
+  ::google::protobuf::int32 diamand_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CEquipLevelUpACK* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class S2CEquipLevelUpErrorACK : public ::google::protobuf::Message {
+ public:
+  S2CEquipLevelUpErrorACK();
+  virtual ~S2CEquipLevelUpErrorACK();
+
+  S2CEquipLevelUpErrorACK(const S2CEquipLevelUpErrorACK& from);
+
+  inline S2CEquipLevelUpErrorACK& operator=(const S2CEquipLevelUpErrorACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2CEquipLevelUpErrorACK& default_instance();
+
+  void Swap(S2CEquipLevelUpErrorACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline S2CEquipLevelUpErrorACK* New() const { return New(NULL); }
+
+  S2CEquipLevelUpErrorACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const S2CEquipLevelUpErrorACK& from);
+  void MergeFrom(const S2CEquipLevelUpErrorACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(S2CEquipLevelUpErrorACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint64 equip_id = 1;
+  bool has_equip_id() const;
+  void clear_equip_id();
+  static const int kEquipIdFieldNumber = 1;
+  ::google::protobuf::uint64 equip_id() const;
+  void set_equip_id(::google::protobuf::uint64 value);
+
+  // required .message.HeroErrorCode error = 2 [default = no_error];
+  bool has_error() const;
+  void clear_error();
+  static const int kErrorFieldNumber = 2;
+  ::message::HeroErrorCode error() const;
+  void set_error(::message::HeroErrorCode value);
+
+  // @@protoc_insertion_point(class_scope:message.S2CEquipLevelUpErrorACK)
+ private:
+  inline void set_has_equip_id();
+  inline void clear_has_equip_id();
+  inline void set_has_error();
+  inline void clear_has_error();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::uint64 equip_id_;
+  int error_;
+  friend void  protobuf_AddDesc_dream_5fhero_2eproto();
+  friend void protobuf_AssignDesc_dream_5fhero_2eproto();
+  friend void protobuf_ShutdownFile_dream_5fhero_2eproto();
+
+  void InitAsDefaultInstance();
+  static S2CEquipLevelUpErrorACK* default_instance_;
+};
 // ===================================================================
 
 
@@ -1471,6 +1890,40 @@ inline void S2CMsgHeroEquip::set_begin(bool value) {
   set_has_begin();
   begin_ = value;
   // @@protoc_insertion_point(field_set:message.S2CMsgHeroEquip.begin)
+}
+
+// -------------------------------------------------------------------
+
+// S2CMsgToyInit
+
+// repeated .message.MsgToyBaseData toys = 1;
+inline int S2CMsgToyInit::toys_size() const {
+  return toys_.size();
+}
+inline void S2CMsgToyInit::clear_toys() {
+  toys_.Clear();
+}
+inline const ::message::MsgToyBaseData& S2CMsgToyInit::toys(int index) const {
+  // @@protoc_insertion_point(field_get:message.S2CMsgToyInit.toys)
+  return toys_.Get(index);
+}
+inline ::message::MsgToyBaseData* S2CMsgToyInit::mutable_toys(int index) {
+  // @@protoc_insertion_point(field_mutable:message.S2CMsgToyInit.toys)
+  return toys_.Mutable(index);
+}
+inline ::message::MsgToyBaseData* S2CMsgToyInit::add_toys() {
+  // @@protoc_insertion_point(field_add:message.S2CMsgToyInit.toys)
+  return toys_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::MsgToyBaseData >&
+S2CMsgToyInit::toys() const {
+  // @@protoc_insertion_point(field_list:message.S2CMsgToyInit.toys)
+  return toys_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::MsgToyBaseData >*
+S2CMsgToyInit::mutable_toys() {
+  // @@protoc_insertion_point(field_mutable_list:message.S2CMsgToyInit.toys)
+  return &toys_;
 }
 
 // -------------------------------------------------------------------
@@ -2100,6 +2553,211 @@ inline void S2CVerifyToyCDKeyACK::set_allocated_toydata(::message::MsgToyData* t
     clear_has_toydata();
   }
   // @@protoc_insertion_point(field_set_allocated:message.S2CVerifyToyCDKeyACK.ToyData)
+}
+
+// -------------------------------------------------------------------
+
+// S2CEquipLevelUpReq
+
+// required uint64 equip_id = 1;
+inline bool S2CEquipLevelUpReq::has_equip_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void S2CEquipLevelUpReq::set_has_equip_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void S2CEquipLevelUpReq::clear_has_equip_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void S2CEquipLevelUpReq::clear_equip_id() {
+  equip_id_ = GOOGLE_ULONGLONG(0);
+  clear_has_equip_id();
+}
+inline ::google::protobuf::uint64 S2CEquipLevelUpReq::equip_id() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpReq.equip_id)
+  return equip_id_;
+}
+inline void S2CEquipLevelUpReq::set_equip_id(::google::protobuf::uint64 value) {
+  set_has_equip_id();
+  equip_id_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpReq.equip_id)
+}
+
+// -------------------------------------------------------------------
+
+// S2CEquipLevelUpACK
+
+// required uint64 equip_id = 1;
+inline bool S2CEquipLevelUpACK::has_equip_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void S2CEquipLevelUpACK::set_has_equip_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void S2CEquipLevelUpACK::clear_has_equip_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void S2CEquipLevelUpACK::clear_equip_id() {
+  equip_id_ = GOOGLE_ULONGLONG(0);
+  clear_has_equip_id();
+}
+inline ::google::protobuf::uint64 S2CEquipLevelUpACK::equip_id() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpACK.equip_id)
+  return equip_id_;
+}
+inline void S2CEquipLevelUpACK::set_equip_id(::google::protobuf::uint64 value) {
+  set_has_equip_id();
+  equip_id_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpACK.equip_id)
+}
+
+// required int32 level = 2;
+inline bool S2CEquipLevelUpACK::has_level() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void S2CEquipLevelUpACK::set_has_level() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void S2CEquipLevelUpACK::clear_has_level() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void S2CEquipLevelUpACK::clear_level() {
+  level_ = 0;
+  clear_has_level();
+}
+inline ::google::protobuf::int32 S2CEquipLevelUpACK::level() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpACK.level)
+  return level_;
+}
+inline void S2CEquipLevelUpACK::set_level(::google::protobuf::int32 value) {
+  set_has_level();
+  level_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpACK.level)
+}
+
+// required int32 gold = 3;
+inline bool S2CEquipLevelUpACK::has_gold() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void S2CEquipLevelUpACK::set_has_gold() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void S2CEquipLevelUpACK::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void S2CEquipLevelUpACK::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 S2CEquipLevelUpACK::gold() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpACK.gold)
+  return gold_;
+}
+inline void S2CEquipLevelUpACK::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpACK.gold)
+}
+
+// required int32 count = 4;
+inline bool S2CEquipLevelUpACK::has_count() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void S2CEquipLevelUpACK::set_has_count() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void S2CEquipLevelUpACK::clear_has_count() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void S2CEquipLevelUpACK::clear_count() {
+  count_ = 0;
+  clear_has_count();
+}
+inline ::google::protobuf::int32 S2CEquipLevelUpACK::count() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpACK.count)
+  return count_;
+}
+inline void S2CEquipLevelUpACK::set_count(::google::protobuf::int32 value) {
+  set_has_count();
+  count_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpACK.count)
+}
+
+// required int32 diamand = 5;
+inline bool S2CEquipLevelUpACK::has_diamand() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void S2CEquipLevelUpACK::set_has_diamand() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void S2CEquipLevelUpACK::clear_has_diamand() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void S2CEquipLevelUpACK::clear_diamand() {
+  diamand_ = 0;
+  clear_has_diamand();
+}
+inline ::google::protobuf::int32 S2CEquipLevelUpACK::diamand() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpACK.diamand)
+  return diamand_;
+}
+inline void S2CEquipLevelUpACK::set_diamand(::google::protobuf::int32 value) {
+  set_has_diamand();
+  diamand_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpACK.diamand)
+}
+
+// -------------------------------------------------------------------
+
+// S2CEquipLevelUpErrorACK
+
+// required uint64 equip_id = 1;
+inline bool S2CEquipLevelUpErrorACK::has_equip_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void S2CEquipLevelUpErrorACK::set_has_equip_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void S2CEquipLevelUpErrorACK::clear_has_equip_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void S2CEquipLevelUpErrorACK::clear_equip_id() {
+  equip_id_ = GOOGLE_ULONGLONG(0);
+  clear_has_equip_id();
+}
+inline ::google::protobuf::uint64 S2CEquipLevelUpErrorACK::equip_id() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpErrorACK.equip_id)
+  return equip_id_;
+}
+inline void S2CEquipLevelUpErrorACK::set_equip_id(::google::protobuf::uint64 value) {
+  set_has_equip_id();
+  equip_id_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpErrorACK.equip_id)
+}
+
+// required .message.HeroErrorCode error = 2 [default = no_error];
+inline bool S2CEquipLevelUpErrorACK::has_error() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void S2CEquipLevelUpErrorACK::set_has_error() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void S2CEquipLevelUpErrorACK::clear_has_error() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void S2CEquipLevelUpErrorACK::clear_error() {
+  error_ = 0;
+  clear_has_error();
+}
+inline ::message::HeroErrorCode S2CEquipLevelUpErrorACK::error() const {
+  // @@protoc_insertion_point(field_get:message.S2CEquipLevelUpErrorACK.error)
+  return static_cast< ::message::HeroErrorCode >(error_);
+}
+inline void S2CEquipLevelUpErrorACK::set_error(::message::HeroErrorCode value) {
+  assert(::message::HeroErrorCode_IsValid(value));
+  set_has_error();
+  error_ = value;
+  // @@protoc_insertion_point(field_set:message.S2CEquipLevelUpErrorACK.error)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
