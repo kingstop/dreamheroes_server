@@ -105,7 +105,7 @@ void Client::on_connect()
             m_client_state = _client_conn_login_;
 			message::LoginRequest msg;
             char buff[20] = {0};
-            msg.set_name(buff);
+            msg.set_name(_acc.c_str());
             msg.set_pwd("123456");
             sendPBMessage(&msg);
 			//static int login = 0;
