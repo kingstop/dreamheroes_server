@@ -68,7 +68,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>log4cplusSD.lib;libprotobuf_d.lib;common_d.lib;libmysqld.lib;mysqlclient.lib;mysqlpp_d.lib;json_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\..\..\..\bin\lib\;$(SolutionDir)\..\..\..\..\..\bin\external_lib\;E:\code\bin\external_lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\..\..\..\bin\lib\;$(SolutionDir)\..\..\..\..\..\bin\external_lib\;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

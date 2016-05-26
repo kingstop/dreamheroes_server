@@ -27,12 +27,10 @@ void Session::prasePBDefault(google::protobuf::Message* p)
 //这里负责注册消息
 void Session::registerPBCall()
 {
-	//registerCBFun(PROTOCO_NAME(message::SignRequest), &Session::parseSignRequest);
 	registerCBFun(PROTOCO_NAME(message::C2SModifySuitNameReq), &Session::parseModifySuitName);
 	registerCBFun(PROTOCO_NAME(message::C2SModifySuitReq), &Session::parseModifySuit);
 	registerCBFun(PROTOCO_NAME(message::C2SDelSuitReq), &Session::parseDelSuit);
 	registerCBFun(PROTOCO_NAME(message::C2SVerifyToyCDKeyReq), &Session::parseC2SVerifyToyCDKeyReq);
-
 }
 
 void Session::parseModifySuitName(google::protobuf::Message* p)

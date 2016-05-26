@@ -301,10 +301,8 @@ void DreamHero::SendClientInit()
 	StartSave();
 	message::S2CMsgHeroInit msg;
 	msg.mutable_hero()->CopyFrom(_info);
-	//sendPBMessage(&msg);
 	int max_count = 40;
 	int current_count = 0;
-
 	message::S2CMsgEquipInit equip_msg;
 	message::S2CMsgHeroEquip* equip_temp = NULL;
 	equip_msg.mutable_equip();
@@ -391,8 +389,6 @@ void DreamHero::LoadFromConfig()
 void DreamHero::SaveHero()
 {
 	std::string sql_temp;
-
-	
 	char temp[2048];
 	int suits_size_temp = _info.suits_size();
 	char suit_temp[256];

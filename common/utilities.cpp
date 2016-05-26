@@ -11,12 +11,6 @@ void signal_handle(int n)
 {
 	switch (n)
 	{
-	case 1:
-		printf("Get a signal -- SIGHUP \n");
-		break;
-	case 2:
-		printf("Get a signal -- SIGINT \n");
-		break;
 	case 3:
 		if (g_wait_stop == false)
 		{
