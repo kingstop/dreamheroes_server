@@ -154,24 +154,17 @@ void AccountManager::checkAccountCall(const void* data, bool sucess)
 				{
 					//Mylog::log_player( LOG_INFO, "add Account[%d] Login info to gate.!", p->nId);
 				}
-			}
-			else
+			}else
 			{
-				if (pkData->result == CheckAcct::_not_found_)
+				if (pkData->result == CheckAcct::_error_name_pwd)
 				{
-					gLGCenterDB.addBatchTask<AccountManager>(this, &AccountManager::batchQuery, &AccountManager::checkAccountCall, new CheckAcct(pkData->str, pkData->pwd, CheckAcct::_new_acc_check_, pkData->ower), "new account");
-					//gLGAccountMgr.checkAccount(msg->name(), msg->pwd(), this, CheckAcct::_new_acc_check_, "new account");
-				}
-				else
+					msg.set_result(message::enumLoginResult_NameFail);
+				}else
 				{
-					msg.set_result(message::enumLoginResult_Fail);
-					if (pkData->result == CheckAcct::_error_name_pwd)
-					{
-						msg.set_result(message::enumLoginResult_NameFail);
-					}
-					pksession->setState(UserLoginSession::_wait_close_);
-					pksession->sendPBMessage(&msg);
+					msg.set_result(message::enumLoginResult_NameFail);
 				}
+                pksession->setState(UserLoginSession::_wait_close_);
+				pksession->sendPBMessage(&msg);
 			}
 		}
 
