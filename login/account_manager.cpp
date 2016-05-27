@@ -131,9 +131,9 @@ void AccountManager::checkAccountCall(const void* data, bool sucess)
 				Account* p = getAccount(pkData->acct);
 				if (NULL != p)
 				{
-					gLGGateManager.kickUserFromGate(p);
-               
-				}else
+					gLGGateManager.kickUserFromGate(p);               
+				}
+				else
 				{
 					p = Memory::createObject<Account>();
                     m_Accts.addData(pkData->acct, p);

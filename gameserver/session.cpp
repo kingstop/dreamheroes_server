@@ -97,6 +97,7 @@ Session::Session(tran_id_type t, account_type a, u16 gate)
 	if (heros != NULL)
 	{
 		_dream_hero = heros;
+		_dream_hero->set_session(this);
 		_dream_hero->SendClientInit();
 	}
 	else

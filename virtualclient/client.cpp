@@ -63,6 +63,7 @@ void Client::parseLoginResult(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::LoginResponse* msg = static_cast<message::LoginResponse*>(p);
 	message::enumLoginResult entemp = msg->result();
+	bool b_ret = true;
 	if (entemp == message::enumLoginResult_Success)
 	{
 		if (msg)
@@ -74,7 +75,10 @@ void Client::parseLoginResult(google::protobuf::Message* p, pb_flag_type flag)
 			close();
 		}
 	}
-	
+	else
+	{
+		b_ret = false;
+	}
 }
 void Client::parseClientInit(google::protobuf::Message* p, pb_flag_type flag)
 {
@@ -119,6 +123,7 @@ void Client::on_connect()
 			message::LoginGame msg;
             msg.set_user_account(m_transid);
             sendPBMessage(&msg);
+
 			//static int gate = 0;
 			//gate ++;
             //Mylog::log_player(LOG_INFO, "Gate trans[%u] count[%d]", m_transid, gate);
@@ -171,6 +176,7 @@ void Client::parseMsgHeroInit(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::S2CMsgHeroInit* msg = (message::S2CMsgHeroInit*)p;
 	Instance.client_manage_.addOnlineClient(this);
+	
 }
 
 void Client::parseMsgHeroEquip(google::protobuf::Message* p, pb_flag_type flag)
