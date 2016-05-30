@@ -154,3 +154,4 @@ void GateManager::sendMessage(google::protobuf::Message* msg, pb_flag_type flag,
 		}
 	}
 }
+

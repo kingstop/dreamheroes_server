@@ -43,7 +43,8 @@ enum EventTypes
 	EVENT_UNK = 0,
 	EVENT_SAVE_PLAYER_DATA_,
 	EVENT_DAILY_RANK_,
-	EVENT_NEWS_
+	EVENT_NEWS_,
+	EVENT_COLLECT_INFO_
 };
 struct FuGameFather
 {

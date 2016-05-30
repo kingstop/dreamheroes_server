@@ -1,7 +1,7 @@
 #pragma once
 
 class DreamHero;
-class DreamHeroManager
+class DreamHeroManager : public EventableObject
 {
 public:
 	typedef std::map<account_type, DreamHero*> MAPHEROS;
@@ -14,6 +14,7 @@ public:
 	void SaveDreamHeroes();
 	bool is_save_all_heroes_ok();
 	void save_all_heroes_ok();
+	void CollectInfo();
 
 protected:
 	MAPHEROS _heros;

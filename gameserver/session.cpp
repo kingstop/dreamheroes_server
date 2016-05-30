@@ -99,6 +99,7 @@ Session::Session(tran_id_type t, account_type a, u16 gate)
 		_dream_hero = heros;
 		_dream_hero->set_session(this);
 		_dream_hero->SendClientInit();
+		
 	}
 	else
 	{
@@ -122,11 +123,16 @@ void Session::close()
 void Session::setReconnet()
 {
     m_state = _session_online_;
+	if (_dream_hero)
+	{
+		_dream_hero->set_online(true);
+	}
 }
 
 void Session::setWaitReconnet()
 {
     m_state = _session_offline_;
+	_dream_hero->set_online(false);
 }
 
 void Session::sendPBMessage(google::protobuf::Message* p)

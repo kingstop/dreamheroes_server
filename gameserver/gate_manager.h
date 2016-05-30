@@ -2,7 +2,7 @@
 #define __gate_manager_h__
 class GateSession ;
 class Session;
-class GateManager
+class GateManager : public EventableObject
 {
 public:
 	GateManager();
@@ -18,6 +18,7 @@ public:
 	void removeAllUsers();
 protected:
 	void removeUserByGate(u16 nGateId);
+
 protected:
 private:
 	GateSession* m_Gates[MAX_GATE_ID];

@@ -1,10 +1,14 @@
 #include "stdafx.h"
 #include "DreamHeroManager.h"
 #include "DreamHero.h"
-
+#define _SAVE_COLLECT_TIME_  (10 * _TIME_SECOND_MSEL_)
 DreamHeroManager::DreamHeroManager()
 {
 	_save_all_heroes_ok = false;
+	if (gEventMgr.hasEvent(this, EVENT_COLLECT_INFO_) == false)
+	{
+		gEventMgr.addEvent(this, &DreamHeroManager::CollectInfo, EVENT_COLLECT_INFO_, _SAVE_COLLECT_TIME_, 999999999, 0);
+	}
 }
 
 
@@ -64,6 +68,32 @@ void DreamHeroManager::SaveDreamHeroes()
 	Mylog::log_server(LOG_INFO, "game server save all heroes count[%d]!", _heros.size());
 	message::MsgSaveAllHeroesGS2DB msg;
 	gGSDBClient.sendPBMessage(&msg, 0);	
+}
+
+
+void DreamHeroManager::CollectInfo()
+{
+	int offline_count = 0;
+	int online_count = 0;
+	MAPHEROS::iterator it = _heros.begin();
+	for (; it != _heros.end(); ++ it)
+	{
+		DreamHero* hero = it->second;
+		if (hero)
+		{
+			if (hero->is_online())
+			{
+				online_count++;
+			}
+			else
+			{
+				offline_count++;
+			}			
+		}
+	}
+	int current_player = offline_count + online_count;
+
+	Mylog::log_server(LOG_INFO, "current player count[%d], online player count[%d], offline player count[%d]", current_player, online_count, offline_count);
 }
 
 
