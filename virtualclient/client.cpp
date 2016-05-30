@@ -101,7 +101,7 @@ void Client::on_connect()
 {
 	Instance.client_manage_.removeFromReconn(this);
     tcp_client::on_connect();
-	Instance.client_manage_.addOnlineClient(this);
+	//Instance.client_manage_.addOnlineClient(this);
 	
     switch(m_client_state)
     {
@@ -161,10 +161,11 @@ void Client::on_close( const boost::system::error_code& error )
 		break;   
 	case  _client_connet_gate_:
 		{
-			Instance.client_manage_.addOfflineClient(this);
+			
 		}
 		break;
     }
+	Instance.client_manage_.addOfflineClient(this);
 	
 }
 void Client::on_connect_failed( boost::system::error_code error )

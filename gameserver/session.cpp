@@ -42,7 +42,10 @@ void Session::parseModifySuitName(google::protobuf::Message* p)
 	}
 }
 
-
+int Session::getState()
+{
+	return m_state;
+}
 
 void Session::parseModifySuit(google::protobuf::Message* p)
 {

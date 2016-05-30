@@ -1,9 +1,14 @@
 #include "stdafx.h"
 #include "session.h"
 #include "gate_session.h"
+#define _SAVE_COLLECT_TIME_  (10 * _TIME_SECOND_MSEL_)
 GateManager::GateManager()
 {
 	memset( m_Gates, 0 , sizeof(GateSession*) * MAX_GATE_ID);
+	if (gEventMgr.hasEvent(this, EVENT_COLLECT_INFO_) == false)
+	{
+		gEventMgr.addEvent(this, &GateManager::collectSessionInfo, EVENT_COLLECT_SESSION_INFO_, _SAVE_COLLECT_TIME_, 999999999, 0);
+	}
 }
 
 GateManager::~GateManager()
@@ -119,6 +124,30 @@ void GateManager::offlineUser(tran_id_type tranid)
 		Mylog::log_server(LOG_INFO,"off line a transid [%u] ", tranid);
 		p->setWaitReconnet();
 	}
+}
+
+void GateManager::collectSessionInfo()
+{
+	std::map< tran_id_type, Session*>& smap = const_cast<std::map< tran_id_type, Session*>&>(m_Onlines.getDataMap());
+	std::map< tran_id_type, Session*>::iterator it = smap.begin();
+	std::map< tran_id_type, Session*>::iterator itend = smap.end();
+	int online_count = 0;
+	int offline_count = 0;
+	for (it; it != itend; it++)
+	{
+		Session* p = it->second;
+		if (p->getState() == Session::_session_online_)
+		{
+			online_count++;
+		}
+		else
+		{
+			offline_count++;
+		}	
+	}
+	int current_player = offline_count + online_count;
+	Mylog::log_server(LOG_INFO, "current session count[%d], online session count[%d], offline session count[%d]", current_player, online_count, offline_count);
+
 }
 
 void GateManager::removeUser(tran_id_type tranid)

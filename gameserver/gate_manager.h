@@ -16,6 +16,7 @@ public:
 	void sendMsgToAll(google::protobuf::Message* msg, pb_flag_type flag);
 	void offlineUser(tran_id_type tranid);
 	void removeAllUsers();
+	void collectSessionInfo();
 protected:
 	void removeUserByGate(u16 nGateId);
 

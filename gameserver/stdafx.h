@@ -44,11 +44,12 @@ enum EventTypes
 	EVENT_SAVE_PLAYER_DATA_,
 	EVENT_DAILY_RANK_,
 	EVENT_NEWS_,
-	EVENT_COLLECT_INFO_
+	EVENT_COLLECT_INFO_,
+	EVENT_COLLECT_SESSION_INFO_
 };
 struct FuGameFather
 {
-	FuGameFather():sSystemTime(time(NULL))
+	FuGameFather():sSystemTime(time(0))
 	{
 	}
 	time_t          sSystemTime;
@@ -81,5 +82,6 @@ enum
 	_SAVE_GIRL_ = _NORMAL_THREAD + 1,
 	_SAVE_GOODS_ 
 };
+
 #endif
 
