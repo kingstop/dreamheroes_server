@@ -23,7 +23,7 @@ void UserSession::setState(u8 s)
         }break;
     case _wait_account_:
         {
-            //gEventMgr.addEvent(this, &UserSession::setClose,EVENT_USER_SESSION_CLOSE, _WAIT_ACCOUNT_DATA_TIME_ ,1,EVENT_FLAG_DELETES_OBJECT);
+            gEventMgr.addEvent(this, &UserSession::setClose,EVENT_USER_SESSION_CLOSE, _WAIT_ACCOUNT_DATA_TIME_ ,1,EVENT_FLAG_DELETES_OBJECT);
         }break;
     case  _connect_:
         {
