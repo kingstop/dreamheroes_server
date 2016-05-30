@@ -221,9 +221,10 @@ void CvirtualclientDlg::ClientListModify(const char* sztemp, enClientType en, bo
 				list_box->DeleteString(i);
 				break;
 			}
-		}
-		
+		}		
 	}
+	SetDlgItemInt(IDC_EDT_ONLINE_NUMBER, _list_online.GetCount());
+	SetDlgItemInt(IDC_EDT_OFFLINE_COUNT, _list_offline.GetCount());
 }
 
 void CvirtualclientDlg::OnBnClickedBtnGenerateAccount()

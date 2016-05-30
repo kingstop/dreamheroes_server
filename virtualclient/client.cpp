@@ -18,7 +18,7 @@ Client::~Client()
 
 bool Client::reConnect()
 {
-   connect(m_info._ip.c_str(), m_info._port);
+   connect("dh-app01.chinacloudapp.cn", 20005);
    return true;
 }
 void Client::initPBModule()
@@ -101,6 +101,8 @@ void Client::on_connect()
 {
 	Instance.client_manage_.removeFromReconn(this);
     tcp_client::on_connect();
+	Instance.client_manage_.addOnlineClient(this);
+	/*
     switch(m_client_state)
     {
     case _client_init_:
@@ -131,6 +133,7 @@ void Client::on_connect()
     default:
         break;    
     }
+	*/
 }
 
 
@@ -141,6 +144,8 @@ const char* Client::getAcc()
 void Client::on_close( const boost::system::error_code& error )
 {
     tcp_client::on_close(error);
+	Instance.client_manage_.addOfflineClient(this);
+	/*
     switch(m_client_state)
     {
     case _client_conn_login_:
@@ -160,10 +165,19 @@ void Client::on_close( const boost::system::error_code& error )
 		}
 		break;
     }
+	*/
 }
 void Client::on_connect_failed( boost::system::error_code error )
 {
-	Instance.client_manage_.addToReconn(this);
+	
+	if (m_client_state == _client_connet_gate_)
+	{
+		Instance.client_manage_.addToReconn(this);
+	}
+	else
+	{
+
+	}
    // gCLClientTese.addToReconn(this);
 }
 void Client::proc_message( const message_t& msg )
