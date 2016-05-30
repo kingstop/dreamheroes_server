@@ -128,6 +128,8 @@ void GateManager::offlineUser(tran_id_type tranid)
 
 void GateManager::collectSessionInfo()
 {
+	std::map<int, int> MAPINT_online;
+	std::map<int, int> MAPINT_offline;
 	std::map< tran_id_type, Session*>& smap = const_cast<std::map< tran_id_type, Session*>&>(m_Onlines.getDataMap());
 	std::map< tran_id_type, Session*>::iterator it = smap.begin();
 	std::map< tran_id_type, Session*>::iterator itend = smap.end();
@@ -136,8 +138,15 @@ void GateManager::collectSessionInfo()
 	for (it; it != itend; it++)
 	{
 		Session* p = it->second;
+		int gate_id = p->getGateId();
 		if (p->getState() == Session::_session_online_)
 		{
+			std::map<int, int>::iterator it = MAPINT_online.find(gate_id);
+			if (it == MAPINT_online.end())
+			{
+				MAPINT_online[gate_id] = 0;
+			}
+			MAPINT_online[gate_id] ++;
 			online_count++;
 		}
 		else
@@ -147,6 +156,11 @@ void GateManager::collectSessionInfo()
 	}
 	int current_player = offline_count + online_count;
 	Mylog::log_server(LOG_INFO, "current session count[%d], online session count[%d], offline session count[%d]", current_player, online_count, offline_count);
+	std::map<int, int>::iterator it_gate = MAPINT_online.begin();
+	for (; it_gate != MAPINT_online.end(); ++ it_gate)
+	{
+		Mylog::log_server(LOG_INFO, "gate id[%d] have session count[%d]", it_gate->first, it_gate->second);
+	}
 
 }
 
