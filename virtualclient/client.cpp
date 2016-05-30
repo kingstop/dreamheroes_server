@@ -18,7 +18,7 @@ Client::~Client()
 
 bool Client::reConnect()
 {
-   connect("dh-app01.chinacloudapp.cn", 20005);
+   connect(m_info._ip.c_str(), m_info._port);
    return true;
 }
 void Client::initPBModule()
@@ -102,7 +102,7 @@ void Client::on_connect()
 	Instance.client_manage_.removeFromReconn(this);
     tcp_client::on_connect();
 	Instance.client_manage_.addOnlineClient(this);
-	/*
+	
     switch(m_client_state)
     {
     case _client_init_:
@@ -133,7 +133,7 @@ void Client::on_connect()
     default:
         break;    
     }
-	*/
+	
 }
 
 
@@ -145,7 +145,7 @@ void Client::on_close( const boost::system::error_code& error )
 {
     tcp_client::on_close(error);
 	Instance.client_manage_.addOfflineClient(this);
-	/*
+	
     switch(m_client_state)
     {
     case _client_conn_login_:
@@ -165,7 +165,7 @@ void Client::on_close( const boost::system::error_code& error )
 		}
 		break;
     }
-	*/
+	
 }
 void Client::on_connect_failed( boost::system::error_code error )
 {

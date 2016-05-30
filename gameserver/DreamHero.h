@@ -23,6 +23,8 @@ public:
 	void StopSave();
 	void LoadFromConfig();
 	void SendClientInit();
+	void set_online(bool online);
+	bool is_online();
 public:
 	void ModifySuit(const message::C2SModifySuitReq* msg);
 	void DelSuit(const message::C2SDelSuitReq* msg);
@@ -39,5 +41,6 @@ protected:
 	HEROTOYS _hero_toys;
 	account_type _account;
 	Session* _session;
+	bool _online;
 };
 

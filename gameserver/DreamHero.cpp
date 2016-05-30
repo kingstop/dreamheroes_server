@@ -9,6 +9,7 @@ DreamHero::DreamHero()
 	_info.set_gold(0);
 	_info.set_level(1);
 	_info.set_name("test");
+	_online = false;
 }
 
 
@@ -296,6 +297,18 @@ void DreamHero::StopSave()
 	}
 }
 
+
+
+void DreamHero::set_online(bool online)
+{
+	_online = online;
+}
+
+bool DreamHero::is_online()
+{
+	return _online;
+}
+
 void DreamHero::SendClientInit()
 {
 	StartSave();
@@ -348,6 +361,7 @@ void DreamHero::SendClientInit()
 	sendPBMessage(&msg_toy_init);
 
 	sendPBMessage(&msg);
+	_online = true;
 }
 
 
