@@ -7,7 +7,8 @@
 
 #include <boost/date_time/posix_time/posix_time.hpp>  
 bool g_wait_stop = false;
-
+u64 g_server_time = 0;
+u64 g_server_start_time = 0;
 bool ServerFrame::loadNetConfig(net_info& _config, const char* strfile)
 {
 	_config._ip = "127.0.0.1";
@@ -41,8 +42,8 @@ bool ServerFrame::init()
 	signal(SIGQUIT, signal_handle);
 	save_pid();
 #endif
-	
-	return true ;
+	g_server_start_time = time(NULL);
+	return true;
 }
 
 void ServerFrame::run()
@@ -56,7 +57,7 @@ void ServerFrame::run()
 		nStartTime = boost::posix_time::microsec_clock::universal_time();
 		time_elapse = nStartTime - nLastTime ;
 		nLastTime = nStartTime ;
-        
+		g_server_time = time(NULL);
 		runOnce((u32)(time_elapse.total_milliseconds()));
 		onKey();
 		if (_wait_stop)

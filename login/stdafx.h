@@ -32,6 +32,7 @@ enum EventTypes
 {
     EVENT_UNK = 0,
     EVENT_USER_SESSION_CLOSE,
+	EVENT_GATE_SESSION_BALENCE_TIME
 };
 struct FuLoginFather
 {

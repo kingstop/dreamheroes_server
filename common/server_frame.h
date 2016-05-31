@@ -9,6 +9,9 @@
 //  server frame ...													//
 //////////////////////////////////////////////////////////////////////////
 extern bool g_wait_stop;
+extern u64 g_server_time;
+extern u64 g_server_start_time;
+
 class ServerFrame
 {
 public:

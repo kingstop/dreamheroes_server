@@ -1,9 +1,14 @@
 #include "stdafx.h"
 #include "gate_session.h"
+#define  _BALENCE_TIME_  2 * _TIME_SECOND_MSEL_
 
 GateSession::GateSession(): tcp_session( *net_global::get_io_service() )
 {
 	_proto_user_ptr = this;
+	if (gEventMgr.hasEvent(this, EVENT_GATE_SESSION_BALENCE_TIME) == false)
+	{
+		gEventMgr.addEvent(this, &GateSession::balenceInfoEvent, EVENT_GATE_SESSION_BALENCE_TIME, _BALENCE_TIME_, -1, 0);
+	}
 }
 GateSession::~GateSession()
 {
@@ -22,11 +27,47 @@ void GateSession::parseGateUserPrepar(google::protobuf::Message* p, pb_flag_type
     message::MsgGT2LNPrepar* msg = static_cast<message::MsgGT2LNPrepar*>(p);
     if (msg)
     {
-        u32 account = msg->account();
+        account_type account = msg->account();
 		gLGGateManager.receiveUserPrepar(account, m_GateInfo.out_ip, m_GateInfo.out_port);
 		//Mylog::log_player(LOG_INFO, "gate is wait for player [%u] login", account);
     }
 }
+
+void GateSession::addBalenceTime( )
+{
+	_balence_time.push_back(g_server_time);
+}
+
+int GateSession::getBalenceCount()
+{
+	int temp_count = m_GateInfo.onlines + _balence_time.size();
+	return temp_count;	
+}
+
+void GateSession::balenceInfoEvent()
+{
+	std::vector<u64> temp_balence;
+	std::vector<u64>::iterator it = _balence_time.begin();
+	for (; it != _balence_time.end(); ++ it)
+	{
+		u64 time_temp = (u64)(*it);
+		if (g_server_time > _BALENCE_TIME_ + time_temp )
+		{
+
+		}
+		else
+		{
+			temp_balence.push_back(time_temp);
+		}
+	}
+	_balence_time.clear();
+	it = temp_balence.begin();
+	for (; it != temp_balence.end(); ++ it)
+	{
+		_balence_time.push_back(*it);
+	}
+}
+
 void GateSession::parseGateRegister(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::MsgGTRegisterLG* msg = static_cast<message::MsgGTRegisterLG*>(p);

@@ -13,10 +13,10 @@ public:
 
     bool kickUserFromGate(Account* pkAccount);
     bool giveUserToGate(Account* pkAccount, UserLoginSession* pkSession);
-    void receiveUserPrepar(u32 ntran, const std::string& ip, u16 port);
+    void receiveUserPrepar(account_type ntran, const std::string& ip, u16 port);
     GateSession* getIdleGate();
-    UserLoginSession* getWaiteSession(u32 nAccountId);
-    void removeWaitSession(u32 nAccountId);
+    UserLoginSession* getWaiteSession(account_type nAccountId);
+    void removeWaitSession(account_type nAccountId);
 protected:
 private:
     GateSession* m_Gates[MAX_GATE_ID];

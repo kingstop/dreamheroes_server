@@ -282,10 +282,9 @@ void DreamHero::set_level(int level)
 
 void DreamHero::StartSave()
 {
-
 	if (gEventMgr.hasEvent(this, EVENT_SAVE_PLAYER_DATA_) == false)
 	{
-		gEventMgr.addEvent(this, &DreamHero::SaveHero, EVENT_SAVE_PLAYER_DATA_, _SAVE_PLAYER_TIME_, 99999999, 0);
+		gEventMgr.addEvent(this, &DreamHero::SaveHero, EVENT_SAVE_PLAYER_DATA_, _SAVE_PLAYER_TIME_, -1, 0);
 	}
 }
 

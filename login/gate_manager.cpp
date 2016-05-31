@@ -77,16 +77,18 @@ bool GateManager::giveUserToGate(Account* pkAccount, UserLoginSession* pkSession
             pkSession->setState(UserLoginSession::_wait_gate_);
             m_WaitSessions.addData(pkAccount->nTranId, pkSession);
             pkGate->sendPBMessage(&msg);
+			
             //Mylog::log_player( LOG_INFO, "set Account [%d]'s session to gate [%d]!",  pkAccount->nId, pkAccount->nGateId);
             return true;
-        }else
+        }
+		else
         {
             Mylog::log_player( LOG_ERROR, "not find the gate server!");
         }
     }
     return false;
 }
-void GateManager::receiveUserPrepar(u32 ntran, const std::string& ip, u16 port)
+void GateManager::receiveUserPrepar(account_type ntran, const std::string& ip, u16 port)
 {
     UserLoginSession* pkSession = getWaiteSession(ntran);
     if (pkSession)
@@ -114,7 +116,7 @@ GateSession* GateManager::getIdleGate()
                 pkGate = m_Gates[ i];
             }else
             {
-                if (pkGate->getOnlines() > m_Gates[i]->getOnlines())
+                if (pkGate->getBalenceCount() > m_Gates[i]->getBalenceCount())
                 {
                     pkGate = m_Gates[i];
                 }
@@ -124,11 +126,11 @@ GateSession* GateManager::getIdleGate()
     }
     return pkGate;
 }
-UserLoginSession* GateManager::getWaiteSession(u32 nAccountId)
+UserLoginSession* GateManager::getWaiteSession(account_type nAccountId)
 {
     return m_WaitSessions.getData(nAccountId);
 }
-void GateManager::removeWaitSession(u32 nAccountId)
+void GateManager::removeWaitSession(account_type nAccountId)
 {
     m_WaitSessions.eraseData(nAccountId);
 }
