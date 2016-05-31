@@ -133,8 +133,10 @@ void GateManager::collectSessionInfo()
 	std::map< tran_id_type, Session*>& smap = const_cast<std::map< tran_id_type, Session*>&>(m_Onlines.getDataMap());
 	std::map< tran_id_type, Session*>::iterator it = smap.begin();
 	std::map< tran_id_type, Session*>::iterator itend = smap.end();
+	std::map<account_type, bool> vcTemp;
 	int online_count = 0;
 	int offline_count = 0;
+	int have_hero_count = 0;
 	for (it; it != itend; it++)
 	{
 		Session* p = it->second;
@@ -153,9 +155,18 @@ void GateManager::collectSessionInfo()
 		{
 			offline_count++;
 		}	
+
+		vcTemp[p->getAccount()] = true;
+		if (p->getDreamHero() != NULL)
+		{
+			have_hero_count++;
+		}
+		
 	}
 	int current_player = offline_count + online_count;
-	Mylog::log_server(LOG_INFO, "current session count[%d], online session count[%d], offline session count[%d]", current_player, online_count, offline_count);
+	int size_temp_account = vcTemp.size();
+	Mylog::log_server(LOG_INFO, "session account count[%d], current hero count[%d], current session count[%d], online session count[%d], offline session count[%d]", 
+		size_temp_account, have_hero_count, current_player, online_count, offline_count);
 	std::map<int, int>::iterator it_gate = MAPINT_online.begin();
 	for (; it_gate != MAPINT_online.end(); ++ it_gate)
 	{

@@ -44,6 +44,7 @@ public:
 	void close();
 	void setReconnet();
 	void setWaitReconnet();
+	DreamHero* getDreamHero() { return _dream_hero; }
 	u16  getGateId() const {return m_gate ;}
 	tran_id_type getTranId() const {return m_tranid ;}
 	account_type getAccount() const {return m_account ;}
