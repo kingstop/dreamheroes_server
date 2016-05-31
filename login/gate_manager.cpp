@@ -75,6 +75,7 @@ bool GateManager::giveUserToGate(Account* pkAccount, UserLoginSession* pkSession
 
             pkSession->setAccount(pkAccount->nId);
             pkSession->setState(UserLoginSession::_wait_gate_);
+			pkGate->addBalenceTime();
             m_WaitSessions.addData(pkAccount->nTranId, pkSession);
             pkGate->sendPBMessage(&msg);
 			
