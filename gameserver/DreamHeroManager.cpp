@@ -54,6 +54,7 @@ DreamHero* DreamHeroManager::CreateHero(account_type acc, Session* session)
 	}
 	hero->set_session(session);
 	hero->set_account(acc);
+	_heros.insert(MAPHEROS::value_type(hero->get_account(), hero));
 	return hero;
 }
 
