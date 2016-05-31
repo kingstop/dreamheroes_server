@@ -51,7 +51,7 @@ void GateSession::balenceInfoEvent()
 	for (; it != _balence_time.end(); ++ it)
 	{
 		u64 time_temp = (u64)(*it);
-		if (g_server_time > _BALENCE_TIME_ + time_temp )
+		if (g_server_time > _BALENCE_TIME_ * 20 + time_temp )
 		{
 
 		}
