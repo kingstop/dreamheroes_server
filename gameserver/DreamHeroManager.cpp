@@ -7,7 +7,7 @@ DreamHeroManager::DreamHeroManager()
 	_save_all_heroes_ok = false;
 	if (gEventMgr.hasEvent(this, EVENT_COLLECT_INFO_) == false)
 	{
-		gEventMgr.addEvent(this, &DreamHeroManager::CollectInfo, EVENT_COLLECT_INFO_, _SAVE_COLLECT_TIME_, 999999999, 0);
+		gEventMgr.addEvent(this, &DreamHeroManager::CollectInfo, EVENT_COLLECT_INFO_, _SAVE_COLLECT_TIME_, -1, 0);
 	}
 }
 
