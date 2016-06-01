@@ -34,7 +34,6 @@ public:
 	void EquipLevelUp(message::S2CEquipLevelUpReq* msg);
 protected:
 	void sendPBMessage(google::protobuf::Message* p);
-
 protected:
 	message::MsgHeroData _info;
 	HEROEQUIPS _hero_equips;
