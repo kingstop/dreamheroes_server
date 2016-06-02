@@ -60,7 +60,11 @@ void GameDBClient::parseMsgVerifyToy(google::protobuf::Message* p, pb_flag_type 
 	Session* pkSession = gGSGateManager.getUser(flag);
 	if (pkSession)
 	{
-		pkSession->get_dream_hero()->VerifyToy(msg);
+		if (pkSession->get_dream_hero())
+		{
+			pkSession->get_dream_hero()->VerifyToy(msg);
+		}
+		
 	}
 }
 

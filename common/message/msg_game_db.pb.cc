@@ -199,8 +199,9 @@ void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgVerifyToyErrorDB2GS, _internal_metadata_),
       -1);
   MsgVerifyToyDB2GS_descriptor_ = file->message_type(9);
-  static const int MsgVerifyToyDB2GS_offsets_[1] = {
+  static const int MsgVerifyToyDB2GS_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgVerifyToyDB2GS, toy_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgVerifyToyDB2GS, account_),
   };
   MsgVerifyToyDB2GS_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -295,8 +296,9 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
     "gVerifyToyGS2DB\022\r\n\005cdkey\030\001 \002(\t\022\017\n\007accoun"
     "t\030\002 \002(\004\"X\n\026MsgVerifyToyErrorDB2GS\022/\n\005err"
     "or\030\001 \002(\0162\026.message.HeroErrorCode:\010no_err"
-    "or\022\r\n\005cdkey\030\002 \002(\t\"5\n\021MsgVerifyToyDB2GS\022 "
-    "\n\003toy\030\001 \002(\0132\023.message.MsgToyData", 632);
+    "or\022\r\n\005cdkey\030\002 \002(\t\"F\n\021MsgVerifyToyDB2GS\022 "
+    "\n\003toy\030\001 \002(\0132\023.message.MsgToyData\022\017\n\007acco"
+    "unt\030\002 \002(\004", 649);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_game_db.proto", &protobuf_RegisterTypes);
   MsgReqHeroDataGS2DB::default_instance_ = new MsgReqHeroDataGS2DB();
@@ -3133,6 +3135,7 @@ void MsgVerifyToyErrorDB2GS::InternalSwap(MsgVerifyToyErrorDB2GS* other) {
 
 #ifndef _MSC_VER
 const int MsgVerifyToyDB2GS::kToyFieldNumber;
+const int MsgVerifyToyDB2GS::kAccountFieldNumber;
 #endif  // !_MSC_VER
 
 MsgVerifyToyDB2GS::MsgVerifyToyDB2GS()
@@ -3156,6 +3159,7 @@ MsgVerifyToyDB2GS::MsgVerifyToyDB2GS(const MsgVerifyToyDB2GS& from)
 void MsgVerifyToyDB2GS::SharedCtor() {
   _cached_size_ = 0;
   toy_ = NULL;
+  account_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3196,8 +3200,11 @@ MsgVerifyToyDB2GS* MsgVerifyToyDB2GS::New(::google::protobuf::Arena* arena) cons
 }
 
 void MsgVerifyToyDB2GS::Clear() {
-  if (has_toy()) {
-    if (toy_ != NULL) toy_->::message::MsgToyData::Clear();
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_toy()) {
+      if (toy_ != NULL) toy_->::message::MsgToyData::Clear();
+    }
+    account_ = GOOGLE_ULONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3220,6 +3227,21 @@ bool MsgVerifyToyDB2GS::MergePartialFromCodedStream(
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_toy()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_account;
+        break;
+      }
+
+      // required uint64 account = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_account:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &account_)));
+          set_has_account();
         } else {
           goto handle_unusual;
         }
@@ -3258,6 +3280,11 @@ void MsgVerifyToyDB2GS::SerializeWithCachedSizes(
       1, *this->toy_, output);
   }
 
+  // required uint64 account = 2;
+  if (has_account()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->account(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -3275,6 +3302,11 @@ void MsgVerifyToyDB2GS::SerializeWithCachedSizes(
         1, *this->toy_, target);
   }
 
+  // required uint64 account = 2;
+  if (has_account()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->account(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -3283,14 +3315,41 @@ void MsgVerifyToyDB2GS::SerializeWithCachedSizes(
   return target;
 }
 
-int MsgVerifyToyDB2GS::ByteSize() const {
+int MsgVerifyToyDB2GS::RequiredFieldsByteSizeFallback() const {
   int total_size = 0;
 
-  // required .message.MsgToyData toy = 1;
   if (has_toy()) {
+    // required .message.MsgToyData toy = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->toy_);
+  }
+
+  if (has_account()) {
+    // required uint64 account = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->account());
+  }
+
+  return total_size;
+}
+int MsgVerifyToyDB2GS::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required .message.MsgToyData toy = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->toy_);
+
+    // required uint64 account = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->account());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
@@ -3321,6 +3380,9 @@ void MsgVerifyToyDB2GS::MergeFrom(const MsgVerifyToyDB2GS& from) {
     if (from.has_toy()) {
       mutable_toy()->::message::MsgToyData::MergeFrom(from.toy());
     }
+    if (from.has_account()) {
+      set_account(from.account());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -3340,7 +3402,7 @@ void MsgVerifyToyDB2GS::CopyFrom(const MsgVerifyToyDB2GS& from) {
 }
 
 bool MsgVerifyToyDB2GS::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   if (has_toy()) {
     if (!this->toy_->IsInitialized()) return false;
@@ -3354,6 +3416,7 @@ void MsgVerifyToyDB2GS::Swap(MsgVerifyToyDB2GS* other) {
 }
 void MsgVerifyToyDB2GS::InternalSwap(MsgVerifyToyDB2GS* other) {
   std::swap(toy_, other->toy_);
+  std::swap(account_, other->account_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -3411,6 +3474,30 @@ void MsgVerifyToyDB2GS::InternalSwap(MsgVerifyToyDB2GS* other) {
     clear_has_toy();
   }
   // @@protoc_insertion_point(field_set_allocated:message.MsgVerifyToyDB2GS.toy)
+}
+
+// required uint64 account = 2;
+ bool MsgVerifyToyDB2GS::has_account() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void MsgVerifyToyDB2GS::set_has_account() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void MsgVerifyToyDB2GS::clear_has_account() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void MsgVerifyToyDB2GS::clear_account() {
+  account_ = GOOGLE_ULONGLONG(0);
+  clear_has_account();
+}
+ ::google::protobuf::uint64 MsgVerifyToyDB2GS::account() const {
+  // @@protoc_insertion_point(field_get:message.MsgVerifyToyDB2GS.account)
+  return account_;
+}
+ void MsgVerifyToyDB2GS::set_account(::google::protobuf::uint64 value) {
+  set_has_account();
+  account_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgVerifyToyDB2GS.account)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

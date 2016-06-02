@@ -38,6 +38,8 @@ void DreamHero::set_account(u64 account)
 
 void DreamHero::set_info(const message::MsgHeroDataDB2GS* info)
 {
+	///std::string cd_key_temp = info->cd
+	info->account();
 	_info.CopyFrom(info->data());
 	for (int i = 0; i < info->toys_size(); i ++)
 	{
@@ -166,7 +168,6 @@ void DreamHero::EquipLevelUp(message::S2CEquipLevelUpReq* msg)
 						msg_send.set_count(count_temp);
 						msg_send.set_gold(gold_temp);
 						msg_send.set_level(level);
-						msg_send.set_gold(gold_temp);
 						msg_send.set_diamand(diamand_temp);
 						sendPBMessage(&msg_send);
 					}
@@ -191,20 +192,35 @@ void DreamHero::EquipLevelUp(message::S2CEquipLevelUpReq* msg)
 void DreamHero::VerifyToy(message::MsgVerifyToyDB2GS* msg)
 {
 	std::string cd_key_temp = msg->toy().toy_cd_key();
+	account_type acc_temp = msg->account();
+	DreamHero* temp_hero = gDreamHeroManager.GetHero(acc_temp);
+	if (temp_hero)
+	{
+		temp_hero->RemoveToyByCDKey(cd_key_temp.c_str());
+		gDreamHeroManager.modifyToyAccount(_account, cd_key_temp.c_str());
+	}
+	
 	HEROTOYS::iterator it = _hero_toys.find(cd_key_temp.c_str());
 	if (it != _hero_toys.end())
 	{
 		Mylog::log_server(LOG_WARNING, "toy cd key[%s] is already used", cd_key_temp.c_str());
-
 	}
 	else
 	{
-		message::MsgToyData ToyData;
-		ToyData.CopyFrom(msg->toy());		
-		_hero_toys.insert(HEROTOYS::value_type(cd_key_temp, ToyData));
-		message::S2CVerifyToyCDKeyACK msg_ACK;
-		msg_ACK.mutable_toydata()->CopyFrom(ToyData);
-		sendPBMessage(&msg_ACK);
+		account_type acc = gDreamHeroManager.getToyHero(cd_key_temp.c_str());
+		if (acc != 0)
+		{
+			Mylog::log_server(LOG_WARNING, "toy cd key[%s] is already used", cd_key_temp.c_str());
+		}
+		else
+		{
+			message::MsgToyData ToyData;
+			ToyData.CopyFrom(msg->toy());
+			_hero_toys.insert(HEROTOYS::value_type(cd_key_temp, ToyData));
+			message::S2CVerifyToyCDKeyACK msg_ACK;
+			msg_ACK.mutable_toydata()->CopyFrom(ToyData);
+			sendPBMessage(&msg_ACK);
+		}
 	}
 }
 
@@ -306,6 +322,16 @@ void DreamHero::set_online(bool online)
 bool DreamHero::is_online()
 {
 	return _online;
+}
+
+
+void DreamHero::RemoveToyByCDKey(const char* cd_key)
+{
+	HEROTOYS::iterator it = _hero_toys.find(cd_key);
+	if (it != _hero_toys.end())
+	{
+		_hero_toys.erase(it);
+	}	
 }
 
 void DreamHero::SendClientInit()

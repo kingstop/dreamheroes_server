@@ -23,6 +23,7 @@ public:
 	void StopSave();
 	void LoadFromConfig();
 	void SendClientInit();
+	void RemoveToyByCDKey(const char* cd_key);
 	void set_online(bool online);
 	bool is_online();
 public:

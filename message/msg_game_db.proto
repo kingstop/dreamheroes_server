@@ -55,4 +55,5 @@ message MsgVerifyToyErrorDB2GS
 message MsgVerifyToyDB2GS
 {
 	required MsgToyData toy = 1;
+	required uint64 account = 2;
 }

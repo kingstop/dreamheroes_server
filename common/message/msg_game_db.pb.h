@@ -992,15 +992,28 @@ class MsgVerifyToyDB2GS : public ::google::protobuf::Message {
   ::message::MsgToyData* release_toy();
   void set_allocated_toy(::message::MsgToyData* toy);
 
+  // required uint64 account = 2;
+  bool has_account() const;
+  void clear_account();
+  static const int kAccountFieldNumber = 2;
+  ::google::protobuf::uint64 account() const;
+  void set_account(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:message.MsgVerifyToyDB2GS)
  private:
   inline void set_has_toy();
   inline void clear_has_toy();
+  inline void set_has_account();
+  inline void clear_has_account();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::message::MsgToyData* toy_;
+  ::google::protobuf::uint64 account_;
   friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
@@ -1519,6 +1532,30 @@ inline void MsgVerifyToyDB2GS::set_allocated_toy(::message::MsgToyData* toy) {
     clear_has_toy();
   }
   // @@protoc_insertion_point(field_set_allocated:message.MsgVerifyToyDB2GS.toy)
+}
+
+// required uint64 account = 2;
+inline bool MsgVerifyToyDB2GS::has_account() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgVerifyToyDB2GS::set_has_account() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgVerifyToyDB2GS::clear_has_account() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgVerifyToyDB2GS::clear_account() {
+  account_ = GOOGLE_ULONGLONG(0);
+  clear_has_account();
+}
+inline ::google::protobuf::uint64 MsgVerifyToyDB2GS::account() const {
+  // @@protoc_insertion_point(field_get:message.MsgVerifyToyDB2GS.account)
+  return account_;
+}
+inline void MsgVerifyToyDB2GS::set_account(::google::protobuf::uint64 value) {
+  set_has_account();
+  account_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgVerifyToyDB2GS.account)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

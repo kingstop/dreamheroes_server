@@ -58,6 +58,17 @@ DreamHero* DreamHeroManager::CreateHero(account_type acc, Session* session)
 	return hero;
 }
 
+account_type DreamHeroManager::getToyHero(const char* cdkey)
+{
+	account_type acc = 0;
+	MAPSTRACCPAIR::iterator it = _toy_cdkey_account.find(cdkey);
+	if (it != _toy_cdkey_account.end())
+	{
+		acc = it->second;
+	}
+	return acc;
+}
+
 void DreamHeroManager::SaveDreamHeroes()
 {
 	MAPHEROS::iterator it = _heros.begin();
@@ -106,4 +117,9 @@ bool DreamHeroManager::is_save_all_heroes_ok()
 void DreamHeroManager::save_all_heroes_ok()
 {
 	_save_all_heroes_ok = true;
+}
+
+void DreamHeroManager::modifyToyAccount(account_type acc, const char* cdkey)
+{
+	_toy_cdkey_account[cdkey] = acc;
 }

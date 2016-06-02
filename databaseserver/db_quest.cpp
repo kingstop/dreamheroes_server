@@ -99,9 +99,9 @@ void DBQuestManager::onSaveToClose()
 void DBQuestManager::verifyToyCDKey(tran_id_type t, u16 gs, account_type acc, const char* cdkey)
 {
 	char sz_sql[256];
-	sprintf(sz_sql, "select * from `toy_cd_key` where `toy_cd_key`='%s';", cdkey);
+	sprintf(sz_sql, "select * from `character_toy` where `toy_cd_key`='%s';", cdkey);
 
-	gDBWorldDatabase.addSQueryTask(this, &DBQuestManager::dbDoQuerryToyVerify, sz_sql, 0, new tgVerify(acc, t, gs, cdkey), _QUERRY_VERIFY_TOY_CDKEY_);
+	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbDoQuerryToyVerify, sz_sql, 0, new tgVerify(acc, t, gs, cdkey), _QUERRY_VERIFY_TOY_CDKEY_);
 
 }
 
@@ -143,7 +143,26 @@ void DBQuestManager::dbDoQuerryToyVerify(const SDBResult* r, const void* d, bool
 		{
 			const mysqlpp::Row row = result[0];
 			message::MsgToyData entry;
-			account_type acc = row["account_verify"];
+			account_type acc = row["account"];
+			entry.set_toy_cd_key(row["toy_cd_key"].c_str());
+	
+			message::MsgToyBaseData* entry_toy = entry.mutable_toy();
+			entry_toy->set_toy_config_id(row["toy_config_id"]);
+			entry_toy->set_toy_config_type(row["toy_config_type"]);
+			entry_toy->set_toy_level(row["toy_level"]);
+			entry.set_time_stamp(g_server_time);
+			std::string verify_time = get_time(g_server_time);
+			char sz_sql[512];
+			sprintf(sz_sql, "update set `account`=%llu, `verify_time`='%s' where `toy_cd_key`='%s'",
+				pkParm->account, verify_time.c_str(), pkParm->cd_key.c_str());
+			gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sz_sql, 0, NULL, _QUERRY_VERIFY_TOY_CDKEY_);
+			message::MsgVerifyToyDB2GS msg;			
+			msg.mutable_toy()->CopyFrom(entry);
+			msg.set_account(acc);
+			gDBGameManager.sendMessage(&msg, pkParm->tranid, pkParm->gsid);
+			/*
+			
+			
 			if (acc != 0)
 			{
 				message::MsgVerifyToyErrorDB2GS msg;
@@ -172,6 +191,7 @@ void DBQuestManager::dbDoQuerryToyVerify(const SDBResult* r, const void* d, bool
 				msg.mutable_toy()->CopyFrom(entry);
 				gDBGameManager.sendMessage(&msg, pkParm->tranid, pkParm->gsid);
 			}
+			*/
 			
 		}
 		
