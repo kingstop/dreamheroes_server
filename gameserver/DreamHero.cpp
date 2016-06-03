@@ -207,6 +207,14 @@ void DreamHero::VerifyToy(message::MsgVerifyToyDB2GS* msg)
 	}
 	else
 	{
+
+		message::MsgToyData ToyData;
+		ToyData.CopyFrom(msg->toy());
+		_hero_toys.insert(HEROTOYS::value_type(cd_key_temp, ToyData));
+		message::S2CVerifyToyCDKeyACK msg_ACK;
+		msg_ACK.mutable_toydata()->CopyFrom(ToyData);
+		sendPBMessage(&msg_ACK);
+		/*
 		account_type acc = gDreamHeroManager.getToyHero(cd_key_temp.c_str());
 		if (acc != 0)
 		{
@@ -214,13 +222,9 @@ void DreamHero::VerifyToy(message::MsgVerifyToyDB2GS* msg)
 		}
 		else
 		{
-			message::MsgToyData ToyData;
-			ToyData.CopyFrom(msg->toy());
-			_hero_toys.insert(HEROTOYS::value_type(cd_key_temp, ToyData));
-			message::S2CVerifyToyCDKeyACK msg_ACK;
-			msg_ACK.mutable_toydata()->CopyFrom(ToyData);
-			sendPBMessage(&msg_ACK);
+
 		}
+		*/
 	}
 }
 
